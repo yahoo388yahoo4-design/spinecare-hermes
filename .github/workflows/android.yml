@@ -42,3 +42,30 @@ jobs:
       - name: Run pose/framing/rep tests
         working-directory: server
         run: python -m pytest test_pose.py -v
+
+  ios-build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install xcodegen
+        run: brew install xcodegen
+      - name: Generate project
+        working-directory: ios
+        run: xcodegen generate
+      - name: Build (unsigned, for CI artifact)
+        working-directory: ios
+        run: |
+          xcodebuild -project SpineCare.xcodeproj -scheme SpineCare \
+            -sdk iphoneos -configuration Release CODE_SIGNING_ALLOWED=NO \
+            -derivedDataPath build build
+      - name: Package unsigned IPA
+        working-directory: ios
+        run: |
+          mkdir -p Payload
+          cp -r build/Build/Products/Release-iphoneos/SpineCare.app Payload/
+          zip -qr SpineCare-unsigned.ipa Payload
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: spinecare-ios-unsigned-ipa
+          path: ios/SpineCare-unsigned.ipa

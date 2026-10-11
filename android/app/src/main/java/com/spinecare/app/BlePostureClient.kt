@@ -65,8 +65,9 @@ class BlePostureClient(private val context: Context) {
 
     private fun BluetoothGatt.enableNotifications(ch: BluetoothGattCharacteristic) {
         val cfg = ch.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb")) ?: return
+        cfg.value = BluetoothGattCharacteristic.ENABLE_NOTIFICATION_VALUE
         @Suppress("DEPRECATION")
-        writeDescriptor(cfg, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT)
+        writeDescriptor(cfg)
     }
 
     private fun parse(v: ByteArray?): ImuPacket? {

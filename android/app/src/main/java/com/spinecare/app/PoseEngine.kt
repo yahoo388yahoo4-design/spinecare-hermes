@@ -15,8 +15,8 @@ class PoseEngine(context: Context) {
         val base = BaseOptions.builder().setModelAssetPath("pose_landmarker_full.task").build()
         val opts = PoseLandmarker.PoseLandmarkerOptions.builder()
             .setBaseOptions(base)
-            .setRunningMode(RunningMode.SINGLE_IMAGE)
-            .setMinDetectionConfidence(0.5f)
+            .setRunningMode(RunningMode.IMAGE)
+            .setMinPoseDetectionConfidence(0.5f)
             .build()
         detector = PoseLandmarker.createFromOptions(context, opts)
     }
@@ -29,7 +29,7 @@ class PoseEngine(context: Context) {
         val res: PoseLandmarkerResult = detector.detect(mpImg)
         val ms = (System.nanoTime() - t0) / 1_000_000
         val lms = res.landmarks().firstOrNull()?.map {
-            Metrics.LM(it.x(), it.y(), it.z(), it.visibility())
+            Metrics.LM(it.x(), it.y(), it.z(), it.visibility().orElse(0f))
         }
         return Result(lms, ms)
     }
