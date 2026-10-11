@@ -140,7 +140,10 @@ async def ws_session(ws: WebSocket):
                                         arr.shape[1], arr.shape[0])
                 metrics = compute_metrics(pose) if pose else {}
                 sig = _signal_value(ex, metrics)
-                rep_state = session.reps.update(sig, time.time()) if sig is not None else {"reps": session.reps.reps, "phase": "rest", "rep_just_done": False}
+                # Rep timing uses the client frame timestamp when provided (video replay
+                # or buffered streams); falls back to server wall-clock for live streams.
+                rep_t = (msg["t"] / 1000.0) if msg.get("t") else time.time()
+                rep_state = session.reps.update(sig, rep_t) if sig is not None else {"reps": session.reps.reps, "phase": "rest", "rep_just_done": False}
                 cues = _score_form(ex, metrics)
                 for c in cues:
                     session.cue_counts[c["metric"]] = session.cue_counts.get(c["metric"], 0) + 1

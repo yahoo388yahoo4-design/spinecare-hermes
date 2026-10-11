@@ -94,7 +94,9 @@ async def run(video: str, exercise_id: str, out_dir: Path,
         for i, fp in enumerate(frames):
             b64 = base64.b64encode(fp.read_bytes()).decode()
             t0 = time.time()
-            await ws.send(json.dumps({"type": "frame", "t": int(t0 * 1000),
+            # video timestamp (ms) so server-side rep timing matches playback speed
+            vid_t = int(i / 6.0 * 1000)
+            await ws.send(json.dumps({"type": "frame", "t": vid_t,
                                       "img": b64, "w": 0, "h": 0}))
             reply = json.loads(await ws.recv())
             if reply.get("type") != "pose":
@@ -102,6 +104,7 @@ async def run(video: str, exercise_id: str, out_dir: Path,
                 continue
             lat.append(reply["latency_ms"])
             log.append({"frame": i, "metrics": reply.get("metrics"),
+                        "signal": reply.get("signal"),
                         "reps": reply.get("reps"), "phase": reply.get("phase"),
                         "cues": reply.get("cues"), "framing": reply.get("framing"),
                         "latency_ms": reply["latency_ms"]})
