@@ -17,8 +17,19 @@ android {
     buildTypes {
         debug { isMinifyEnabled = false }
         release {
-            isMinifyEnabled = true
+            // Prototype release: R8 kept off so MediaPipe/OkHttp reflection stays safe.
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
+            signingConfig = if (System.getenv("SPINECARE_KEYSTORE") != null) {
+                signingConfigs.create("ci") {
+                    storeFile = file(System.getenv("SPINECARE_KEYSTORE"))
+                    storePassword = System.getenv("SPINECARE_KEYSTORE_PASSWORD")
+                    keyAlias = System.getenv("SPINECARE_KEY_ALIAS")
+                    keyPassword = System.getenv("SPINECARE_KEY_PASSWORD")
+                }
+            } else {
+                signingConfigs.getByName("debug")
+            }
         }
     }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }

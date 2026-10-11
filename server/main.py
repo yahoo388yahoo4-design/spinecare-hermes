@@ -152,6 +152,7 @@ async def ws_session(ws: WebSocket):
                 latency = int((time.time() - t0) * 1000)
                 await ws.send_json({
                     "type": "pose", "t": msg.get("t"), "session_id": session.id,
+                    "landmarks": [{"x": x, "y": y, "visibility": c} for x, y, c in kpts] if pose else [],
                     "metrics": {k: (round(v, 2) if v is not None else None) for k, v in metrics.items()},
                     "signal": sig, "framing": framing,
                     "reps": rep_state["reps"], "phase": rep_state["phase"],
