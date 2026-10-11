@@ -168,4 +168,48 @@
     <string name="settings_testing">Testing %1$s …</string>
     <string name="settings_exported">Exported %1$d sessions to Downloads/SpineCare/</string>
     <string name="settings_export_fail">Export failed: %1$s</string>
+
+    <!-- New upper-body/neck exercises -->
+    <string name="ex_lat_flex_name">Cervical lateral flexion (ear-to-shoulder, pain-free)</string>
+    <string name="ex_lat_flex_desc">Sit tall. Slowly tilt one ear toward the same-side shoulder within the pain-free range. Return to center. Shoulders stay level.</string>
+    <string name="ex_lat_flex_stop1">arm pain or tingling during side-bend</string>
+    <string name="ex_lat_flex_stop2">dizziness</string>
+    <string name="ex_shrug_name">Shoulder shrug and release</string>
+    <string name="ex_shrug_desc">Lift both shoulders straight up toward the ears, hold 2s, then let them drop fully. Keep breathing.</string>
+    <string name="ex_shrug_stop1">sharp pain at the shoulder or neck</string>
+    <string name="ex_shrug_stop2">headache</string>
+    <string name="ex_iso_name">Isometric neck hold (hand resistance, no movement)</string>
+    <string name="ex_iso_desc">Press your palm against your forehead (or side/back of head) and push gently without moving the head. Hold 5s, relax. Light effort only.</string>
+    <string name="ex_iso_stop1">increased arm symptoms</string>
+    <string name="ex_iso_stop2">dizziness</string>
+    <!-- Localized form cues -->
+    <string name="cue_shoulder_level">Relax the raised shoulder; keep shoulders level.</string>
+    <string name="cue_trunk_upright">Keep the trunk upright; only the head moves.</string>
+    <string name="cue_no_sho_lift">Do not lift the shoulder when turning; rotate through the neck only.</string>
+    <string name="cue_chest_forward">Keep the chest facing forward; isolate neck rotation.</string>
+    <string name="cue_chest_lead">Lead with the chest, not the head; keep the neck long.</string>
+    <string name="cue_stay_tall">Stay tall; do not lean.</string>
+    <string name="cue_shoulders_level2">Keep both shoulders level; do not lift one side.</string>
+    <string name="cue_bend_neck_only">Keep the trunk upright; bend only through the neck.</string>
+    <string name="cue_sho_only">Do not lean; move only the shoulders up and down.</string>
+    <string name="cue_head_still">Keep the head still and neutral; push without moving.</string>
+    <!-- Guides -->
+    <string name="tab_guides">Guides</string>
+    <string name="guides_title">Learn: camera placement and form</string>
+    <string name="guides_intro">Each guide is a reference video processed by the same pose pipeline the app uses: skeleton overlay, measured angles and rep cues are burned in. Watch how the camera is placed and how the movement should look before doing it yourself.</string>
+    <string name="guides_offline_note">Guides are bundled offline. The server can stream more when reachable.</string>
+    <string name="guides_download">Download guides from server</string>
+    <string name="guides_downloaded">Guides updated from server</string>
+    <string name="guides_dl_failed">Server guides unavailable</string>
+    <!-- Voice -->
+    <string name="settings_voice_guidance">Voice guidance (spoken cues)</string>
+    <string name="settings_voice_control">Voice control (say: start, stop, next, repeat)</string>
+    <string name="voice_cmd_start">start</string>
+    <string name="voice_cmd_stop">stop</string>
+    <string name="voice_cmd_next">next</string>
+    <string name="voice_cmd_repeat">repeat</string>
+    <string name="voice_listening">Listening… say "start" or "stop"</string>
+    <string name="voice_unavailable">Voice recognition unavailable on this device</string>
+    <string name="voice_heard">Heard: %1$s</string>
+    <string name="voice_lang_unsupported">Voice commands not available for Romanian; using English commands</string>
 </resources>

@@ -106,3 +106,45 @@
 "settings_save" = "Salvează setările";
 "settings_saved" = "Salvat";
 "settings_testing" = "Testez %@ …";
+
+/* Noul set de exerciții pentru partea superioară / gât */
+"ex_lat_flex_name" = "Flexie cervicală laterală (ureche-spre-umăr, fără durere)";
+"ex_lat_flex_desc" = "Stai drept. Înclină lent o ureche spre umărul aceleiași părți, în limitele fără durere. Revino la centru. Umerii rămân orizontali.";
+"ex_lat_flex_stop1" = "durere sau furnicăături în braț la înclinare laterală";
+"ex_lat_flex_stop2" = "amețeală";
+"ex_shrug_name" = "Ridicare și relaxare a umerilor";
+"ex_shrug_desc" = "Ridică ambele umeri drept în sus spre urechi, menține 2 s, apoi lasă-i să coboare complet. Continuă să respiri.";
+"ex_shrug_stop1" = "durere ascuțită la umăr sau gât";
+"ex_shrug_stop2" = "dureri de cap";
+"ex_iso_name" = "Izometrie cervicală (rezistență cu mâna, fără mișcare)";
+"ex_iso_desc" = "Apasă palma de frunte (sau de lateral/spatele capului) și împinge ușor fără să miști capul. Menține 5 s, relaxează. Efort moderat doar.";
+"ex_iso_stop1" = "simptomele în braț se accentuează";
+"ex_iso_stop2" = "amețeală";
+/* Indicații de formă localizate */
+"cue_shoulder_level" = "Relaxează umărul ridicat; menține umerii orizontali.";
+"cue_trunk_upright" = "Menține trunchiul drept; doar capul se mișcă.";
+"cue_no_sho_lift" = "Nu ridica umărul la rotație; rotește doar prin gât.";
+"cue_chest_forward" = "Menține pieptul spre înainte; izolează rotația cervicală.";
+"cue_chest_lead" = "Condu cu pieptul, nu cu capul; menține gâtul lung.";
+"cue_stay_tall" = "Rămâi drept; nu te înclina.";
+"cue_shoulders_level2" = "Menține ambii umeri orizontali; nu ridica o parte.";
+"cue_bend_neck_only" = "Menține trunchiul drept; îndoaie doar prin gât.";
+"cue_sho_only" = "Nu te înclina; mișcă doar umerii în sus și în jos.";
+"cue_head_still" = "Menține capul nemișcat și neutru; împinge fără mișcare.";
+/* Ghiduri */
+"tab_guides" = "Ghiduri";
+"guides_title" = "Învață: plasarea camerei și execuția";
+"guides_intro" = "Fiecare ghid este o video de referință procesată de aceeași conductă de pose folosită de aplicație: scheletul, unghiurile măsurate și indicațiile de repetare sunt aplicate în video. Urmărește cum se plasează camera și cum trebuie să arate mișcarea înainte de a o face tu.";
+"guides_offline_note" = "Ghidurile sunt incluse offline. Serverul poate trimite mai multe când este disponibil.";
+"guides_download" = "Descarcă ghiduri de pe server";
+"guides_downloaded" = "Ghiduri actualizate de pe server";
+"guides_dl_failed" = "Ghidurile de pe server nu sunt disponibile";
+/* Comandă vocală */
+"settings_voice_guidance" = "Ghidare vocală (indicații rostite)";
+"settings_voice_control" = "Comandă vocală (spune: start, stop, next, repeat)";
+"voice_listening" = "Ascult… spune \"start\" sau \"stop\"";
+"voice_unavailable" = "Recunoașterea vocală nu este disponibilă pe acest dispozitiv";
+"voice_lang_unsupported" = "Comenzile vocale nu sunt disponibile în română; se folosesc comenzile în engleză";
+/* Previzualizare sesiuni */
+"sessions_open_full" = "▶ Deschide full screen (%lld cadre)";
+"guides_open" = "▶ Redă ghidul (%lld KB)";

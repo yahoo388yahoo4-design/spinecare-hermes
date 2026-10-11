@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "guides": [
+    {
+      "exercise_id": "cervical_rotation_rom",
+      "file": "guide_cervical_rotation_rom.mp4",
+      "bytes": 4169211
+    },
+    {
+      "exercise_id": "chin_tuck",
+      "file": "guide_chin_tuck.mp4",
+      "bytes": 3799042
+    },
+    {
+      "exercise_id": "cervical_rotation_rom_nhs",
+      "file": "guide_cervical_rotation_rom_nhs.mp4",
+      "bytes": 1871009
+    }
+  ]
+}

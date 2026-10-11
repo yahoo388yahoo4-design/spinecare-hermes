@@ -3,6 +3,7 @@
     <item android:id="@+id/tab_home" android:title="@string/tab_home" android:icon="@android:drawable/ic_menu_today"/>
     <item android:id="@+id/tab_exercises" android:title="@string/tab_exercises" android:icon="@android:drawable/ic_menu_myplaces"/>
     <item android:id="@+id/tab_sessions" android:title="@string/tab_sessions" android:icon="@android:drawable/ic_menu_gallery"/>
+    <item android:id="@+id/tab_guides" android:title="@string/tab_guides" android:icon="@android:drawable/ic_menu_slideshow"/>
     <item android:id="@+id/tab_sensors" android:title="@string/tab_sensors" android:icon="@android:drawable/ic_menu_manage"/>
     <item android:id="@+id/tab_sleep" android:title="@string/tab_sleep" android:icon="@android:drawable/ic_menu_day"/>
     <item android:id="@+id/tab_settings" android:title="@string/tab_settings" android:icon="@android:drawable/ic_menu_preferences"/>

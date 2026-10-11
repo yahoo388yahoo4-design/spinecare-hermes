@@ -16,6 +16,8 @@ targets:
     platform: iOS
     sources:
       - SpineCare
+      - path: ../assets/guides
+        buildPhase: resources
     info:
       path: SpineCare/Info.plist
       properties:
@@ -25,6 +27,8 @@ targets:
         CFBundleAllowMixedLocalizations: true
         NSCameraUsageDescription: "SpineCare uses the camera to guide and monitor your rehabilitation exercises. Video never leaves the device unless you enable the GPU server."
         NSMotionUsageDescription: "Used for posture context during exercises."
+        NSMicrophoneUsageDescription: "Used only for voice commands (start/stop/next/repeat) during exercises. Audio is processed on-device and never stored or uploaded."
+        NSSpeechRecognitionUsageDescription: "Used to recognize the voice commands start, stop, next and repeat during exercise sessions. Recognition runs on-device when available."
         UIBackgroundModes: []
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]

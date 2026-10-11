@@ -55,6 +55,8 @@ object Metrics {
         }
         if (lear.visibility > .5f && rear.visibility > .5f && lsho.visibility > .5f && rsho.visibility > .5f) {
             out["cervical_tilt"] = angFromVertical(earMid.x, earMid.y, shoMid.x, shoMid.y)
+            // Ear-to-shoulder distance / torso: drops when shoulders shrug up.
+            out["ear_sho_dist"] = hypot((earMid.x - shoMid.x).toDouble(), (earMid.y - shoMid.y).toDouble()) / torsoLen
         }
         // Signed lateral nose offset vs shoulder midline (front view). Ear-separation
         // proxies collapse when an ear occludes during rotation; nose stays visible.

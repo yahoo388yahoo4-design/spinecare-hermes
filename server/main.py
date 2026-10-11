@@ -15,6 +15,8 @@ import asyncio, base64, json, time, uuid, io, os, sqlite3
 from pathlib import Path
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from PIL import Image
 import numpy as np
 
@@ -22,6 +24,7 @@ from pose import PersonPose, compute_metrics, framing_check, RepEngine
 
 ROOT = Path(__file__).resolve().parent
 DB = ROOT / "sessions.db"
+GUIDES_DIR = ROOT.parent / "assets" / "guides"
 
 app = FastAPI(title="SpineCare GPU server")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
@@ -105,6 +108,25 @@ def sessions():
     rows = con.execute("SELECT id,exercise_id,started_at,ended_at,reps,frames FROM sessions ORDER BY started_at DESC LIMIT 50").fetchall()
     con.close()
     return [dict(zip(["id","exercise_id","started_at","ended_at","reps","frames"], r)) for r in rows]
+
+@app.get("/guides")
+def guides():
+    """Manifest of processed how-to videos (skeleton/angles burned in)."""
+    mf = GUIDES_DIR / "guides.json"
+    if not mf.exists():
+        return {"version": 1, "guides": []}
+    return json.loads(mf.read_text())
+
+@app.get("/guides/{name}")
+def guide_file(name: str):
+    """Serve one guide mp4. Name is restricted to the manifest allow-list."""
+    mf = GUIDES_DIR / "guides.json"
+    if "/" in name or ".." in name or not mf.exists():
+        return FileResponse(GUIDES_DIR / "guides.json", status_code=404)
+    allowed = {g["file"] for g in json.loads(mf.read_text()).get("guides", [])}
+    if name not in allowed:
+        return FileResponse(GUIDES_DIR / "guides.json", status_code=404)
+    return FileResponse(GUIDES_DIR / name, media_type="video/mp4")
 
 @app.websocket("/ws/session")
 async def ws_session(ws: WebSocket):

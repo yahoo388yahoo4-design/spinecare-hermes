@@ -54,9 +54,13 @@ class ExerciseActivity : AppCompatActivity() {
     private var recordFile: File? = null
     private var recordedFrames = 0
 
+    private var voice: VoiceGuide? = null
+
     private val permLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
         if (it[Manifest.permission.CAMERA] == true) startCamera()
         else Toast.makeText(this, getString(R.string.session_cam_perm), Toast.LENGTH_LONG).show()
+        if (it[Manifest.permission.RECORD_AUDIO] == true && ServerConfig.voiceControl(this))
+            voice?.startListening()
     }
 
     override fun attachBaseContext(newBase: android.content.Context) {
@@ -92,9 +96,40 @@ class ExerciseActivity : AppCompatActivity() {
         b.btnRec.text = if (recordEnabled) getString(R.string.session_rec_on) else getString(R.string.session_rec_off)
         applyMode()
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
-            permLauncher.launch(arrayOf(Manifest.permission.CAMERA))
-        else startCamera()
+        voice = VoiceGuide(this).apply {
+            onCommand = { cmd -> runOnUiThread { handleVoiceCommand(cmd) } }
+            onState = { s -> runOnUiThread { b.tvVoice.text = s ?: "" } }
+        }
+
+        val perms = mutableListOf(Manifest.permission.CAMERA)
+        if (ServerConfig.voiceControl(this)) perms += Manifest.permission.RECORD_AUDIO
+        val missing = perms.filter {
+            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+        }
+        if (missing.isNotEmpty()) permLauncher.launch(missing.toTypedArray())
+        else {
+            startCamera()
+            if (ServerConfig.voiceControl(this)) voice?.startListening()
+        }
+        if (ServerConfig.voiceControl(this) && ServerConfig.lang(this) == "ro")
+            Toast.makeText(this, getString(R.string.voice_lang_unsupported), Toast.LENGTH_LONG).show()
+    }
+
+    private fun handleVoiceCommand(cmd: String) {
+        when (cmd) {
+            "start" -> if (!running) startSession()
+            "stop" -> if (running) stopAndSave()
+            "next" -> {
+                val i = Plan.indexOf(exercise.id)
+                val next = Plan.exercises[(i + 1) % Plan.exercises.size]
+                if (running) stopAndSave()
+                voice?.shutdown(); voice = null
+                startActivity(android.content.Intent(this, ExerciseActivity::class.java)
+                    .putExtra("exercise_id", next.id))
+                finish()
+            }
+            "repeat" -> voice?.speak(getString(exercise.descriptionRes))
+        }
     }
 
     private fun applyMode() {
@@ -234,7 +269,7 @@ class ExerciseActivity : AppCompatActivity() {
         // form rules
         for (rule in exercise.formRules) {
             val v = metrics[rule.metric] ?: continue
-            if (abs(v) > rule.maxAbs) { postCue(rule.cue); break }
+            if (abs(v) > rule.maxAbs) { postCue(getString(rule.cueRes)); break }
         }
         b.tvReps.post { b.tvReps.text = "${repEngine.reps}/${exercise.targetReps}" }
         lastMetricsLine = fmtMetrics(metrics) + "\nsignal=${fmt1(sig)} phase=${repEngine.phase} frames=$framesProcessed"
@@ -332,6 +367,7 @@ class ExerciseActivity : AppCompatActivity() {
         if (text == lastCue) return
         lastCue = text
         b.tvCue.post { b.tvCue.text = text }
+        voice?.speak(text)
     }
 
     private fun vibrate() {
@@ -348,6 +384,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy(); poseEngine.close(); server?.close(); analysisExecutor.shutdown()
+        voice?.shutdown(); voice = null
         recorder?.let { runCatching { it.stop() } }
     }
 }

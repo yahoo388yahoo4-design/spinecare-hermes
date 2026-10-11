@@ -37,6 +37,17 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
+        android:id="@+id/tvVoice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:textColor="@color/sc_primary"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/tvCue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
         android:id="@+id/tvCue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

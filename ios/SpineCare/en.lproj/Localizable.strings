@@ -106,3 +106,45 @@
 "settings_save" = "Save settings";
 "settings_saved" = "Saved";
 "settings_testing" = "Testing %@ …";
+
+/* New upper-body/neck exercises */
+"ex_lat_flex_name" = "Cervical lateral flexion (ear-to-shoulder, pain-free)";
+"ex_lat_flex_desc" = "Sit tall. Slowly tilt one ear toward the same-side shoulder within the pain-free range. Return to center. Shoulders stay level.";
+"ex_lat_flex_stop1" = "arm pain or tingling during side-bend";
+"ex_lat_flex_stop2" = "dizziness";
+"ex_shrug_name" = "Shoulder shrug and release";
+"ex_shrug_desc" = "Lift both shoulders straight up toward the ears, hold 2s, then let them drop fully. Keep breathing.";
+"ex_shrug_stop1" = "sharp pain at the shoulder or neck";
+"ex_shrug_stop2" = "headache";
+"ex_iso_name" = "Isometric neck hold (hand resistance, no movement)";
+"ex_iso_desc" = "Press your palm against your forehead (or side/back of head) and push gently without moving the head. Hold 5s, relax. Light effort only.";
+"ex_iso_stop1" = "increased arm symptoms";
+"ex_iso_stop2" = "dizziness";
+/* Localized form cues */
+"cue_shoulder_level" = "Relax the raised shoulder; keep shoulders level.";
+"cue_trunk_upright" = "Keep the trunk upright; only the head moves.";
+"cue_no_sho_lift" = "Do not lift the shoulder when turning; rotate through the neck only.";
+"cue_chest_forward" = "Keep the chest facing forward; isolate neck rotation.";
+"cue_chest_lead" = "Lead with the chest, not the head; keep the neck long.";
+"cue_stay_tall" = "Stay tall; do not lean.";
+"cue_shoulders_level2" = "Keep both shoulders level; do not lift one side.";
+"cue_bend_neck_only" = "Keep the trunk upright; bend only through the neck.";
+"cue_sho_only" = "Do not lean; move only the shoulders up and down.";
+"cue_head_still" = "Keep the head still and neutral; push without moving.";
+/* Guides */
+"tab_guides" = "Guides";
+"guides_title" = "Learn: camera placement and form";
+"guides_intro" = "Each guide is a reference video processed by the same pose pipeline the app uses: skeleton overlay, measured angles and rep cues are burned in. Watch how the camera is placed and how the movement should look before doing it yourself.";
+"guides_offline_note" = "Guides are bundled offline. The server can stream more when reachable.";
+"guides_download" = "Download guides from server";
+"guides_downloaded" = "Guides updated from server";
+"guides_dl_failed" = "Server guides unavailable";
+/* Voice */
+"settings_voice_guidance" = "Voice guidance (spoken cues)";
+"settings_voice_control" = "Voice control (say: start, stop, next, repeat)";
+"voice_listening" = "Listening… say \"start\" or \"stop\"";
+"voice_unavailable" = "Voice recognition unavailable on this device";
+"voice_lang_unsupported" = "Voice commands not available for Romanian; using English commands";
+/* Sessions inline preview */
+"sessions_open_full" = "▶ Open full screen (%lld frames)";
+"guides_open" = "▶ Play guide (%lld KB)";

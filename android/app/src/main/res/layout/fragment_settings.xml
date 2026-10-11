@@ -90,6 +90,10 @@
             android:textColor="@color/sc_text" android:text="@string/settings_audio"/>
         <Switch android:id="@+id/swRecord" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textColor="@color/sc_text" android:text="@string/settings_record"/>
+        <Switch android:id="@+id/swVoiceGuidance" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="@color/sc_text" android:text="@string/settings_voice_guidance"/>
+        <Switch android:id="@+id/swVoiceControl" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="@color/sc_text" android:text="@string/settings_voice_control"/>
 
         <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="20dp" android:text="@string/settings_save"/>

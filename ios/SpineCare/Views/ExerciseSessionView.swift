@@ -6,7 +6,7 @@ import AVFoundation
 /// Supports front/back camera switching and session recording with the sensor
 /// overlay burned into the video (review in the Sessions tab).
 struct ExerciseSessionView: View {
-    let exercise: Exercise
+    @State var exercise: Exercise
     @StateObject private var tracker = PoseTracker()
     @State private var running = false
     @State private var reps = 0
@@ -20,6 +20,7 @@ struct ExerciseSessionView: View {
     @State private var recorder: SessionRecorder?
     @State private var recordedFrames = 0
     @State private var videoURL: URL?
+    @StateObject private var voice = VoiceGuide()
     private let client = ServerClient()
 
     var body: some View {
@@ -62,8 +63,13 @@ struct ExerciseSessionView: View {
                 .padding()
         }
         .navigationTitle(exercise.name)
-        .onAppear { cue = L10n.t("session_position_cam", exercise.view.uppercased()) }
-        .onDisappear { client.disconnect(); stopRecorder() }
+        .onAppear {
+            cue = L10n.t("session_position_cam", exercise.view.uppercased())
+            voice.onCommand = { cmd in handleVoice(cmd) }
+            voice.startListening()
+        }
+        .onDisappear { client.disconnect(); stopRecorder(); voice.shutdown() }
+        .onChange(of: cue) { newValue in voice.speak(newValue) }
         .onChange(of: tracker.landmarks) { lms in score(lms) }
     }
 
@@ -106,6 +112,22 @@ struct ExerciseSessionView: View {
                       reps: "\(reps)/\(exercise.targetReps)", mirror: frontCamera,
                       timestamp: CMSampleBufferGetPresentationTimeStamp(buf))
             recordedFrames += 1
+        }
+    }
+
+    private func handleVoice(_ cmd: String) {
+        switch cmd {
+        case "start": if !running { toggle() }
+        case "stop": if running { toggle() }
+        case "next":
+            let i = Plan.indexOf(exercise.id)
+            if running { toggle() }
+            exercise = Plan.exercises[(i + 1) % Plan.exercises.count]
+            engine = RepEngine(low: exercise.repLow, high: exercise.repHigh)
+            reps = 0
+            cue = L10n.t("session_position_cam", exercise.view.uppercased())
+        case "repeat": voice.speak(exercise.descriptionText)
+        default: break
         }
     }
 

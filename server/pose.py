@@ -61,6 +61,10 @@ def compute_metrics(pose: PersonPose) -> dict:
     # Cervical tilt (frontal): ear-mid vs shoulder-mid vs vertical
     if pose.vis("lear") and pose.vis("rear") and pose.vis("lsho") and pose.vis("rsho"):
         m["cervical_tilt"] = _ang_from_vertical(ear_mid, sho_mid)
+    # Ear-to-shoulder distance normalized by torso: drops when shoulders shrug
+    # toward the ears. Used for shrug reps and as a trapezius-tension proxy.
+    if pose.vis("lear") and pose.vis("rear") and pose.vis("lsho") and pose.vis("rsho"):
+        m["ear_sho_dist"] = math.hypot(ear_mid[0]-sho_mid[0], ear_mid[1]-sho_mid[1]) / torso_len
     # Neck rotation estimate (front view, chest facing camera): signed lateral
     # nose offset vs shoulder midline. Ear-separation proxies collapse when an
     # ear occludes during rotation; the nose stays visible and gives sign too.

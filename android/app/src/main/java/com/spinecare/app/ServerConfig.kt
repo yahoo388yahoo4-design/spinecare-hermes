@@ -48,6 +48,14 @@ object ServerConfig {
     fun recordSessions(c: Context) = p(c).getBoolean("record_sessions", true)
     fun setRecordSessions(c: Context, v: Boolean) = p(c).edit().putBoolean("record_sessions", v).apply()
 
+    /** Spoken coaching cues (TTS). */
+    fun voiceGuidance(c: Context) = p(c).getBoolean("voice_guidance", false)
+    fun setVoiceGuidance(c: Context, v: Boolean) = p(c).edit().putBoolean("voice_guidance", v).apply()
+
+    /** Voice commands: start / stop / next / repeat. */
+    fun voiceControl(c: Context) = p(c).getBoolean("voice_control", false)
+    fun setVoiceControl(c: Context, v: Boolean) = p(c).edit().putBoolean("voice_control", v).apply()
+
     /** App language: "system" | "en" | "ro". */
     fun lang(c: Context) = p(c).getString("lang", "system")!!
     fun setLang(c: Context, v: String) = p(c).edit().putString("lang", v).apply()

@@ -36,6 +36,8 @@ enum Metrics {
         }
         if vis("lear") && vis("rear") && vis("lsho") && vis("rsho") {
             out["cervical_tilt"] = angFromVertical(earMid.x, earMid.y, shoMid.x, shoMid.y)
+            // Ear-to-shoulder distance / torso: drops when shoulders shrug up.
+            out["ear_sho_dist"] = hypot(earMid.x - shoMid.x, earMid.y - shoMid.y) / torsoLen
         }
         // Signed lateral nose offset vs shoulder midline (front view). Ear-separation
         // proxies collapse when an ear occludes during rotation; nose stays visible.

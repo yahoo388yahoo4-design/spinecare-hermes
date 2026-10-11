@@ -49,7 +49,19 @@ class SessionsFragment : Fragment() {
             if (video.isNotEmpty() && video != "null") {
                 val f = File(video)
                 if (f.exists()) {
-                    val btn = Button(ctx).apply { text = "▶ Review recording (${srow.optInt("recorded_frames")} frames)" }
+                    // Inline preview: the recording already has the skeleton,
+                    // angles and cues burned in, so what you see is what was measured.
+                    val vv = android.widget.VideoView(ctx).apply {
+                        layoutParams = LinearLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            (200 * ctx.resources.displayMetrics.density).toInt())
+                        setVideoUri(android.net.Uri.fromFile(f))
+                    }
+                    val mc = android.widget.MediaController(ctx)
+                    mc.setAnchorView(vv); vv.setMediaController(mc)
+                    vv.setOnPreparedListener { mp -> mp.isLooping = false; vv.start() }
+                    col.addView(vv)
+                    val btn = Button(ctx).apply { text = "▶ Open full screen (${srow.optInt("recorded_frames")} frames)" }
                     btn.setOnClickListener {
                         val uri = androidx.core.content.FileProvider.getUriForFile(
                             ctx, "${requireContext().packageName}.fileprovider", f)

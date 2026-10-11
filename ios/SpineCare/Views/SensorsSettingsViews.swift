@@ -74,6 +74,8 @@ struct SettingsView: View {
                     Toggle(L10n.t("settings_haptics"), isOn: $cfg.haptics)
                     Toggle(L10n.t("settings_audio"), isOn: $cfg.audioCues)
                     Toggle(L10n.t("settings_record"), isOn: $cfg.recordSessions)
+                    Toggle(L10n.t("settings_voice_guidance"), isOn: $cfg.voiceGuidance)
+                    Toggle(L10n.t("settings_voice_control"), isOn: $cfg.voiceControl)
                 }
                 Section {
                     Button(L10n.t("settings_save")) { cfg.save(); status = L10n.t("settings_saved") }

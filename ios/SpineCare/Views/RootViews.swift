@@ -17,6 +17,7 @@ struct RootView: View {
             HomeView().tabItem { Label(L10n.t("tab_home"), systemImage: "house") }
             ExercisesView().tabItem { Label(L10n.t("tab_exercises"), systemImage: "figure.walk") }
             SessionsView().tabItem { Label(L10n.t("tab_sessions"), systemImage: "film") }
+            GuidesView().tabItem { Label(L10n.t("tab_guides"), systemImage: "play.rectangle") }
             SensorsView().tabItem { Label(L10n.t("tab_sensors"), systemImage: "dot.radiowaves.left.and.right") }
             SettingsView().tabItem { Label(L10n.t("tab_settings"), systemImage: "gearshape") }
         }
@@ -80,7 +81,8 @@ struct SessionsView: View {
                                     .foregroundStyle(.secondary)
                             }
                             if let v = rec.video, store.videoExists(rec) {
-                                NavigationLink(L10n.t("sessions_review", Int64(rec.recordedFrames ?? 0))) {
+                                VideoPreview(url: URL(fileURLWithPath: v))
+                                NavigationLink(L10n.t("sessions_open_full", Int64(rec.recordedFrames ?? 0))) {
                                     VideoReviewView(url: URL(fileURLWithPath: v))
                                 }
                             } else if rec.video != nil {
@@ -105,6 +107,19 @@ struct VideoReviewView: View {
             .navigationTitle(L10n.t("sessions_review_title"))
             .onDisappear {}
     }
+}
+
+/// Inline autoplaying preview of a recorded session (sensor overlay burned in).
+struct VideoPreview: View {
+    let url: URL
+    @StateObject private var playerHolder = PlayerHolder()
+    var body: some View {
+        VideoPlayer(player: playerHolder.player)
+            .frame(height: 200)
+            .onAppear { playerHolder.player.url = url; playerHolder.player.play() }
+            .onDisappear { playerHolder.player.pause() }
+    }
+    final class PlayerHolder: ObservableObject { let player = AVPlayer() }
 }
 
 struct ExercisesView: View {
