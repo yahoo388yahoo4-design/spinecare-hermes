@@ -1,9 +1,9 @@
 {
  "exercise": "cervical_rotation_rom",
- "session": "fd659013",
+ "session": "1457c755",
  "frames": 457,
  "latency_p50_ms": 9,
- "latency_mean_ms": 17.083150984682714,
+ "latency_mean_ms": 8.706783369803064,
  "final_reps": 5,
  "avg_metrics": {
   "trunk_tilt_frontal": 5.11,
@@ -32,7 +32,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 3822
+   "latency_ms": 13
   },
   {
    "frame": 1,
@@ -52,7 +52,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 11
+   "latency_ms": 8
   },
   {
    "frame": 2,
@@ -132,7 +132,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 7
   },
   {
    "frame": 6,
@@ -213,7 +213,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 21
+   "latency_ms": 9
   },
   {
    "frame": 10,
@@ -234,7 +234,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 11,
@@ -297,7 +297,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 14,
@@ -423,7 +423,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 20,
@@ -465,7 +465,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 22,
@@ -507,7 +507,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 24,
@@ -589,7 +589,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 28,
@@ -715,7 +715,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 34,
@@ -841,7 +841,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 40,
@@ -922,7 +922,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 44,
@@ -1046,7 +1046,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 50,
@@ -1084,7 +1084,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 52,
@@ -1122,7 +1122,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 54,
@@ -1274,7 +1274,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 62,
@@ -1426,7 +1426,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 70,
@@ -1464,7 +1464,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 72,
@@ -1502,7 +1502,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 74,
@@ -1616,7 +1616,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 80,
@@ -1654,7 +1654,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 82,
@@ -1849,7 +1849,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 92,
@@ -1906,7 +1906,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 95,
@@ -1944,7 +1944,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 97,
@@ -1982,7 +1982,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 99,
@@ -2021,7 +2021,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 101,
@@ -2061,7 +2061,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 11
+   "latency_ms": 8
   },
   {
    "frame": 103,
@@ -2080,7 +2080,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 104,
@@ -2100,7 +2100,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 10
+   "latency_ms": 8
   },
   {
    "frame": 105,
@@ -2138,7 +2138,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 107,
@@ -2176,7 +2176,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 11
+   "latency_ms": 9
   },
   {
    "frame": 109,
@@ -2214,7 +2214,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 11
+   "latency_ms": 9
   },
   {
    "frame": 111,
@@ -2233,7 +2233,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 11
+   "latency_ms": 9
   },
   {
    "frame": 112,
@@ -2252,7 +2252,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 113,
@@ -2278,7 +2278,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 114,
@@ -2304,7 +2304,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 115,
@@ -2326,7 +2326,7 @@
      "nose"
     ]
    },
-   "latency_ms": 11
+   "latency_ms": 9
   },
   {
    "frame": 116,
@@ -2348,7 +2348,7 @@
      "nose"
     ]
    },
-   "latency_ms": 11
+   "latency_ms": 9
   },
   {
    "frame": 117,
@@ -2390,7 +2390,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 119,
@@ -2410,7 +2410,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 120,
@@ -2439,7 +2439,7 @@
      "nose"
     ]
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 121,
@@ -2459,7 +2459,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 122,
@@ -2563,7 +2563,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 126,
@@ -2625,7 +2625,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 128,
@@ -2885,7 +2885,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 140,
@@ -2961,7 +2961,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 144,
@@ -2999,7 +2999,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 146,
@@ -3037,7 +3037,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 148,
@@ -3426,7 +3426,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 168,
@@ -3468,7 +3468,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 170,
@@ -3510,7 +3510,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 172,
@@ -3531,7 +3531,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 173,
@@ -3552,7 +3552,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 174,
@@ -3707,7 +3707,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 182,
@@ -4031,7 +4031,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 197,
@@ -4151,7 +4151,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 203,
@@ -4211,7 +4211,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 7
   },
   {
    "frame": 206,
@@ -4372,7 +4372,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 214,
@@ -4448,7 +4448,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 218,
@@ -4486,7 +4486,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 220,
@@ -4524,7 +4524,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 222,
@@ -4561,7 +4561,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 224,
@@ -4743,7 +4743,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 234,
@@ -4779,7 +4779,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 236,
@@ -4846,7 +4846,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 239,
@@ -4902,7 +4902,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 242,
@@ -5053,7 +5053,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 250,
@@ -5091,7 +5091,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 252,
@@ -5371,7 +5371,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 264,
@@ -5550,7 +5550,7 @@
      "lsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 272,
@@ -5594,7 +5594,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 274,
@@ -5614,7 +5614,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 275,
@@ -5975,7 +5975,7 @@
      "lsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 290,
@@ -6025,7 +6025,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 292,
@@ -6066,7 +6066,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 294,
@@ -6110,7 +6110,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 296,
@@ -6156,7 +6156,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 298,
@@ -6182,7 +6182,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 299,
@@ -6208,7 +6208,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 10
   },
   {
    "frame": 300,
@@ -6227,7 +6227,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 301,
@@ -6246,7 +6246,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 302,
@@ -6302,7 +6302,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 305,
@@ -6336,7 +6336,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 307,
@@ -6416,7 +6416,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 311,
@@ -6456,7 +6456,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 313,
@@ -6490,7 +6490,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 315,
@@ -6510,7 +6510,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 316,
@@ -6531,7 +6531,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 317,
@@ -6552,7 +6552,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 318,
@@ -6569,7 +6569,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 319,
@@ -6588,7 +6588,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 11
   },
   {
    "frame": 320,
@@ -6607,7 +6607,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 321,
@@ -6626,7 +6626,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 322,
@@ -6645,7 +6645,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 323,
@@ -6664,7 +6664,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 324,
@@ -6683,7 +6683,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 325,
@@ -6702,7 +6702,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 326,
@@ -6931,7 +6931,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 338,
@@ -6972,7 +6972,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 340,
@@ -7012,7 +7012,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 7
+   "latency_ms": 8
   },
   {
    "frame": 342,
@@ -7124,7 +7124,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 348,
@@ -7161,7 +7161,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 350,
@@ -7201,7 +7201,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 352,
@@ -7333,7 +7333,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 358,
@@ -7535,7 +7535,7 @@
      "nose"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 368,
@@ -7627,7 +7627,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 372,
@@ -7675,7 +7675,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 374,
@@ -7761,7 +7761,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 378,
@@ -7925,7 +7925,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 7
   },
   {
    "frame": 386,
@@ -8005,7 +8005,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 7
   },
   {
    "frame": 390,
@@ -8218,7 +8218,7 @@
      "nose"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 400,
@@ -8259,7 +8259,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 402,
@@ -8333,7 +8333,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 406,
@@ -8533,7 +8533,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 416,
@@ -8638,7 +8638,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 422,
@@ -8904,7 +8904,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 436,
@@ -9097,7 +9097,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 7
+   "latency_ms": 8
   },
   {
    "frame": 446,

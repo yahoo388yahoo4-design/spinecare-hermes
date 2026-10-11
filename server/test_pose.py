@@ -37,10 +37,21 @@ def test_head_forward_proxy_sign():
     assert m2["head_forward_proxy"] > m1["head_forward_proxy"]
 
 def test_neck_yaw_front_vs_turned():
+    """Signed nose-offset estimator: nose lateral offset vs shoulder midline."""
     front = compute_metrics(mk())
-    turned = compute_metrics(mk(lear=(318, 110, 0.9), rear=(322, 110, 0.9)))  # ears collapse
-    assert front["neck_yaw_est"] < 15
-    assert turned["neck_yaw_est"] > 60
+    assert abs(front["neck_yaw_est"]) < 15
+    # head turned toward right shoulder: nose shifts right of shoulder midline
+    right = compute_metrics(mk(nose=(336, 100, 0.9)))
+    assert right["neck_yaw_est"] > 25
+    # head turned toward left shoulder: nose shifts left
+    left = compute_metrics(mk(nose=(304, 100, 0.9)))
+    assert left["neck_yaw_est"] < -25
+
+def test_neck_yaw_survives_ear_occlusion():
+    """The old ear-separation proxy collapsed to 0 when an ear was occluded;
+    the nose-offset estimator must still report rotation."""
+    m = compute_metrics(mk(nose=(336, 100, 0.9), lear=(300, 110, 0.1), rear=(322, 110, 0.1)))
+    assert m["neck_yaw_est"] > 25
 
 def test_framing_all_visible():
     f = framing_check(mk(), ["lear", "lsho", "lhip"], 0.5, 640, 480)

@@ -1,9 +1,9 @@
 {
  "exercise": "cervical_rotation_rom",
- "session": "7d37d7b6",
+ "session": "f5c1826f",
  "frames": 900,
  "latency_p50_ms": 9,
- "latency_mean_ms": 8.821111111111112,
+ "latency_mean_ms": 8.806666666666667,
  "final_reps": 3,
  "avg_metrics": {
   "trunk_tilt_frontal": 2.29,
@@ -33,7 +33,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 11
+   "latency_ms": 10
   },
   {
    "frame": 1,
@@ -94,7 +94,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 4,
@@ -349,7 +349,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 17,
@@ -387,7 +387,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 19,
@@ -482,7 +482,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 24,
@@ -883,7 +883,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 45,
@@ -959,7 +959,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 49,
@@ -1039,7 +1039,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 53,
@@ -1395,7 +1395,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 71,
@@ -1435,7 +1435,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 73,
@@ -1898,7 +1898,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 96,
@@ -2258,7 +2258,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 114,
@@ -2338,7 +2338,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 118,
@@ -2378,7 +2378,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 120,
@@ -2399,7 +2399,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 121,
@@ -2420,7 +2420,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 122,
@@ -2441,7 +2441,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 123,
@@ -2462,7 +2462,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 124,
@@ -2504,7 +2504,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 126,
@@ -2544,7 +2544,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 128,
@@ -2564,7 +2564,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 129,
@@ -2584,7 +2584,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 10
   },
   {
    "frame": 130,
@@ -2609,7 +2609,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 11
   },
   {
    "frame": 131,
@@ -2634,7 +2634,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 132,
@@ -2654,7 +2654,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 10
   },
   {
    "frame": 133,
@@ -2674,7 +2674,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 134,
@@ -2694,7 +2694,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 10
   },
   {
    "frame": 135,
@@ -2714,7 +2714,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 136,
@@ -2734,7 +2734,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 137,
@@ -2754,7 +2754,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 11
   },
   {
    "frame": 138,
@@ -2774,7 +2774,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 139,
@@ -2814,7 +2814,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 141,
@@ -2833,7 +2833,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 142,
@@ -2852,7 +2852,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 10
   },
   {
    "frame": 143,
@@ -2871,7 +2871,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 144,
@@ -2890,7 +2890,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 145,
@@ -2909,7 +2909,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 146,
@@ -2928,7 +2928,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 147,
@@ -2948,7 +2948,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 148,
@@ -3073,7 +3073,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 154,
@@ -3143,7 +3143,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 157,
@@ -3263,7 +3263,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 161,
@@ -3344,7 +3344,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 164,
@@ -3365,7 +3365,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 165,
@@ -3386,7 +3386,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 166,
@@ -3487,7 +3487,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 171,
@@ -3641,7 +3641,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 179,
@@ -3679,7 +3679,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 181,
@@ -3755,7 +3755,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 185,
@@ -3793,7 +3793,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 187,
@@ -3877,7 +3877,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 191,
@@ -3959,7 +3959,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 8
   },
   {
    "frame": 195,
@@ -3980,7 +3980,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 196,
@@ -4001,7 +4001,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 197,
@@ -4020,7 +4020,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 198,
@@ -4062,7 +4062,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 200,
@@ -4104,7 +4104,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 202,
@@ -4163,7 +4163,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 205,
@@ -4182,7 +4182,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 206,
@@ -4220,7 +4220,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 208,
@@ -4239,7 +4239,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 209,
@@ -4258,7 +4258,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 11
+   "latency_ms": 9
   },
   {
    "frame": 210,
@@ -4296,7 +4296,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 212,
@@ -4359,7 +4359,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 215,
@@ -4401,7 +4401,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 217,
@@ -4443,7 +4443,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 219,
@@ -4542,7 +4542,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 224,
@@ -4637,7 +4637,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 229,
@@ -4799,7 +4799,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 237,
@@ -4959,7 +4959,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 245,
@@ -5001,7 +5001,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 247,
@@ -5079,7 +5079,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 251,
@@ -5155,7 +5155,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 255,
@@ -5193,7 +5193,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 257,
@@ -5307,7 +5307,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 263,
@@ -5461,7 +5461,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 271,
@@ -5499,7 +5499,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 273,
@@ -5575,7 +5575,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 277,
@@ -5657,7 +5657,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 281,
@@ -5773,7 +5773,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 287,
@@ -5811,7 +5811,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 289,
@@ -5849,7 +5849,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 291,
@@ -5925,7 +5925,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 295,
@@ -6001,7 +6001,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 299,
@@ -6039,7 +6039,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 301,
@@ -6077,7 +6077,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 303,
@@ -6115,7 +6115,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 305,
@@ -6233,7 +6233,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 311,
@@ -6271,7 +6271,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 313,
@@ -6311,7 +6311,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 315,
@@ -6387,7 +6387,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 319,
@@ -6425,7 +6425,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 321,
@@ -6465,7 +6465,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 323,
@@ -6543,7 +6543,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 327,
@@ -6623,7 +6623,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 331,
@@ -6661,7 +6661,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 333,
@@ -6699,7 +6699,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 335,
@@ -6739,7 +6739,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 337,
@@ -6815,7 +6815,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 341,
@@ -6929,7 +6929,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 347,
@@ -6969,7 +6969,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 349,
@@ -7049,7 +7049,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 353,
@@ -7087,7 +7087,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 355,
@@ -7163,7 +7163,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 359,
@@ -7243,7 +7243,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 363,
@@ -7285,7 +7285,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 365,
@@ -7361,7 +7361,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 369,
@@ -7399,7 +7399,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 371,
@@ -7477,7 +7477,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 375,
@@ -7593,7 +7593,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 381,
@@ -7709,7 +7709,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 387,
@@ -7747,7 +7747,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 389,
@@ -7785,7 +7785,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 391,
@@ -7975,7 +7975,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 401,
@@ -8089,7 +8089,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 407,
@@ -8249,7 +8249,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 415,
@@ -8411,7 +8411,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 423,
@@ -8495,7 +8495,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 427,
@@ -8533,7 +8533,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 429,
@@ -8655,7 +8655,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 435,
@@ -8773,7 +8773,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 441,
@@ -8897,7 +8897,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 447,
@@ -8994,7 +8994,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 452,
@@ -9133,7 +9133,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 459,
@@ -9171,7 +9171,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 461,
@@ -9211,7 +9211,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 463,
@@ -9331,7 +9331,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 469,
@@ -9573,7 +9573,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 481,
@@ -9613,7 +9613,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 483,
@@ -9691,7 +9691,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 487,
@@ -9731,7 +9731,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 489,
@@ -9809,7 +9809,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 493,
@@ -9847,7 +9847,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 495,
@@ -9885,7 +9885,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 14
   },
   {
    "frame": 497,
@@ -9904,7 +9904,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 14
   },
   {
    "frame": 498,
@@ -9923,7 +9923,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 14
   },
   {
    "frame": 499,
@@ -9942,7 +9942,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 13
   },
   {
    "frame": 500,
@@ -9961,7 +9961,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 13
   },
   {
    "frame": 501,
@@ -9980,7 +9980,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 11
   },
   {
    "frame": 502,
@@ -10079,7 +10079,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 507,
@@ -10119,7 +10119,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 509,
@@ -10159,7 +10159,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 511,
@@ -10199,7 +10199,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 513,
@@ -10313,7 +10313,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 519,
@@ -10351,7 +10351,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 521,
@@ -10467,7 +10467,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 527,
@@ -10505,7 +10505,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 529,
@@ -10695,7 +10695,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 539,
@@ -10733,7 +10733,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 541,
@@ -10771,7 +10771,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 543,
@@ -10942,7 +10942,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 552,
@@ -11039,7 +11039,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 557,
@@ -11079,7 +11079,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 559,
@@ -11098,7 +11098,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 560,
@@ -11117,7 +11117,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 561,
@@ -11136,7 +11136,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 562,
@@ -11157,7 +11157,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 8
   },
   {
    "frame": 563,
@@ -11176,7 +11176,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 564,
@@ -11195,7 +11195,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 8
   },
   {
    "frame": 565,
@@ -11214,7 +11214,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 566,
@@ -11254,7 +11254,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 568,
@@ -11296,7 +11296,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 570,
@@ -11317,7 +11317,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 571,
@@ -11338,7 +11338,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 572,
@@ -11395,7 +11395,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 575,
@@ -11553,7 +11553,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 583,
@@ -11633,7 +11633,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 587,
@@ -11675,7 +11675,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 589,
@@ -11717,7 +11717,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 591,
@@ -11759,7 +11759,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 593,
@@ -11877,7 +11877,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 599,
@@ -11993,7 +11993,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 605,
@@ -12149,7 +12149,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 613,
@@ -12273,7 +12273,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 619,
@@ -12315,7 +12315,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 621,
@@ -12357,7 +12357,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 623,
@@ -12397,7 +12397,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 625,
@@ -12437,7 +12437,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 627,
@@ -12475,7 +12475,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 629,
@@ -12517,7 +12517,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 631,
@@ -12673,7 +12673,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 639,
@@ -12791,7 +12791,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 645,
@@ -12888,7 +12888,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 650,
@@ -12909,7 +12909,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 651,
@@ -13029,7 +13029,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 657,
@@ -13067,7 +13067,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 659,
@@ -13221,7 +13221,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 667,
@@ -13259,7 +13259,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 669,
@@ -13337,7 +13337,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 673,
@@ -13377,7 +13377,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 675,
@@ -13537,7 +13537,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 683,
@@ -13579,7 +13579,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 685,
@@ -13737,7 +13737,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 693,
@@ -13775,7 +13775,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 695,
@@ -13813,7 +13813,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 697,
@@ -13872,7 +13872,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 700,
@@ -13912,7 +13912,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 702,
@@ -13934,7 +13934,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 703,
@@ -13954,7 +13954,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 704,
@@ -14234,7 +14234,7 @@
      "rsho"
     ]
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 718,
@@ -14453,7 +14453,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 729,
@@ -14491,7 +14491,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 731,
@@ -14529,7 +14529,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 733,
@@ -14723,7 +14723,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 743,
@@ -14799,7 +14799,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 747,
@@ -14919,7 +14919,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 753,
@@ -14957,7 +14957,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 755,
@@ -14995,7 +14995,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 757,
@@ -15033,7 +15033,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 759,
@@ -15071,7 +15071,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 761,
@@ -15165,7 +15165,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 765,
@@ -15315,7 +15315,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 771,
@@ -15365,7 +15365,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 773,
@@ -15465,7 +15465,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 777,
@@ -15515,7 +15515,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 779,
@@ -15565,7 +15565,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 781,
@@ -15715,7 +15715,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 787,
@@ -15769,7 +15769,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 789,
@@ -15959,7 +15959,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 797,
@@ -16035,7 +16035,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 801,
@@ -16073,7 +16073,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 803,
@@ -16225,7 +16225,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 811,
@@ -16501,7 +16501,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 823,
@@ -16551,7 +16551,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 825,
@@ -16601,7 +16601,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 827,
@@ -16651,7 +16651,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 829,
@@ -16701,7 +16701,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 831,
@@ -16801,7 +16801,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 835,
@@ -16901,7 +16901,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 839,
@@ -17001,7 +17001,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 843,
@@ -17076,7 +17076,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 846,
@@ -17101,7 +17101,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 847,
@@ -17126,7 +17126,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 848,
@@ -17176,7 +17176,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 850,
@@ -17226,7 +17226,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 10
   },
   {
    "frame": 852,
@@ -17251,7 +17251,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 853,
@@ -17301,7 +17301,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 855,
@@ -17433,7 +17433,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 861,
@@ -17483,7 +17483,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 863,
@@ -17633,7 +17633,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 869,
@@ -17683,7 +17683,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 871,
@@ -17733,7 +17733,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 873,
@@ -17783,7 +17783,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 875,
@@ -17833,7 +17833,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 877,
@@ -17883,7 +17883,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 879,
@@ -17983,7 +17983,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 883,
@@ -18083,7 +18083,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 8
+   "latency_ms": 9
   },
   {
    "frame": 887,
@@ -18133,7 +18133,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 889,
@@ -18183,7 +18183,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 891,
@@ -18233,7 +18233,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 893,
@@ -18308,7 +18308,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 10
+   "latency_ms": 9
   },
   {
    "frame": 896,
@@ -18333,7 +18333,7 @@
     "issues": [],
     "missing": []
    },
-   "latency_ms": 9
+   "latency_ms": 8
   },
   {
    "frame": 897,
