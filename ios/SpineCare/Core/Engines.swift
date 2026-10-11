@@ -41,7 +41,9 @@ enum Metrics {
             out["neck_yaw_est"] = acos(ratio) * 180 / .pi
         }
         if vis("lsho") && vis("rsho") {
-            out["shoulder_line_tilt"] = atan2(rsho.y - lsho.y, rsho.x - lsho.x) * 180 / .pi
+            let deg = atan2(rsho.y - lsho.y, rsho.x - lsho.x) * 180 / .pi
+            let w = (deg + 90).truncatingRemainder(dividingBy: 180)
+            out["shoulder_line_tilt"] = (w < 0 ? w + 180 : w) - 90
         }
         if vis("nose") && vis("lear") && vis("lsho") {
             out["cervical_sag_proxy"] = angBetween(nose.x - earMid.x, nose.y - earMid.y,

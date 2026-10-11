@@ -59,7 +59,8 @@ object Metrics {
             out["neck_yaw_est"] = Math.toDegrees(acos(ratio))
         }
         if (lsho.visibility > .5f && rsho.visibility > .5f) {
-            out["shoulder_line_tilt"] = Math.toDegrees(atan2((rsho.y - lsho.y).toDouble(), (rsho.x - lsho.x).toDouble()))
+            val deg = Math.toDegrees(atan2((rsho.y - lsho.y).toDouble(), (rsho.x - lsho.x).toDouble()))
+            out["shoulder_line_tilt"] = ((deg + 90.0).rem(180.0) + 180.0).rem(180.0) - 90.0
         }
         if (nose.visibility > .5f && lear.visibility > .5f && lsho.visibility > .5f) {
             out["cervical_sag_proxy"] = angBetween(nose.x - earMid.x, nose.y - earMid.y, shoMid.x - earMid.x, shoMid.y - earMid.y)

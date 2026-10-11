@@ -65,9 +65,10 @@ def compute_metrics(pose: PersonPose) -> dict:
         ear_sep = math.hypot(lear[0]-rear[0], lear[1]-rear[1])
         ratio = max(0.0, min(1.0, ear_sep / (0.40*sho_w)))  # bi-ear width ~0.40x biacromial
         m["neck_yaw_est"] = math.degrees(math.acos(ratio))
-    # Shoulder line tilt
+    # Shoulder line tilt (wrapped to (-90, 90] so facing direction doesn't flip it)
     if pose.vis("lsho") and pose.vis("rsho"):
-        m["shoulder_line_tilt"] = math.degrees(math.atan2(rsho[1]-lsho[1], rsho[0]-lsho[0]))
+        deg = math.degrees(math.atan2(rsho[1]-lsho[1], rsho[0]-lsho[0]))
+        m["shoulder_line_tilt"] = (deg + 90.0) % 180.0 - 90.0
     # Cervical extension/flexion proxy (side view): nose vs ear vs shoulder
     if pose.vis("nose") and pose.vis("lear") and pose.vis("lsho"):
         m["cervical_sag_proxy"] = _ang_between((nose[0]-ear_mid[0], nose[1]-ear_mid[1]),
