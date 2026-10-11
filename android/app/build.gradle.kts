@@ -45,8 +45,7 @@ dependencies {
     implementation("androidx.camera:camera-view:1.3.4")
     // On-device pose: MediaPipe Tasks Vision (BlazePose 33 landmarks)
     implementation("com.google.mediapipe:tasks-vision:0.10.14")
-    // BLE (ESP32 wearables)
-    implementation("androidx.bluetooth:bluetooth:1.0.0-beta01")
+    // BLE uses platform android.bluetooth APIs (BlePostureClient) — no extra artifact
     // Health Connect
     implementation("androidx.health.connect:connect-client:1.1.0-alpha06")
     // Charts
