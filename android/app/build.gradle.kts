@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.spinecare.app"
+    namespace = "com.spinecare.hermes"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.spinecare.app"
+        applicationId = "com.spinecare.hermes"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

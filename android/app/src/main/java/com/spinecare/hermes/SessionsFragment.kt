@@ -1,4 +1,4 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 import android.content.Intent
 import android.net.Uri

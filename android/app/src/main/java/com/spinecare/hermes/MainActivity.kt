@@ -1,8 +1,8 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.spinecare.app.databinding.ActivityMainBinding
+import com.spinecare.hermes.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding

@@ -1,4 +1,4 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -17,7 +17,7 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
-import com.spinecare.app.databinding.ActivityExerciseBinding
+import com.spinecare.hermes.databinding.ActivityExerciseBinding
 import org.json.JSONObject
 import java.io.File
 import java.util.concurrent.ExecutorService

@@ -1,4 +1,4 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

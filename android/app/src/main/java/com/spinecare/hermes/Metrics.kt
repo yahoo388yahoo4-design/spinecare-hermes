@@ -1,4 +1,4 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 import kotlin.math.acos
 import kotlin.math.asin

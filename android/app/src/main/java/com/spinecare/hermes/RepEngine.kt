@@ -1,4 +1,4 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 /** Hysteresis rep counter on a scalar signal — mirrors server RepEngine. */
 class RepEngine(private val low: Double, private val high: Double, private val minHoldMs: Long = 400) {

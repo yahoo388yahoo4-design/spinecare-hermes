@@ -1,4 +1,4 @@
-package com.spinecare.app
+package com.spinecare.hermes
 
 import android.os.Bundle
 import android.view.LayoutInflater
