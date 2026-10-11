@@ -37,7 +37,7 @@ final class PoseTracker: NSObject, ObservableObject {
         for (joint, name) in Self.jointMap {
             if let pt = points?[joint], pt.confidence > 0.1 {
                 out[name] = Metrics.LM(x: Double(pt.x), y: Double(1 - pt.y),
-                                       z: Double(pt.z ?? 0), conf: Double(pt.confidence))
+                                       z: 0, conf: Double(pt.confidence))
             }
         }
         let ms = (CFAbsoluteTimeGetCurrent() - t0) * 1000
