@@ -243,13 +243,13 @@ class ExerciseActivity : AppCompatActivity() {
                         postCue("Camera: " + issues.joinToString { FramingGuide.fixFor(it) })
                     }
                     serverReps = msg.getInt("reps")
-                    b.tvReps.post { b.tvReps.text = "$serverReps/${msg.getInt(\"target_reps\")}" }
+                    b.tvReps.post { b.tvReps.text = "$serverReps/${msg.getInt("target_reps")}" }
                     val cues = msg.getJSONArray("cues")
                     if (cues.length() > 0) postCue(cues.getJSONObject(0).getString("cue"))
                     if (msg.getBoolean("rep_just_done")) vibrate()
                     val m = msg.getJSONObject("metrics")
-                    lastMetricsLine = "GPU ${msg.getInt(\"latency_ms\")}ms  reps=$serverReps\n" +
-                        m.keys().asSequence().joinToString("  ") { k -> "$k=${m.optString(k, \"-\")}" }
+                    lastMetricsLine = "GPU ${msg.getInt("latency_ms")}ms  reps=$serverReps\n" +
+                        m.keys().asSequence().joinToString("  ") { k -> "$k=${m.optString(k, "-")}" }
                     b.tvMetrics.post { b.tvMetrics.text = lastMetricsLine }
                 }
                 override fun onSessionStarted(exercise: JSONObject) {}
