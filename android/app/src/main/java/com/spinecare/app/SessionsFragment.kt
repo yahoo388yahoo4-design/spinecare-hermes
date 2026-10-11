@@ -55,7 +55,7 @@ class SessionsFragment : Fragment() {
                         layoutParams = LinearLayout.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
                             (200 * ctx.resources.displayMetrics.density).toInt())
-                        setVideoUri(android.net.Uri.fromFile(f))
+                        setVideoURI(android.net.Uri.fromFile(f))
                     }
                     val mc = android.widget.MediaController(ctx)
                     mc.setAnchorView(vv); vv.setMediaController(mc)
