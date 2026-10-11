@@ -16,7 +16,8 @@ class LocalStore(context: Context) {
     private val checkins = File(dir, "checkins.jsonl")
     private val fmt = SimpleDateFormat("yyyy-MM-dd", Locale.US)
 
-    fun saveSession(exId: String, reps: Int, avg: Map<String, Double>, cues: Map<String, Int>, frames: Int, source: String) {
+    fun saveSession(exId: String, reps: Int, avg: Map<String, Double>, cues: Map<String, Int>, frames: Int, source: String,
+                    videoPath: String? = null, recordedFrames: Int = 0) {
         val o = JSONObject()
             .put("ts", System.currentTimeMillis())
             .put("date", fmt.format(Date()))
@@ -24,6 +25,7 @@ class LocalStore(context: Context) {
             .put("avg", JSONObject(avg as Map<*, *>))
             .put("cues", JSONObject(cues as Map<*, *>))
             .put("frames", frames).put("source", source)
+        if (videoPath != null) o.put("video", videoPath).put("recorded_frames", recordedFrames)
         sessions.appendText(o.toString() + "\n")
     }
 

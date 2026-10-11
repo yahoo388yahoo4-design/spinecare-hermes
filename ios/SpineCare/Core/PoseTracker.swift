@@ -24,8 +24,9 @@ final class PoseTracker: NSObject, ObservableObject {
         .leftAnkle: "lank", .rightAnkle: "rank",
     ]
 
-    func process(_ pixelBuffer: CVPixelBuffer) {
-        let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:])
+    func process(_ sampleBuffer: CMSampleBuffer) {
+        guard CMSampleBufferGetImageBuffer(sampleBuffer) != nil else { return }
+        let handler = VNImageRequestHandler(cvPixelBuffer: CMSampleBufferGetImageBuffer(sampleBuffer)!, options: [:])
         let t0 = CFAbsoluteTimeGetCurrent()
         try? handler.perform([request])
         guard let obs = request.results?.first else {

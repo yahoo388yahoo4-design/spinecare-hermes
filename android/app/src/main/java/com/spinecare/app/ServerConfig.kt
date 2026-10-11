@@ -43,4 +43,8 @@ object ServerConfig {
 
     fun audioCues(c: Context) = p(c).getBoolean("audio_cues", false)
     fun setAudioCues(c: Context, v: Boolean) = p(c).edit().putBoolean("audio_cues", v).apply()
+
+    /** Record sessions with the sensor overlay burned in (local MP4). */
+    fun recordSessions(c: Context) = p(c).getBoolean("record_sessions", true)
+    fun setRecordSessions(c: Context, v: Boolean) = p(c).edit().putBoolean("record_sessions", v).apply()
 }

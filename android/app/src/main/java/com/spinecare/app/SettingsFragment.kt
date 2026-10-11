@@ -39,6 +39,7 @@ class SettingsFragment : Fragment() {
         b.etMinConf.setText(ServerConfig.minConfidence(ctx).toString())
         b.swHaptics.isChecked = ServerConfig.haptics(ctx)
         b.swAudio.isChecked = ServerConfig.audioCues(ctx)
+        b.swRecord.isChecked = ServerConfig.recordSessions(ctx)
         when (ServerConfig.mode(ctx)) {
             ServerConfig.MODE_ON_DEVICE -> b.rbOnDevice.isChecked = true
             ServerConfig.MODE_SERVER -> b.rbServer.isChecked = true
@@ -55,6 +56,7 @@ class SettingsFragment : Fragment() {
             ServerConfig.setMinConfidence(ctx2, b.etMinConf.text.toString().toFloatOrNull() ?: 0.5f)
             ServerConfig.setHaptics(ctx2, b.swHaptics.isChecked)
             ServerConfig.setAudioCues(ctx2, b.swAudio.isChecked)
+            ServerConfig.setRecordSessions(ctx2, b.swRecord.isChecked)
             ServerConfig.setMode(ctx2, when {
                 b.rbOnDevice.isChecked -> ServerConfig.MODE_ON_DEVICE
                 b.rbServer.isChecked -> ServerConfig.MODE_SERVER

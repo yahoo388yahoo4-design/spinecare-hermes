@@ -19,6 +19,7 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.spinecare.app.databinding.ActivityExerciseBinding
 import org.json.JSONObject
+import java.io.File
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -38,11 +39,20 @@ class ExerciseActivity : AppCompatActivity() {
     private var analysisExecutor: ExecutorService = Executors.newSingleThreadExecutor()
     private var lastCue = ""
     private var lastMetrics: Map<String, Double> = emptyMap()
+    private var lastMetricsLine = ""
     private var lastFramingMissing: List<String> = emptyList()
     private var lastFramingReady = false
     private var serverReps = 0
     private var serverCues: MutableMap<String, Int> = mutableMapOf()
     private var framesProcessed = 0
+
+    // Camera switching + session recording
+    private var frontCamera = false
+    private var provider: ProcessCameraProvider? = null
+    private var recorder: SessionRecorder? = null
+    private var recordEnabled = true
+    private var recordFile: File? = null
+    private var recordedFrames = 0
 
     private val permLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
         if (it[Manifest.permission.CAMERA] == true) startCamera()
@@ -65,9 +75,14 @@ class ExerciseActivity : AppCompatActivity() {
         b.btnStop.setOnClickListener { stopAndSave() }
         b.btnMode.setOnClickListener {
             mode = (mode + 1) % 3
+            ServerConfig.setMode(this, mode)
             applyMode()
         }
+        b.btnFlip.setOnClickListener { flipCamera() }
+        b.btnRec.setOnClickListener { toggleRecord() }
         mode = ServerConfig.mode(this)
+        recordEnabled = ServerConfig.recordSessions(this)
+        b.btnRec.text = "Record: ${if (recordEnabled) "On" else "Off"}"
         applyMode()
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -86,14 +101,50 @@ class ExerciseActivity : AppCompatActivity() {
     }
 
     private fun startCamera() {
-        val provider = ProcessCameraProvider.getInstance(this).get()
+        val p = ProcessCameraProvider.getInstance(this).get()
+        provider = p
+        bindCamera(p)
+    }
+
+    private fun bindCamera(p: ProcessCameraProvider) {
+        val selector = if (frontCamera) CameraSelector.DEFAULT_FRONT_CAMERA
+                       else CameraSelector.DEFAULT_BACK_CAMERA
         val preview = Preview.Builder().build().also { it.setSurfaceProvider(b.preview.surfaceProvider) }
         val analysis = ImageAnalysis.Builder()
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .build()
             .also { it.setAnalyzer(analysisExecutor, ::analyze) }
-        provider.unbindAll()
-        provider.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis)
+        try {
+            p.unbindAll()
+            p.bindToLifecycle(this, selector, preview, analysis)
+            b.overlay.mirror = frontCamera
+            b.overlay.invalidate()
+        } catch (e: Exception) {
+            // front camera absent on this device — fall back to back
+            frontCamera = false
+            b.overlay.mirror = false
+            try { p.unbindAll(); p.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis) }
+            catch (_: Exception) { Toast.makeText(this, "No camera available", Toast.LENGTH_LONG).show() }
+        }
+    }
+
+    private fun flipCamera() {
+        val p = provider ?: return
+        val target = if (frontCamera) CameraSelector.DEFAULT_BACK_CAMERA else CameraSelector.DEFAULT_FRONT_CAMERA
+        if (!p.hasCamera(target)) {
+            Toast.makeText(this, if (frontCamera) "No back camera" else "No front camera on this device",
+                Toast.LENGTH_SHORT).show()
+            return
+        }
+        frontCamera = !frontCamera
+        bindCamera(p)
+        Toast.makeText(this, if (frontCamera) "Front camera (mirrored)" else "Back camera", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun toggleRecord() {
+        recordEnabled = !recordEnabled
+        ServerConfig.setRecordSessions(this, recordEnabled)
+        b.btnRec.text = "Record: ${if (recordEnabled) "On" else "Off"}"
     }
 
     private fun analyze(proxy: ImageProxy) {
@@ -118,6 +169,9 @@ class ExerciseActivity : AppCompatActivity() {
                     b.overlay.landmarks = lms
                     b.overlay.missing = lastFramingMissing
                     b.overlay.ready = lastFramingReady
+                    b.overlay.cue = lastCue
+                    b.overlay.metricsLine = lastMetricsLine
+                    b.overlay.repsText = "${repEngine.reps}/${exercise.targetReps}"
                     b.overlay.invalidate()
                 }
                 // AUTO/ON_DEVICE: local scoring always runs; in SERVER-required
@@ -127,6 +181,12 @@ class ExerciseActivity : AppCompatActivity() {
                 if (serverHealthy && now - lastServerSend > ServerConfig.serverFrameIntervalMs(this)) {
                     lastServerSend = now
                     server?.sendFrame(bmp, now, null)
+                }
+                // Record the composited frame (camera + overlay burned in)
+                recorder?.let { r ->
+                    r.drawFrame(bmp, lms, lastFramingMissing, lastFramingReady,
+                        lastMetricsLine, lastCue, "${repEngine.reps}/${exercise.targetReps}", frontCamera)
+                    recordedFrames++
                 }
             }
         } catch (e: Exception) {
@@ -166,7 +226,8 @@ class ExerciseActivity : AppCompatActivity() {
             if (abs(v) > rule.maxAbs) { postCue(rule.cue); break }
         }
         b.tvReps.post { b.tvReps.text = "${repEngine.reps}/${exercise.targetReps}" }
-        b.tvMetrics.post { b.tvMetrics.text = fmtMetrics(metrics) + "\nsignal=${fmt1(sig)} phase=${repEngine.phase} frames=$framesProcessed" }
+        lastMetricsLine = fmtMetrics(metrics) + "\nsignal=${fmt1(sig)} phase=${repEngine.phase} frames=$framesProcessed"
+        b.tvMetrics.post { b.tvMetrics.text = lastMetricsLine }
     }
 
     private fun connectServer() {
@@ -182,15 +243,14 @@ class ExerciseActivity : AppCompatActivity() {
                         postCue("Camera: " + issues.joinToString { FramingGuide.fixFor(it) })
                     }
                     serverReps = msg.getInt("reps")
-                    b.tvReps.post { b.tvReps.text = "$serverReps/${msg.getInt("target_reps")}" }
+                    b.tvReps.post { b.tvReps.text = "$serverReps/${msg.getInt(\"target_reps\")}" }
                     val cues = msg.getJSONArray("cues")
                     if (cues.length() > 0) postCue(cues.getJSONObject(0).getString("cue"))
                     if (msg.getBoolean("rep_just_done")) vibrate()
                     val m = msg.getJSONObject("metrics")
-                    b.tvMetrics.post {
-                        b.tvMetrics.text = "GPU ${msg.getInt("latency_ms")}ms  reps=$serverReps\n" +
-                            m.keys().asSequence().joinToString("  ") { k -> "$k=${m.optString(k, "-")}" }
-                    }
+                    lastMetricsLine = "GPU ${msg.getInt(\"latency_ms\")}ms  reps=$serverReps\n" +
+                        m.keys().asSequence().joinToString("  ") { k -> "$k=${m.optString(k, \"-\")}" }
+                    b.tvMetrics.post { b.tvMetrics.text = lastMetricsLine }
                 }
                 override fun onSessionStarted(exercise: JSONObject) {}
                 override fun onSessionSaved(summary: JSONObject) {
@@ -215,6 +275,18 @@ class ExerciseActivity : AppCompatActivity() {
         running = true
         repEngine = RepEngine(exercise.repLow, exercise.repHigh)
         framesProcessed = 0
+        recordedFrames = 0
+        if (recordEnabled) {
+            try {
+                val dir = File(filesDir, "recordings").apply { mkdirs() }
+                val f = File(dir, "session_${exercise.id}_${System.currentTimeMillis()}.mp4")
+                recorder = SessionRecorder(f, b.preview.width.coerceAtLeast(640), b.preview.height.coerceAtLeast(480))
+                recordFile = f
+            } catch (e: Exception) {
+                recorder = null
+                Toast.makeText(this, "Recording unavailable: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
         if (serverMode) {
             server?.connect(object : ServerClient.Listener {
                 override fun onPose(msg: JSONObject) {}
@@ -229,12 +301,20 @@ class ExerciseActivity : AppCompatActivity() {
 
     private fun stopAndSave() {
         running = false
+        val rec = recorder
+        recorder = null
+        var videoPath: String? = null
+        if (rec != null) {
+            try { rec.stop(); if (recordedFrames > 0) videoPath = recordFile?.absolutePath }
+            catch (e: Exception) { videoPath = null }
+        }
         if (serverMode && server?.connected == true) {
             server?.endSession()   // server persists its own session row
         }
         store.saveSession(exercise.id, repEngine.reps, lastMetrics, serverCues, framesProcessed,
-            if (serverMode) "gpu-server" else "on-device")
-        Toast.makeText(this, "Session saved (${repEngine.reps} reps)", Toast.LENGTH_SHORT).show()
+            if (serverMode) "gpu-server" else "on-device", videoPath, recordedFrames)
+        Toast.makeText(this, "Session saved (${repEngine.reps} reps${if (videoPath != null) ", video recorded" else ""})",
+            Toast.LENGTH_SHORT).show()
     }
 
     private fun postCue(text: String) {
@@ -244,6 +324,7 @@ class ExerciseActivity : AppCompatActivity() {
     }
 
     private fun vibrate() {
+        if (!ServerConfig.haptics(this)) return
         val v = if (Build.VERSION.SDK_INT >= 31)
             (getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
         else @Suppress("DEPRECATION") getSystemService(VIBRATOR_SERVICE) as Vibrator
@@ -256,5 +337,6 @@ class ExerciseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy(); poseEngine.close(); server?.close(); analysisExecutor.shutdown()
+        recorder?.let { runCatching { it.stop() } }
     }
 }

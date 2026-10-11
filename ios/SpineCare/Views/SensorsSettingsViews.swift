@@ -62,6 +62,7 @@ struct SettingsView: View {
                     }
                     Toggle("Haptic cues", isOn: $cfg.haptics)
                     Toggle("Audio cues", isOn: $cfg.audioCues)
+                    Toggle("Record sessions with sensor overlay (local MP4, review in Sessions tab)", isOn: $cfg.recordSessions)
                 }
                 Section {
                     Button("Save settings") { cfg.save(); status = "Saved" }

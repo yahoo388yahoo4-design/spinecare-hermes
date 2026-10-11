@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.tab_home -> show(HomeFragment())
                 R.id.tab_exercises -> show(ExercisesFragment())
+                R.id.tab_sessions -> show(SessionsFragment())
                 R.id.tab_sensors -> show(SensorsFragment())
                 R.id.tab_sleep -> show(SleepFragment())
                 R.id.tab_settings -> show(SettingsFragment())

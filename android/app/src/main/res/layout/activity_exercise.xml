@@ -80,6 +80,23 @@
             android:layout_height="wrap_content" android:text="Mode: On-device"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/btnRow2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@color/sc_surface"
+        app:layout_constraintBottom_toTopOf="@id/btnRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button android:id="@+id/btnFlip" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Flip camera"/>
+        <Button android:id="@+id/btnRec" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Record: On"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvReps"
         android:layout_width="wrap_content"

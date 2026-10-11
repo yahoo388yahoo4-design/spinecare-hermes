@@ -75,6 +75,8 @@
             android:textColor="@color/sc_text" android:text="Vibrate on rep completion"/>
         <Switch android:id="@+id/swAudio" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textColor="@color/sc_text" android:text="Audio cues"/>
+        <Switch android:id="@+id/swRecord" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="@color/sc_text" android:text="Record sessions with sensor overlay (local MP4, review in Sessions tab)"/>
 
         <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="20dp" android:text="Save settings"/>
