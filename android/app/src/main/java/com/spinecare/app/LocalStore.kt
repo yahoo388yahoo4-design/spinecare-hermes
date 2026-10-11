@@ -10,7 +10,7 @@ import java.util.Locale
 
 /** Simple append-only JSONL store for sessions + daily check-ins.
  *  Production: Room + encryption; this keeps the prototype honest and exportable. */
-class LocalStore(context: Context) {
+class LocalStore(private val context: Context) {
     private val dir = File(context.filesDir, "data").apply { mkdirs() }
     private val sessions = File(dir, "sessions.jsonl")
     private val checkins = File(dir, "checkins.jsonl")
@@ -47,13 +47,11 @@ class LocalStore(context: Context) {
     fun latestCheckin(): JSONObject? =
         if (!checkins.exists()) null else checkins.readLines().lastOrNull()?.let { runCatching { JSONObject(it) }.getOrNull() }
 
-    /** CSV export of all sessions to Downloads/SpineCare/ for clinician sharing. */
+    /** CSV export of all sessions to Downloads/SpineCare/ for clinician sharing.
+     *  Uses MediaStore (scoped-storage safe on API 29+); falls back to app files. */
     fun exportCsv(): Int {
         val all = allSessions()
         val name = "spinecare_sessions_${fmt.format(Date())}.csv"
-        val dir = java.io.File(android.os.Environment.getExternalStoragePublicDirectory(
-            android.os.Environment.DIRECTORY_DOWNLOADS), "SpineCare").apply { mkdirs() }
-        val f = java.io.File(dir, name)
         val sb = StringBuilder("ts,date,exercise,reps,frames,source,avg,cues\n")
         for (o in all) {
             sb.append(o.optLong("ts")).append(',')
@@ -65,7 +63,25 @@ class LocalStore(context: Context) {
               .append('"').append(o.optJSONObject("avg")?.toString()?.replace("\"", "\"\"")).append("\",")
               .append('"').append(o.optJSONObject("cues")?.toString()?.replace("\"", "\"\"")).append("\"\n")
         }
-        f.writeText(sb.toString())
+        val bytes = sb.toString().toByteArray()
+        if (android.os.Build.VERSION.SDK_INT >= 29) {
+            val values = android.content.ContentValues().apply {
+                put(android.provider.MediaStore.Downloads.DISPLAY_NAME, name)
+                put(android.provider.MediaStore.Downloads.MIME_TYPE, "text/csv")
+                put(android.provider.MediaStore.Downloads.RELATIVE_PATH,
+                    android.os.Environment.DIRECTORY_DOWNLOADS + "/SpineCare")
+            }
+            val uri = context.contentResolver.insert(
+                android.provider.MediaStore.Downloads.EXTERNAL_CONTENT_URI, values)
+            if (uri != null) {
+                context.contentResolver.openOutputStream(uri)?.use { it.write(bytes) }
+                return all.size
+            }
+        }
+        // Pre-Q fallback (or MediaStore unavailable)
+        val dir = java.io.File(android.os.Environment.getExternalStoragePublicDirectory(
+            android.os.Environment.DIRECTORY_DOWNLOADS), "SpineCare").apply { mkdirs() }
+        java.io.File(dir, name).writeBytes(bytes)
         return all.size
     }
 }

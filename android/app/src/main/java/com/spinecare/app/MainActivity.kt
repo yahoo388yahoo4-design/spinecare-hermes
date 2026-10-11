@@ -7,6 +7,10 @@ import com.spinecare.app.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var b: ActivityMainBinding
 
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleHelper.wrap(newBase, ServerConfig.lang(newBase)))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityMainBinding.inflate(layoutInflater)

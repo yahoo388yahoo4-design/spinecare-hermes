@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpineCare</string>
+    <string name="disclaimer">Instrument de ghidaj pentru un plan aprobat de medic. Nu este dispozitiv medical. Senzorii estimează mișcarea segmentelor corporale, niciodată poziția vertebrelor sau compresia nervilor.</string>
+
+    <!-- Bottom navigation -->
+    <string name="tab_home">Acasă</string>
+    <string name="tab_exercises">Exerciții</string>
+    <string name="tab_sessions">Sesiuni</string>
+    <string name="tab_sensors">Senzori</string>
+    <string name="tab_sleep">Somn</string>
+    <string name="tab_settings">Setări</string>
+
+    <!-- Home -->
+    <string name="followup_title">Program de urmărire</string>
+    <string name="followup_c6">• Leziunea C6: RMN de control conform radiologului — notează data mai jos</string>
+    <string name="followup_physio">• Control kinetoterapie: la fiecare 4–6 săptămâni</string>
+    <string name="followup_redflags">• SEMNALE DE ALARMĂ — oprește exercițiile și cere ajutor medical urgent: slăbiciune în braț, amorțeală în creștere, îndemânarea mâinii în scădere, dezechilibru la mers, modificări intestinale/vezicale</string>
+    <string name="checkin_title">Evaluare zilnică</string>
+    <string name="checkin_neck">Durere cervicală:</string>
+    <string name="checkin_arm">Simptome braț drept:</string>
+    <string name="checkin_sleep">Calitatea somnului:</string>
+    <string name="checkin_save">Salvează evaluarea</string>
+    <string name="checkin_saved">Salvat %1$s</string>
+    <string name="recent_title">Sesiuni recente</string>
+    <string name="recent_empty">Nicio sesiune încă — deschide fila Exerciții.</string>
+
+    <!-- Exercises -->
+    <string name="ex_warning">⚠ Aceste exerciții trebuie aprobate de kinetoterapeut/medic specialist înainte de utilizare. Aplicația ghidează un plan aprobat; nu prescrie unul.</string>
+    <string name="ex_meta">vedere %1$s • %2$d repetări • semnal: %3$s</string>
+    <string name="ex_stop">Oprește imediat dacă: %1$s</string>
+    <string name="ex_start">Pornește sesiune ghidată</string>
+
+    <!-- Exercise definitions -->
+    <string name="ex_chin_tuck_name">Retracție de bărbie (flexori cervicali profunzi)</string>
+    <string name="ex_chin_tuck_desc">Trage bărbia drept înapoi (dublu bărbie), menținând privirea orizontală. Menține 3 s. Mișcă doar capul.</string>
+    <string name="ex_chin_tuck_stop1">durerea de braț crește</string>
+    <string name="ex_chin_tuck_stop2">furnicăturile se agravează</string>
+    <string name="ex_chin_tuck_stop3">amețeală</string>
+    <string name="ex_rot_name">Rotație cervicală ROM (fără durere)</string>
+    <string name="ex_rot_desc">Roteste capul încet spre fiecare parte, în limitele fără durere. Nu forța niciodată simptomele.</string>
+    <string name="ex_rot_stop1">durere irradiată în braț</string>
+    <string name="ex_rot_stop2">amorțeala crește</string>
+    <string name="ex_thor_name">Extensie toracică (șezând)</string>
+    <string name="ex_thor_desc">Stai drept, mâinile în spatele capului, extinde partea superioară a spatelui peste spătarul scaunului. Menține gâtul lung.</string>
+    <string name="ex_thor_stop1">durere cervicală ascuțită</string>
+    <string name="ex_thor_stop2">simptome în braț</string>
+    <string name="ex_scap_name">Setare scapulară</string>
+    <string name="ex_scap_desc">Trage omoplații ușor în jos și înapoi fără să ridici umerii. Menține 5 s.</string>
+    <string name="ex_scap_stop1">durerea dintre omoplați se agravează</string>
+
+    <!-- Exercise session -->
+    <string name="session_start">Start</string>
+    <string name="session_stop">Stop și salvare</string>
+    <string name="session_mode_ondevice">Mod: On-device (offline)</string>
+    <string name="session_mode_server">Mod: Server GPU (obligatoriu)</string>
+    <string name="session_mode_auto">Mod: Auto (server dacă e disponibil)</string>
+    <string name="session_flip">Comută camera</string>
+    <string name="session_rec_on">Înregistrare: Pornită</string>
+    <string name="session_rec_off">Înregistrare: Oprită</string>
+    <string name="session_cam_perm">Permisiunea camerei este necesară pentru exercițiile ghidate</string>
+    <string name="session_no_cam">Nicio cameră disponibilă</string>
+    <string name="session_front">Cameră frontală (oglindită)</string>
+    <string name="session_back">Cameră spate</string>
+    <string name="session_no_front">Acest dispozitiv nu are cameră frontală</string>
+    <string name="session_no_back">Nu există cameră spate</string>
+    <string name="session_calibrate">Calibrare: adoptă postura neutră, apoi începe. Oprește dacă: %1$s</string>
+    <string name="session_rep_done">Repetarea %1$d/%2$d ✓</string>
+    <string name="session_saved_toast">Sesiune salvată (%1$d repetări%2$s)</string>
+    <string name="session_saved_video">, video înregistrat</string>
+    <string name="session_rec_unavailable">Înregistrare indisponibilă: %1$s</string>
+    <string name="session_server_down">Server GPU indisponibil — folosesc analiza on-device</string>
+    <string name="session_camera_prefix">Încadrare cameră: </string>
+
+    <!-- Framing guidance -->
+    <string name="frame_low_conf">Punctul de reper nu este detectat clar — îmbunătățește lumina sau mută-te mai aproape.</string>
+    <string name="frame_out_of_frame">O parte din corp este aproape de margine — fă un pas în spate sau re-centrează.</string>
+    <string name="frame_no_person">Nicio persoană detectată — pune-te în fața camerei.</string>
+    <string name="frame_generic">Ajustează camera până când conturul devine verde.</string>
+    <string name="frame_side_head">Vedere laterală — pune telefonul pe masă la nivelul pieptului, la ~2 m</string>
+    <string name="frame_side_1">Stai/poziționează-te din profil, astfel încât tot lateralul corpului să fie vizibil.</string>
+    <string name="frame_side_2">Obiectivul la nivelul pieptului, îndreptat direct spre tine.</string>
+    <string name="frame_side_3">Necesari în cadru: urechea, umărul, șoldul și genunchul, dacă sunt listați.</string>
+    <string name="frame_side_4">Lumină bună, uniformă; evită lumina de la fereastră din spate.</string>
+    <string name="frame_front_head">Vedere frontală — telefonul la ~2 m, obiectivul la nivelul feței</string>
+    <string name="frame_front_1">Cu fața spre cameră; ambele umeri și ambele urechi vizibile.</string>
+    <string name="frame_front_2">Lasă spațiu deasupra capului și sub șolduri.</string>
+    <string name="frame_front_3">Nu roti trunchiul; aplicația măsoară rotația gâtului, nu a corpului.</string>
+    <string name="frame_back_head">Vedere din spate — folosește o oglindă, o persoană ajutătoare sau un al doilea telefon</string>
+    <string name="frame_back_1">Cu spatele spre cameră; ambii umeri și ambele șolduri vizibile.</string>
+    <string name="frame_back_2">O oglindă întreagă în fața ta permite telefonului să-ți vadă spatele prin reflexie.</string>
+    <string name="frame_back_3">Menține partea superioară a spatelui luminată uniform.</string>
+
+    <!-- Sessions -->
+    <string name="sessions_title">Sesiuni salvate</string>
+    <string name="sessions_empty">Nicio sesiune încă — rulează un exercițiu din fila Exerciții. Cu înregistrarea pornită, fiecare sesiune se salvează cu scheletul, unghiurile și indicațiile aplicate în video.</string>
+    <string name="sessions_review">▶ Revizuiește înregistrarea (%1$d cadre)</string>
+    <string name="sessions_missing">fișierul de înregistrare lipsește</string>
+    <string name="sessions_chooser">Revizuire sesiune</string>
+
+    <!-- Sensors -->
+    <string name="sensors_server_title">Server GPU de coaching</string>
+    <string name="sensors_test">Testează conexiunea</string>
+    <string name="sensors_ok">✓ Server accesibil (analiză GPU pregătită)</string>
+    <string name="sensors_fail">✗ Nu este accesibil — aplicația va folosi analiza on-device</string>
+    <string name="sensors_phone_title">Senzorii telefonului (în uz)</string>
+    <string name="sensors_phone_cam">Cameră → MediaPipe BlazePose (33 de puncte, on-device GPU)</string>
+    <string name="sensors_phone_depth">Adâncime/LiDAR → folosit când dispozitivul îl expune (ARCore Depth); altfel doar RGB</string>
+    <string name="sensors_phone_imu">Accelerometru+giroscop → context de postură, detecție pași/cădere</string>
+    <string name="sensors_phone_mic">Microfon → doar redare opțională de indicații audio (nu înregistrează)</string>
+    <string name="sensors_ble_title">Noduri ESP32 de postură (BLE)</string>
+    <string name="sensors_ble_1">Două noduri IMU pe 6 axe (BMI270 + ESP32-C3): cap + trunchi superior.</string>
+    <string name="sensors_ble_2">Serviciu 0xFFF0; caracteristici de notificare 0xFFF1 (cap) / 0xFFF2 (trunchi).</string>
+    <string name="sensors_ble_3">Payload: seq, pitch/roll/yaw (0,01°), accel (mg), gyro (0,1 dps) — 20 octeți.</string>
+    <string name="sensors_ble_4">Sursa firmware: firmware/esp32_posture_node/ în proiect.</string>
+    <string name="sensors_scan">Scanează noduri de postură (necesită permisiune Bluetooth)</string>
+    <string name="sensors_scanning">Scanare… (asociază mai întâi nodul ESP32 în Bluetooth-ul sistemului)</string>
+    <string name="sensors_bt_off">Bluetooth oprit sau indisponibil</string>
+    <string name="sensors_can_title">Ce pot și ce nu pot măsura senzorii</string>
+    <string name="sensors_can">POAT: unghiurile segmentelor corporale, ritmul mișcării, repetări, tendințe de postură, activitate, poziția în somn (saltea cu senzori).</string>
+    <string name="sensors_cannot">NU POATE: poziția vertebrelor, proeminențele discale, compresia nervilor, stabilitatea leziunii C6 — doar imagistică.</string>
+
+    <!-- Sleep -->
+    <string name="sleep_title">Configurare somn (experiment de 7 nopți)</string>
+    <string name="sleep_1">1. Notează astăzi perna + salteaua actuale (tip pernă, înălțime, poziția în care te trezești).</string>
+    <string name="sleep_2">2. Evaluează zilnic durerea cervicală și simptomele din braț (evaluarea din fila Acasă).</string>
+    <string name="sleep_3">3. Testează o SINGURĂ schimbare (ex. pernă cu înălțime reglabilă) timp de ≥3 nopți înainte de a judeca.</string>
+    <string name="sleep_4">4. Somn pe o parte: perna trebuie să umple golul umăr-cap fără să ridice capul.</string>
+    <string name="sleep_5">5. Somn pe spate: susține curbura cervicală fără să împingă bărbia spre piept.</string>
+    <string name="sleep_6">6. Evită somnul pe burtă — menține gâtul rotit mult timp.</string>
+    <string name="sleep_track_title">Opțiuni de urmărire a poziției</string>
+    <string name="sleep_track_1">• Saltea cu senzor de presiune (matrice FSR sau comercială) sub saltea → spate/lateral/burtă + întoarceri.</string>
+    <string name="sleep_track_2">• Nod IMU pe trunchiul superior (buzunarul cămășii) → orientare + evenimente de întoarcere.</string>
+    <string name="sleep_track_3">• Ceas inteligent via Health Connect → intervale de somn + mișcare (importate, nu diagnostice).</string>
+    <string name="sleep_track_4">Aplicația raportează CLASA de poziție cu incertitudine; nu pretinde că îți cunoaște unghiul gâtului la ora 3.</string>
+    <string name="sleep_pillow_title">Ghid pernă/saltea</string>
+    <string name="sleep_pillow_1">Începe cu o pernă cu înălțime reglabilă înainte de a cumpăra o saltea scumpă.</string>
+    <string name="sleep_pillow_2">Urmărește dacă o schimbare corelează cu scoruri matinale mai bune — datele decid, nu marketingul.</string>
+    <string name="sleep_hc_yes">Health Connect disponibil — import pași/somn activat în build-urile ulterioare.</string>
+    <string name="sleep_hc_no">Health Connect indisponibil pe acest dispozitiv; folosesc doar datele telefonului + purtabile.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Setări</string>
+    <string name="settings_language">Language / Limbă</string>
+    <string name="lang_system">Implicit din sistem</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ro">Română</string>
+    <string name="settings_mode_title">Mod de coaching</string>
+    <string name="settings_mode_auto">Auto — folosește serverul GPU când e disponibil, altfel on-device (implicit)</string>
+    <string name="settings_mode_ondevice">Doar on-device — complet offline, nu folosește rețeaua</string>
+    <string name="settings_mode_server">Server GPU obligatoriu — analiză avansată, se oprește dacă nu e disponibil</string>
+    <string name="settings_server_title">Server GPU</string>
+    <string name="settings_server_hint">http://192.168.1.188:8300  (sau https://host)</string>
+    <string name="settings_user_hint">Utilizator server (opțional)</string>
+    <string name="settings_pass_hint">Parolă server (opțional)</string>
+    <string name="settings_test">Testează conexiunea</string>
+    <string name="settings_export">Export CSV</string>
+    <string name="settings_tracking_title">Urmărire</string>
+    <string name="settings_frame_hint">Cadre locale ms (150)</string>
+    <string name="settings_server_frame_hint">Cadre server ms (100)</string>
+    <string name="settings_conf_hint">Încredere minimă punct-reper (0.5)</string>
+    <string name="settings_feedback_title">Feedback</string>
+    <string name="settings_haptics">Vibrație la finalizarea repetării</string>
+    <string name="settings_audio">Indicații audio</string>
+    <string name="settings_record">Înregistrează sesiunile cu overlay senzorial (MP4 local, revizuire în fila Sesiuni)</string>
+    <string name="settings_save">Salvează setările</string>
+    <string name="settings_saved">Setări salvate</string>
+    <string name="settings_testing">Testez %1$s …</string>
+    <string name="settings_exported">Exportate %1$d sesiuni în Downloads/SpineCare/</string>
+    <string name="settings_export_fail">Export eșuat: %1$s</string>
+</resources>

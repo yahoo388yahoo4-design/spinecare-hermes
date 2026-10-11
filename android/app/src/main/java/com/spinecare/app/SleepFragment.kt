@@ -18,28 +18,27 @@ class SleepFragment : Fragment() {
         fun h(t: String) = TextView(ctx).apply { text = t; setTextColor(0xFF38BDF8.toInt()); textSize = 19f; setPadding(0, 20, 0, 6) }
         fun p(t: String) = TextView(ctx).apply { text = t; setTextColor(0xFFE5E7EB.toInt()); textSize = 13f; setPadding(0, 2, 0, 2) }
 
-        col.addView(h("Sleep setup (7-night experiment)"))
-        p("1. Log your current pillow + mattress tonight (pillow type, height, position you wake in).")
-        p("2. Rate morning neck pain and arm symptoms each day (Home tab check-in).")
-        p("3. Trial ONE change at a time (e.g. adjustable-height pillow) for ≥3 nights before judging.")
-        p("4. Side sleeping: pillow should fill the shoulder-to-head gap without tilting the head up.")
-        p("5. Back sleeping: support the neck curve without pushing the chin toward the chest.")
-        p("6. Avoid stomach sleeping — it holds the neck rotated for long periods.")
+        col.addView(h(getString(R.string.sleep_title)))
+        p(getString(R.string.sleep_1))
+        p(getString(R.string.sleep_2))
+        p(getString(R.string.sleep_3))
+        p(getString(R.string.sleep_4))
+        p(getString(R.string.sleep_5))
+        p(getString(R.string.sleep_6))
 
-        col.addView(h("Position tracking options"))
-        p("• Bed pressure mat (FSR array or commercial) under the mattress → back/side/stomach + turns.")
-        p("• Upper-trunk IMU node worn in a shirt pocket → orientation + turning events.")
-        p("• Smartwatch via Health Connect → sleep windows + movement (imported, not diagnostic).")
-        p("The app reports position CLASS with uncertainty; it never claims to know your neck angle at 3am.")
+        col.addView(h(getString(R.string.sleep_track_title)))
+        p(getString(R.string.sleep_track_1))
+        p(getString(R.string.sleep_track_2))
+        p(getString(R.string.sleep_track_3))
+        p(getString(R.string.sleep_track_4))
 
-        col.addView(h("Pillow/mattress guidance"))
-        p("Start with an adjustable-height pillow before buying an expensive mattress.")
-        p("Track whether a change correlates with better morning scores — the data decides, not marketing.")
+        col.addView(h(getString(R.string.sleep_pillow_title)))
+        p(getString(R.string.sleep_pillow_1))
+        p(getString(R.string.sleep_pillow_2))
 
-        col.addView(h("Health Connect"))
+        col.addView(h(getString(R.string.tab_sleep)))
         val hc = HealthConnectHelper(ctx)
-        p(if (hc.isAvailable()) "Health Connect available — steps/sleep import enabled in later builds."
-          else "Health Connect not available on this device; using phone + wearable data only.")
+        p(getString(if (hc.isAvailable()) R.string.sleep_hc_yes else R.string.sleep_hc_no))
         return root
     }
 }

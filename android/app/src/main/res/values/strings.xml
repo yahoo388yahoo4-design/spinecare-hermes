@@ -2,4 +2,170 @@
 <resources>
     <string name="app_name">SpineCare</string>
     <string name="disclaimer">Guidance tool for a clinician-approved plan. Not a medical device. Sensors estimate body-segment movement, never vertebral positions or nerve compression.</string>
+
+    <!-- Bottom navigation -->
+    <string name="tab_home">Home</string>
+    <string name="tab_exercises">Exercises</string>
+    <string name="tab_sessions">Sessions</string>
+    <string name="tab_sensors">Sensors</string>
+    <string name="tab_sleep">Sleep</string>
+    <string name="tab_settings">Settings</string>
+
+    <!-- Home -->
+    <string name="followup_title">Follow-up schedule</string>
+    <string name="followup_c6">• C6 lesion: repeat MRI per radiologist — set your date in the notes below</string>
+    <string name="followup_physio">• Physiotherapy review: every 4–6 weeks</string>
+    <string name="followup_redflags">• RED FLAGS — stop exercising and seek urgent care: arm weakness, worsening numbness, hand clumsiness, balance/walking problems, bowel/bladder changes</string>
+    <string name="checkin_title">Daily check-in</string>
+    <string name="checkin_neck">Neck pain:</string>
+    <string name="checkin_arm">Right-arm symptoms:</string>
+    <string name="checkin_sleep">Sleep quality:</string>
+    <string name="checkin_save">Save check-in</string>
+    <string name="checkin_saved">Saved %1$s</string>
+    <string name="recent_title">Recent sessions</string>
+    <string name="recent_empty">No sessions yet — open the Exercises tab.</string>
+
+    <!-- Exercises -->
+    <string name="ex_warning">⚠ These exercises must be approved by your physiotherapist/spine specialist before use. The app guides an approved plan; it does not prescribe one.</string>
+    <string name="ex_meta">%1$s view • %2$d reps • signal: %3$s</string>
+    <string name="ex_stop">Stop immediately if: %1$s</string>
+    <string name="ex_start">Start guided session</string>
+
+    <!-- Exercise definitions -->
+    <string name="ex_chin_tuck_name">Chin tuck (deep neck flexor)</string>
+    <string name="ex_chin_tuck_desc">Gently draw the chin straight back (double-chin), keeping eyes level. Hold 3s. Move only the head.</string>
+    <string name="ex_chin_tuck_stop1">arm pain increase</string>
+    <string name="ex_chin_tuck_stop2">tingling worsens</string>
+    <string name="ex_chin_tuck_stop3">dizziness</string>
+    <string name="ex_rot_name">Cervical rotation ROM (pain-free)</string>
+    <string name="ex_rot_desc">Slowly turn the head toward each side within the pain-free range. Never push into symptoms.</string>
+    <string name="ex_rot_stop1">radiating arm pain</string>
+    <string name="ex_rot_stop2">numbness increases</string>
+    <string name="ex_thor_name">Thoracic extension (seated)</string>
+    <string name="ex_thor_desc">Sit tall, hands behind head, extend the upper back over the chair back. Keep the neck long.</string>
+    <string name="ex_thor_stop1">sharp neck pain</string>
+    <string name="ex_thor_stop2">arm symptoms</string>
+    <string name="ex_scap_name">Scapular setting</string>
+    <string name="ex_scap_desc">Gently draw shoulder blades down and back without shrugging. Hold 5s.</string>
+    <string name="ex_scap_stop1">pain between shoulder blades worsening</string>
+
+    <!-- Exercise session -->
+    <string name="session_start">Start</string>
+    <string name="session_stop">Stop &amp; Save</string>
+    <string name="session_mode_ondevice">Mode: On-device (offline)</string>
+    <string name="session_mode_server">Mode: GPU server (required)</string>
+    <string name="session_mode_auto">Mode: Auto (server if reachable)</string>
+    <string name="session_flip">Flip camera</string>
+    <string name="session_rec_on">Record: On</string>
+    <string name="session_rec_off">Record: Off</string>
+    <string name="session_cam_perm">Camera permission required for guided exercises</string>
+    <string name="session_no_cam">No camera available</string>
+    <string name="session_front">Front camera (mirrored)</string>
+    <string name="session_back">Back camera</string>
+    <string name="session_no_front">No front camera on this device</string>
+    <string name="session_no_back">No back camera</string>
+    <string name="session_calibrate">Calibrate: adopt neutral posture, then begin. Stop on: %1$s</string>
+    <string name="session_rep_done">Rep %1$d/%2$d ✓</string>
+    <string name="session_saved_toast">Session saved (%1$d reps%2$s)</string>
+    <string name="session_saved_video">, video recorded</string>
+    <string name="session_rec_unavailable">Recording unavailable: %1$s</string>
+    <string name="session_server_down">GPU server unreachable — using on-device</string>
+    <string name="session_camera_prefix">Camera framing: </string>
+
+    <!-- Framing guidance -->
+    <string name="frame_low_conf">Landmark not clearly detected — improve lighting or move closer.</string>
+    <string name="frame_out_of_frame">A required body part is near the edge — step back or re-center.</string>
+    <string name="frame_no_person">No person detected — stand in view of the camera.</string>
+    <string name="frame_generic">Adjust the camera until the outline turns green.</string>
+    <string name="frame_side_head">Side view — place the phone on a table at chest height, ~2 m away</string>
+    <string name="frame_side_1">Stand/sit in profile so the whole side of your body is visible.</string>
+    <string name="frame_side_2">Camera lens level with your chest, pointing straight at you.</string>
+    <string name="frame_side_3">Required in frame: ear, shoulder, hip and knee when listed.</string>
+    <string name="frame_side_4">Good even lighting on your body; avoid backlight from windows.</string>
+    <string name="frame_front_head">Front view — phone ~2 m away, lens at face height</string>
+    <string name="frame_front_1">Face the camera directly; both shoulders and both ears visible.</string>
+    <string name="frame_front_2">Leave space above the head and below the hips.</string>
+    <string name="frame_front_3">Avoid turning your torso; the app measures neck rotation, not body rotation.</string>
+    <string name="frame_back_head">Back view — use a mirror or a helper, or a second phone</string>
+    <string name="frame_back_1">Back to the camera; both shoulders and hips visible.</string>
+    <string name="frame_back_2">A full-length mirror in front of you lets the phone see your back via reflection.</string>
+    <string name="frame_back_3">Keep the upper back evenly lit.</string>
+
+    <!-- Sessions -->
+    <string name="sessions_title">Saved sessions</string>
+    <string name="sessions_empty">No sessions yet — run an exercise from the Exercises tab. With recording on, each session is saved with the skeleton, angles and cues burned into the video.</string>
+    <string name="sessions_review">▶ Review recording (%1$d frames)</string>
+    <string name="sessions_missing">recording file missing</string>
+    <string name="sessions_chooser">Review session</string>
+
+    <!-- Sensors -->
+    <string name="sensors_server_title">GPU coaching server</string>
+    <string name="sensors_test">Test connection</string>
+    <string name="sensors_ok">✓ Server reachable (GPU pose ready)</string>
+    <string name="sensors_fail">✗ Not reachable — app will use on-device pose</string>
+    <string name="sensors_phone_title">Phone sensors (in use)</string>
+    <string name="sensors_phone_cam">Camera → MediaPipe BlazePose (33 landmarks, on-device GPU)</string>
+    <string name="sensors_phone_depth">Depth/LiDAR → used when the device exposes it (ARCore Depth / FaceMesh scale); otherwise RGB-only</string>
+    <string name="sensors_phone_imu">Accelerometer+gyro → phone posture context, fall/step detection</string>
+    <string name="sensors_phone_mic">Microphone → optional audio cues output only (never recorded)</string>
+    <string name="sensors_ble_title">ESP32 posture nodes (BLE)</string>
+    <string name="sensors_ble_1">Two 6-DOF IMU nodes (BMI270 + ESP32-C3): head + upper trunk.</string>
+    <string name="sensors_ble_2">Service 0xFFF0; notify characteristics 0xFFF1 (head) / 0xFFF2 (trunk).</string>
+    <string name="sensors_ble_3">Payload: seq, pitch/roll/yaw (0.01°), accel (mg), gyro (0.1 dps) — 20 bytes.</string>
+    <string name="sensors_ble_4">Firmware source: firmware/esp32_posture_node/ in the project.</string>
+    <string name="sensors_scan">Scan for posture nodes (requires Bluetooth permission)</string>
+    <string name="sensors_scanning">Scanning… (pair the ESP32 node first in system Bluetooth)</string>
+    <string name="sensors_bt_off">Bluetooth off or unavailable</string>
+    <string name="sensors_can_title">What sensors can and cannot measure</string>
+    <string name="sensors_can">CAN: body-segment angles, movement tempo, reps, posture trends, activity, sleep position (bed mat).</string>
+    <string name="sensors_cannot">CANNOT: vertebral positions, disc protrusions, nerve compression, C6 lesion stability — imaging only.</string>
+
+    <!-- Sleep -->
+    <string name="sleep_title">Sleep setup (7-night experiment)</string>
+    <string name="sleep_1">1. Log your current pillow + mattress tonight (pillow type, height, position you wake in).</string>
+    <string name="sleep_2">2. Rate morning neck pain and arm symptoms each day (Home tab check-in).</string>
+    <string name="sleep_3">3. Trial ONE change at a time (e.g. adjustable-height pillow) for ≥3 nights before judging.</string>
+    <string name="sleep_4">4. Side sleeping: pillow should fill the shoulder-to-head gap without tilting the head up.</string>
+    <string name="sleep_5">5. Back sleeping: support the neck curve without pushing the chin toward the chest.</string>
+    <string name="sleep_6">6. Avoid stomach sleeping — it holds the neck rotated for long periods.</string>
+    <string name="sleep_track_title">Position tracking options</string>
+    <string name="sleep_track_1">• Bed pressure mat (FSR array or commercial) under the mattress → back/side/stomach + turns.</string>
+    <string name="sleep_track_2">• Upper-trunk IMU node worn in a shirt pocket → orientation + turning events.</string>
+    <string name="sleep_track_3">• Smartwatch via Health Connect → sleep windows + movement (imported, not diagnostic).</string>
+    <string name="sleep_track_4">The app reports position CLASS with uncertainty; it never claims to know your neck angle at 3am.</string>
+    <string name="sleep_pillow_title">Pillow/mattress guidance</string>
+    <string name="sleep_pillow_1">Start with an adjustable-height pillow before buying an expensive mattress.</string>
+    <string name="sleep_pillow_2">Track whether a change correlates with better morning scores — the data decides, not marketing.</string>
+    <string name="sleep_hc_yes">Health Connect available — steps/sleep import enabled in later builds.</string>
+    <string name="sleep_hc_no">Health Connect not available on this device; using phone + wearable data only.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language / Limbă</string>
+    <string name="lang_system">System default</string>
+    <string name="lang_en">English</string>
+    <string name="lang_ro">Română</string>
+    <string name="settings_mode_title">Coaching mode</string>
+    <string name="settings_mode_auto">Auto — use GPU server when reachable, otherwise on-device (default)</string>
+    <string name="settings_mode_ondevice">On-device only — fully offline, never uses the network</string>
+    <string name="settings_mode_server">GPU server required — enhanced analysis, pauses if unreachable</string>
+    <string name="settings_server_title">GPU server</string>
+    <string name="settings_server_hint">http://192.168.1.188:8300  (or https://host)</string>
+    <string name="settings_user_hint">Server user (optional)</string>
+    <string name="settings_pass_hint">Server password (optional)</string>
+    <string name="settings_test">Test connection</string>
+    <string name="settings_export">Export CSV</string>
+    <string name="settings_tracking_title">Tracking</string>
+    <string name="settings_frame_hint">Local frame ms (150)</string>
+    <string name="settings_server_frame_hint">Server frame ms (100)</string>
+    <string name="settings_conf_hint">Min landmark confidence (0.5)</string>
+    <string name="settings_feedback_title">Feedback</string>
+    <string name="settings_haptics">Vibrate on rep completion</string>
+    <string name="settings_audio">Audio cues</string>
+    <string name="settings_record">Record sessions with sensor overlay (local MP4, review in Sessions tab)</string>
+    <string name="settings_save">Save settings</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="settings_testing">Testing %1$s …</string>
+    <string name="settings_exported">Exported %1$d sessions to Downloads/SpineCare/</string>
+    <string name="settings_export_fail">Export failed: %1$s</string>
 </resources>

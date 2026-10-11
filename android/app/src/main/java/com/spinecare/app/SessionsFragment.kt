@@ -35,7 +35,7 @@ class SessionsFragment : Fragment() {
         }
         for (srow in all) {
             val exId = srow.optString("exercise")
-            val name = Plan.byId(exId)?.name ?: exId
+            val name = Plan.byId(exId)?.let { getString(it.nameRes) } ?: exId
             val line = "${srow.optString("date")}  ${name}  reps=${srow.optInt("reps")}  " +
                 "frames=${srow.optInt("frames")}  [${srow.optString("source")}]"
             col.addView(p(line))

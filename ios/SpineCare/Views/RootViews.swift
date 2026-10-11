@@ -11,14 +11,16 @@ struct SpineCareApp: App {
 }
 
 struct RootView: View {
+    @ObservedObject var cfg = ServerConfig.shared   // language changes re-render tabs
     var body: some View {
         TabView {
-            HomeView().tabItem { Label("Home", systemImage: "house") }
-            ExercisesView().tabItem { Label("Exercises", systemImage: "figure.walk") }
-            SessionsView().tabItem { Label("Sessions", systemImage: "film") }
-            SensorsView().tabItem { Label("Sensors", systemImage: "dot.radiowaves.left.and.right") }
-            SettingsView().tabItem { Label("Settings", systemImage: "gearshape") }
+            HomeView().tabItem { Label(L10n.t("tab_home"), systemImage: "house") }
+            ExercisesView().tabItem { Label(L10n.t("tab_exercises"), systemImage: "figure.walk") }
+            SessionsView().tabItem { Label(L10n.t("tab_sessions"), systemImage: "film") }
+            SensorsView().tabItem { Label(L10n.t("tab_sensors"), systemImage: "dot.radiowaves.left.and.right") }
+            SettingsView().tabItem { Label(L10n.t("tab_settings"), systemImage: "gearshape") }
         }
+        .id(cfg.lang)   // force full re-render when the language changes
     }
 }
 
@@ -26,17 +28,21 @@ struct HomeView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Recovery plan") {
-                    Text("C2–C7 disc protrusions, right C5/C7 radiculopathy, mild cervico-dorsal scoliosis, C6 lesion under imaging follow-up.")
+                Section(L10n.t("home_plan_title")) {
+                    Text(L10n.t("home_plan_body"))
                         .font(.callout).foregroundStyle(.secondary)
                 }
-                Section("Safety") {
-                    Text("All plans require clinician sign-off. Stop on: progressive weakness, hand clumsiness, gait change, bowel/bladder change — seek urgent care.")
+                Section(L10n.t("home_safety_title")) {
+                    Text(L10n.t("home_safety_body"))
                         .font(.callout).foregroundStyle(.red)
                 }
-                Section("Follow-up") {
-                    Text("C6 lesion: repeat imaging per radiologist (6–12 weeks). Sensors cannot assess bone or nerve — imaging only.")
+                Section(L10n.t("home_followup_title")) {
+                    Text(L10n.t("home_followup_body"))
                         .font(.callout)
+                }
+                Section {
+                    Text(L10n.t("disclaimer"))
+                        .font(.caption).foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("SpineCare")
@@ -55,8 +61,8 @@ struct SessionsView: View {
                 if store.sessions.isEmpty {
                     VStack(spacing: 12) {
                         Image(systemName: "film").font(.largeTitle).foregroundStyle(.secondary)
-                        Text("No sessions yet").font(.headline)
-                        Text("Run an exercise from the Exercises tab. With recording on, each session is saved with the skeleton, angles and cues burned into the video.")
+                        Text(L10n.t("sessions_empty_title")).font(.headline)
+                        Text(L10n.t("sessions_empty_body"))
                             .font(.callout).foregroundStyle(.secondary)
                             .multilineTextAlignment(.center).padding()
                     }
@@ -74,18 +80,18 @@ struct SessionsView: View {
                                     .foregroundStyle(.secondary)
                             }
                             if let v = rec.video, store.videoExists(rec) {
-                                NavigationLink("▶ Review recording (\(rec.recordedFrames ?? 0) frames)") {
+                                NavigationLink(L10n.t("sessions_review", Int64(rec.recordedFrames ?? 0))) {
                                     VideoReviewView(url: URL(fileURLWithPath: v))
                                 }
                             } else if rec.video != nil {
-                                Text("recording file missing").font(.caption).foregroundStyle(.red)
+                                Text(L10n.t("sessions_missing")).font(.caption).foregroundStyle(.red)
                             }
                         }
                         .padding(.vertical, 4)
                     }
                 }
             }
-            .navigationTitle("Sessions")
+            .navigationTitle(L10n.t("sessions_title"))
             .onAppear { store.load() }
         }
     }
@@ -96,7 +102,7 @@ struct VideoReviewView: View {
     var body: some View {
         VideoPlayer(player: AVPlayer(url: url))
             .ignoresSafeArea()
-            .navigationTitle("Session review")
+            .navigationTitle(L10n.t("sessions_review_title"))
             .onDisappear {}
     }
 }
@@ -108,12 +114,13 @@ struct ExercisesView: View {
                 NavigationLink(value: ex.id) {
                     VStack(alignment: .leading) {
                         Text(ex.name).font(.headline)
-                        Text("\(ex.view.uppercased()) view · target \(ex.targetReps) reps · \(ex.clinicianApproved ? "clinician-approved" : "pending approval")")
+                        Text(L10n.t("ex_meta_fmt", ex.view.uppercased(), Int64(ex.targetReps),
+                                     ex.clinicianApproved ? L10n.t("ex_approved") : L10n.t("ex_pending")))
                             .font(.caption).foregroundStyle(.secondary)
                     }
                 }
             }
-            .navigationTitle("Exercises")
+            .navigationTitle(L10n.t("tab_exercises"))
             .navigationDestination(for: String.self) { id in
                 if let ex = Plan.byId(id) { ExerciseSessionView(exercise: ex) }
             }

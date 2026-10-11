@@ -12,74 +12,87 @@
         android:padding="16dp">
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Settings" android:textSize="22sp" android:textColor="@color/sc_text"
+            android:text="@string/settings_title" android:textSize="22sp" android:textColor="@color/sc_text"
             android:textStyle="bold" android:layout_marginBottom="12dp"/>
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Coaching mode" android:textColor="@color/sc_primary" android:textStyle="bold"
+            android:text="@string/settings_language" android:textColor="@color/sc_primary" android:textStyle="bold"
+            android:layout_marginTop="8dp"/>
+        <RadioGroup android:id="@+id/rgLang" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RadioButton android:id="@+id/rbLangSystem" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/sc_text" android:text="@string/lang_system"/>
+            <RadioButton android:id="@+id/rbLangEn" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/sc_text" android:text="@string/lang_en"/>
+            <RadioButton android:id="@+id/rbLangRo" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/sc_text" android:text="@string/lang_ro"/>
+        </RadioGroup>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="@string/settings_mode_title" android:textColor="@color/sc_primary" android:textStyle="bold"
             android:layout_marginTop="8dp"/>
         <RadioGroup android:id="@+id/rgMode" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="vertical">
             <RadioButton android:id="@+id/rbAuto" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:textColor="@color/sc_text"
-                android:text="Auto — use GPU server when reachable, otherwise on-device (default)"/>
+                android:text="@string/settings_mode_auto"/>
             <RadioButton android:id="@+id/rbOnDevice" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:textColor="@color/sc_text"
-                android:text="On-device only — fully offline, never uses the network"/>
+                android:text="@string/settings_mode_ondevice"/>
             <RadioButton android:id="@+id/rbServer" android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:textColor="@color/sc_text"
-                android:text="GPU server required — enhanced analysis, pauses if unreachable"/>
+                android:text="@string/settings_mode_server"/>
         </RadioGroup>
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="GPU server" android:textColor="@color/sc_primary" android:textStyle="bold"
+            android:text="@string/settings_server_title" android:textColor="@color/sc_primary" android:textStyle="bold"
             android:layout_marginTop="16dp"/>
         <EditText android:id="@+id/etUrl" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="http://192.168.1.188:8300  (or https://host)" android:inputType="textUri"
+            android:hint="@string/settings_server_hint" android:inputType="textUri"
             android:textColor="@color/sc_text" android:textColorHint="@color/sc_muted"/>
         <EditText android:id="@+id/etUser" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Server user (optional)" android:inputType="text"
+            android:hint="@string/settings_user_hint" android:inputType="text"
             android:textColor="@color/sc_text" android:textColorHint="@color/sc_muted"/>
         <EditText android:id="@+id/etPass" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Server password (optional)" android:inputType="textPassword"
+            android:hint="@string/settings_pass_hint" android:inputType="textPassword"
             android:textColor="@color/sc_text" android:textColorHint="@color/sc_muted"/>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal"
             android:layout_marginTop="4dp">
             <Button android:id="@+id/btnTest" android:layout_width="0dp" android:layout_weight="1"
-                android:layout_height="wrap_content" android:text="Test connection"/>
+                android:layout_height="wrap_content" android:text="@string/settings_test"/>
             <Button android:id="@+id/btnExport" android:layout_width="0dp" android:layout_weight="1"
-                android:layout_height="wrap_content" android:text="Export CSV"/>
+                android:layout_height="wrap_content" android:text="@string/settings_export"/>
         </LinearLayout>
         <TextView android:id="@+id/tvServerStatus" android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textColor="@color/sc_muted" android:textSize="12sp" android:layout_marginTop="4dp"/>
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Tracking" android:textColor="@color/sc_primary" android:textStyle="bold"
+            android:text="@string/settings_tracking_title" android:textColor="@color/sc_primary" android:textStyle="bold"
             android:layout_marginTop="16dp"/>
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
             <EditText android:id="@+id/etFrameMs" android:layout_width="0dp" android:layout_weight="1"
-                android:layout_height="wrap_content" android:hint="Local frame ms (150)"
+                android:layout_height="wrap_content" android:hint="@string/settings_frame_hint"
                 android:inputType="number" android:textColor="@color/sc_text" android:textColorHint="@color/sc_muted"/>
             <EditText android:id="@+id/etServerFrameMs" android:layout_width="0dp" android:layout_weight="1"
-                android:layout_height="wrap_content" android:hint="Server frame ms (100)"
+                android:layout_height="wrap_content" android:hint="@string/settings_server_frame_hint"
                 android:inputType="number" android:textColor="@color/sc_text" android:textColorHint="@color/sc_muted"/>
         </LinearLayout>
         <EditText android:id="@+id/etMinConf" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:hint="Min landmark confidence (0.5)" android:inputType="numberDecimal"
+            android:hint="@string/settings_conf_hint" android:inputType="numberDecimal"
             android:textColor="@color/sc_text" android:textColorHint="@color/sc_muted"/>
 
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Feedback" android:textColor="@color/sc_primary" android:textStyle="bold"
+            android:text="@string/settings_feedback_title" android:textColor="@color/sc_primary" android:textStyle="bold"
             android:layout_marginTop="16dp"/>
         <Switch android:id="@+id/swHaptics" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textColor="@color/sc_text" android:text="Vibrate on rep completion"/>
+            android:textColor="@color/sc_text" android:text="@string/settings_haptics"/>
         <Switch android:id="@+id/swAudio" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textColor="@color/sc_text" android:text="Audio cues"/>
+            android:textColor="@color/sc_text" android:text="@string/settings_audio"/>
         <Switch android:id="@+id/swRecord" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:textColor="@color/sc_text" android:text="Record sessions with sensor overlay (local MP4, review in Sessions tab)"/>
+            android:textColor="@color/sc_text" android:text="@string/settings_record"/>
 
         <Button android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" android:text="Save settings"/>
+            android:layout_marginTop="20dp" android:text="@string/settings_save"/>
 
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="@string/disclaimer" android:textColor="@color/sc_muted" android:textSize="11sp"

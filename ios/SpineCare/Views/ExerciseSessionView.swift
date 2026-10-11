@@ -34,7 +34,7 @@ struct ExerciseSessionView: View {
                           reps: "\(reps)/\(exercise.targetReps)", mirror: frontCamera)
                 .ignoresSafeArea()
             VStack {
-                Text("\(exercise.name) — \(exercise.view.uppercased()) view\n\(exercise.description)")
+                Text("\(exercise.name) — \(exercise.view.uppercased()) view\n\(exercise.descriptionText)")
                     .font(.callout).padding(8)
                     .background(.black.opacity(0.6)).foregroundStyle(.white)
                 Spacer()
@@ -43,11 +43,11 @@ struct ExerciseSessionView: View {
                 Text(metricsText).font(.system(.caption, design: .monospaced))
                     .padding(6).background(.black.opacity(0.7)).foregroundStyle(.white)
                 HStack {
-                    Button(running ? "Stop & Save" : "Start") { toggle() }
+                    Button(running ? L10n.t("session_stop") : L10n.t("session_start")) { toggle() }
                         .buttonStyle(.borderedProminent)
-                    Button("Flip") { frontCamera.toggle() }
+                    Button(L10n.t("session_flip")) { frontCamera.toggle() }
                         .buttonStyle(.bordered)
-                    Button(recording ? "Rec: On" : "Rec: Off") {
+                    Button(recording ? L10n.t("session_rec_on") : L10n.t("session_rec_off")) {
                         recording.toggle(); ServerConfig.shared.recordSessions = recording
                     }
                     .buttonStyle(.bordered)
@@ -62,16 +62,16 @@ struct ExerciseSessionView: View {
                 .padding()
         }
         .navigationTitle(exercise.name)
-        .onAppear { cue = "Position the camera: \(exercise.view.uppercased()) view." }
+        .onAppear { cue = L10n.t("session_position_cam", exercise.view.uppercased()) }
         .onDisappear { client.disconnect(); stopRecorder() }
         .onChange(of: tracker.landmarks) { lms in score(lms) }
     }
 
     private func modeLabel() -> String {
         switch ServerConfig.shared.mode {
-        case .auto: return "Auto"
-        case .onDevice: return "On-device"
-        case .server: return "GPU server"
+        case .auto: return L10n.t("session_mode_auto")
+        case .onDevice: return L10n.t("session_mode_ondevice")
+        case .server: return L10n.t("session_mode_server")
         }
     }
 
@@ -87,13 +87,13 @@ struct ExerciseSessionView: View {
                                          required: exercise.requiredLandmarks,
                                          minConf: exercise.minConf, frameW: 1, frameH: 1)
         guard framing.ready else {
-            cue = "Camera: " + framing.issues.map(FramingGuide.fixFor).joined(separator: " ")
+            cue = L10n.t("session_camera_prefix") + framing.issues.map(FramingGuide.fixFor).joined(separator: " ")
             return
         }
         let metrics = Metrics.compute(lms)
         let sig = signalValue(metrics, exercise.signal)
         let now = Date().timeIntervalSince1970
-        if engine.update(sig, now) { reps = engine.reps; cue = "Rep \(reps)/\(exercise.targetReps) ✓" }
+        if engine.update(sig, now) { reps = engine.reps; cue = L10n.t("session_rep_done", Int64(reps), Int64(exercise.targetReps)) }
         for rule in exercise.formRules {
             if let v = metrics[rule.metric], abs(v) > rule.maxAbs { cue = rule.cue; break }
         }
@@ -114,7 +114,7 @@ struct ExerciseSessionView: View {
         if running {
             engine = RepEngine(low: exercise.repLow, high: exercise.repHigh)
             reps = 0; recordedFrames = 0
-            cue = "Calibrate: adopt neutral posture, then begin. Stop on: \(exercise.stopConditions.joined(separator: ", "))"
+            cue = L10n.t("session_calibrate", exercise.stopConditions.joined(separator: ", "))
             if recording { startRecorder() }
             if ServerConfig.shared.mode != .onDevice {
                 client.connect(ServerConfig.shared.url, user: ServerConfig.shared.user,

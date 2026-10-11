@@ -47,4 +47,23 @@ object ServerConfig {
     /** Record sessions with the sensor overlay burned in (local MP4). */
     fun recordSessions(c: Context) = p(c).getBoolean("record_sessions", true)
     fun setRecordSessions(c: Context, v: Boolean) = p(c).edit().putBoolean("record_sessions", v).apply()
+
+    /** App language: "system" | "en" | "ro". */
+    fun lang(c: Context) = p(c).getString("lang", "system")!!
+    fun setLang(c: Context, v: String) = p(c).edit().putString("lang", v).apply()
+}
+
+/** Applies the stored language override to a base context (API 26+). */
+object LocaleHelper {
+    fun wrap(c: android.content.Context, lang: String): android.content.Context {
+        val locale = when (lang) {
+            "en" -> java.util.Locale.ENGLISH
+            "ro" -> java.util.Locale("ro")
+            else -> return c
+        }
+        java.util.Locale.setDefault(locale)
+        val cfg = android.content.res.Configuration(c.resources.configuration)
+        cfg.setLocale(locale)
+        return c.createConfigurationContext(cfg)
+    }
 }

@@ -21,38 +21,39 @@ class HomeFragment : Fragment() {
         fun h(t: String) = TextView(ctx).apply { text = t; setTextColor(0xFF38BDF8.toInt()); textSize = 20f; setPadding(0, 16, 0, 8) }
         fun p(t: String) = TextView(ctx).apply { text = t; setTextColor(0xFFE5E7EB.toInt()); textSize = 14f; setPadding(0, 4, 0, 4) }
 
-        col.addView(h("SpineCare"))
+        col.addView(h(getString(R.string.app_name)))
         col.addView(p(getString(R.string.disclaimer)))
 
         // Clinical follow-up reminders (clinician-set, not self-prescribed)
-        col.addView(h("Follow-up schedule"))
-        col.addView(p("• C6 lesion: repeat MRI per radiologist — set your date in the notes below"))
-        col.addView(p("• Physiotherapy review: every 4–6 weeks"))
-        col.addView(p("• RED FLAGS — stop exercising and seek urgent care: arm weakness, worsening numbness, hand clumsiness, balance/walking problems, bowel/bladder changes"))
+        col.addView(h(getString(R.string.followup_title)))
+        col.addView(p(getString(R.string.followup_c6)))
+        col.addView(p(getString(R.string.followup_physio)))
+        col.addView(p(getString(R.string.followup_redflags)))
 
         // Daily check-in
-        col.addView(h("Daily check-in"))
+        col.addView(h(getString(R.string.checkin_title)))
         val neck = SeekBar(ctx).apply { max = 10; progress = 3 }
         val arm = SeekBar(ctx).apply { max = 10; progress = 2 }
         val sleep = SeekBar(ctx).apply { max = 10; progress = 6 }
-        col.addView(p("Neck pain:")); col.addView(neck)
-        col.addView(p("Right-arm symptoms:")); col.addView(arm)
-        col.addView(p("Sleep quality:")); col.addView(sleep)
-        val save = android.widget.Button(ctx).apply { text = "Save check-in" }
+        col.addView(p(getString(R.string.checkin_neck))); col.addView(neck)
+        col.addView(p(getString(R.string.checkin_arm))); col.addView(arm)
+        col.addView(p(getString(R.string.checkin_sleep))); col.addView(sleep)
+        val save = android.widget.Button(ctx).apply { text = getString(R.string.checkin_save) }
         val status = TextView(ctx).apply { setTextColor(0xFF34D399.toInt()) }
         save.setOnClickListener {
             val today = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(java.util.Date())
             store.saveCheckin(today, neck.progress, arm.progress, sleep.progress, "")
-            status.text = "Saved $today"
+            status.text = getString(R.string.checkin_saved, today)
         }
         col.addView(save); col.addView(status)
 
         // Recent sessions
-        col.addView(h("Recent sessions"))
+        col.addView(h(getString(R.string.recent_title)))
         val recent = store.allSessions().takeLast(8).reversed()
-        if (recent.isEmpty()) col.addView(p("No sessions yet — open the Exercises tab."))
+        if (recent.isEmpty()) col.addView(p(getString(R.string.recent_empty)))
         recent.forEach { s ->
-            col.addView(p("${s.optString("date")}  ${s.optString("exercise")}  reps=${s.optInt("reps")}  [${s.optString("source")}]"))
+            val exName = Plan.byId(s.optString("exercise"))?.let { getString(it.nameRes) } ?: s.optString("exercise")
+            col.addView(p("${s.optString("date")}  $exName  reps=${s.optInt("reps")}  [${s.optString("source")}]"))
         }
         return root
     }

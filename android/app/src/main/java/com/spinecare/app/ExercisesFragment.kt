@@ -19,7 +19,7 @@ class ExercisesFragment : Fragment() {
         root.addView(col)
 
         val warn = TextView(ctx).apply {
-            text = "⚠ These exercises must be approved by your physiotherapist/spine specialist before use. The app guides an approved plan; it does not prescribe one."
+            text = getString(R.string.ex_warning)
             setTextColor(0xFFF87171.toInt()); textSize = 13f; setPadding(0, 0, 0, 16)
         }
         col.addView(warn)
@@ -30,18 +30,18 @@ class ExercisesFragment : Fragment() {
                 setBackgroundColor(0xFF121A2B.toInt()); setPadding(24, 24, 24, 24)
                 layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT).apply { bottomMargin = 24 }
             }
-            card.addView(TextView(ctx).apply { text = ex.name; setTextColor(0xFFE5E7EB.toInt()); textSize = 17f })
+            card.addView(TextView(ctx).apply { text = getString(ex.nameRes); setTextColor(0xFFE5E7EB.toInt()); textSize = 17f })
             card.addView(TextView(ctx).apply {
-                text = "${ex.view.uppercase()} view • ${ex.targetReps} reps • signal: ${ex.signal}"
+                text = getString(R.string.ex_meta, ex.view.uppercase(), ex.targetReps, ex.signal)
                 setTextColor(0xFF94A3B8.toInt()); textSize = 12f
             })
-            card.addView(TextView(ctx).apply { text = ex.description; setTextColor(0xFF94A3B8.toInt()); textSize = 13f; setPadding(0, 8, 0, 8) })
+            card.addView(TextView(ctx).apply { text = getString(ex.descriptionRes); setTextColor(0xFF94A3B8.toInt()); textSize = 13f; setPadding(0, 8, 0, 8) })
             card.addView(TextView(ctx).apply {
-                text = "Stop immediately if: ${ex.stopConditions.joinToString()}"
+                text = getString(R.string.ex_stop, ex.stopConditionsRes.joinToString { getString(it) })
                 setTextColor(0xFFFBBF24.toInt()); textSize = 12f
             })
             card.addView(Button(ctx).apply {
-                text = "Start guided session"
+                text = getString(R.string.ex_start)
                 setOnClickListener {
                     startActivity(Intent(ctx, ExerciseActivity::class.java).putExtra("exercise_id", ex.id))
                 }

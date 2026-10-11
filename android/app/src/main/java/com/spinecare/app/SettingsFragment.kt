@@ -31,6 +31,11 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(v: View, s: Bundle?) {
         val ctx = requireContext()
+        when (ServerConfig.lang(ctx)) {
+            "en" -> b.rbLangEn.isChecked = true
+            "ro" -> b.rbLangRo.isChecked = true
+            else -> b.rbLangSystem.isChecked = true
+        }
         b.etUrl.setText(ServerConfig.url(ctx))
         b.etUser.setText(ServerConfig.user(ctx))
         b.etPass.setText(ServerConfig.pass(ctx))
@@ -48,6 +53,13 @@ class SettingsFragment : Fragment() {
 
         b.btnSave.setOnClickListener {
             val ctx2 = requireContext()
+            val newLang = when {
+                b.rbLangEn.isChecked -> "en"
+                b.rbLangRo.isChecked -> "ro"
+                else -> "system"
+            }
+            val langChanged = newLang != ServerConfig.lang(ctx2)
+            ServerConfig.setLang(ctx2, newLang)
             ServerConfig.setUrl(ctx2, b.etUrl.text.toString().trim().ifEmpty { ServerConfig.url(ctx2) })
             ServerConfig.setUser(ctx2, b.etUser.text.toString().trim())
             ServerConfig.setPass(ctx2, b.etPass.text.toString())
@@ -62,17 +74,26 @@ class SettingsFragment : Fragment() {
                 b.rbServer.isChecked -> ServerConfig.MODE_SERVER
                 else -> ServerConfig.MODE_AUTO
             })
-            Toast.makeText(ctx2, "Settings saved", Toast.LENGTH_SHORT).show()
+            if (langChanged) {
+                // Re-apply the locale override by recreating the host activity.
+                activity?.recreate()
+            } else {
+                Toast.makeText(ctx2, getString(R.string.settings_saved), Toast.LENGTH_SHORT).show()
+            }
         }
 
         b.btnTest.setOnClickListener {
-            b.tvServerStatus.text = "Testing ${ServerConfig.url(requireContext())} …"
+            b.tvServerStatus.text = getString(R.string.settings_testing, ServerConfig.url(requireContext()))
             testConnection()
         }
 
         b.btnExport.setOnClickListener {
-            val n = LocalStore(requireContext()).exportCsv()
-            Toast.makeText(requireContext(), "Exported $n sessions to Downloads/SpineCare/", Toast.LENGTH_LONG).show()
+            try {
+                val n = LocalStore(requireContext()).exportCsv()
+                Toast.makeText(requireContext(), getString(R.string.settings_exported, n), Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), getString(R.string.settings_export_fail, e.message ?: "?"), Toast.LENGTH_LONG).show()
+            }
         }
     }
 

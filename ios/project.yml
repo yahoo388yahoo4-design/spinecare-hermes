@@ -20,6 +20,9 @@ targets:
       path: SpineCare/Info.plist
       properties:
         CFBundleDisplayName: SpineCare
+        CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, ro]
+        CFBundleAllowMixedLocalizations: true
         NSCameraUsageDescription: "SpineCare uses the camera to guide and monitor your rehabilitation exercises. Video never leaves the device unless you enable the GPU server."
         NSMotionUsageDescription: "Used for posture context during exercises."
         UIBackgroundModes: []

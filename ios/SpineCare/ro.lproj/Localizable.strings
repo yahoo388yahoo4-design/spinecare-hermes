@@ -1,0 +1,108 @@
+/* SpineCare — Română */
+
+"disclaimer" = "Instrument de ghidaj pentru un plan aprobat de medic. Nu este dispozitiv medical. Senzorii estimează mișcarea segmentelor corporale, niciodată poziția vertebrelor sau compresia nervilor.";
+
+/* Tabs */
+"tab_home" = "Acasă";
+"tab_exercises" = "Exerciții";
+"tab_sessions" = "Sesiuni";
+"tab_sensors" = "Senzori";
+"tab_settings" = "Setări";
+
+/* Home */
+"home_plan_title" = "Plan de recuperare";
+"home_plan_body" = "Proeminențe discale C2–C7, radiculopatie C5/C7 pe dreapta, scolioză cervico-dorsală ușoară, leziune C6 sub urmărire imagistică.";
+"home_safety_title" = "Siguranță";
+"home_safety_body" = "Toate planurile necesită avizul medicului. Oprește-te dacă: slăbiciune progresivă, îndemânarea mâinii în scădere, modificări de mers, modificări intestinale/vezicale — cere ajutor medical urgent.";
+"home_followup_title" = "Urmărire";
+"home_followup_body" = "Leziunea C6: imagistică de control conform radiologului (6–12 săptămâni). Senzorii nu pot evalua osul sau nervul — doar imagistica.";
+
+/* Exercises */
+"ex_pending" = "în așteptarea aprobării";
+"ex_approved" = "aprobat de medic";
+"ex_meta_fmt" = "vedere %@ · țintă %lld repetări · %@";
+
+/* Exercise definitions */
+"ex_chin_tuck_name" = "Retracție de bărbie (flexori cervicali profunzi)";
+"ex_chin_tuck_desc" = "Trage bărbia drept înapoi (dublu bărbie), menținând privirea orizontală. Menține 3 s. Mișcă doar capul.";
+"ex_chin_tuck_stop1" = "durerea de braț crește";
+"ex_chin_tuck_stop2" = "furnicăturile se agravează";
+"ex_chin_tuck_stop3" = "amețeală";
+"ex_rot_name" = "Rotație cervicală ROM (fără durere)";
+"ex_rot_desc" = "Roteste capul încet spre fiecare parte, în limitele fără durere. Nu forța niciodată simptomele.";
+"ex_rot_stop1" = "durere irradiată în braț";
+"ex_rot_stop2" = "amorțeala crește";
+"ex_thor_name" = "Extensie toracică (șezând)";
+"ex_thor_desc" = "Stai drept, mâinile în spatele capului, extinde partea superioară a spatelui peste spătarul scaunului. Menține gâtul lung.";
+"ex_thor_stop1" = "durere cervicală ascuțită";
+"ex_thor_stop2" = "simptome în braț";
+"ex_scap_name" = "Setare scapulară";
+"ex_scap_desc" = "Trage omoplații ușor în jos și înapoi fără să ridici umerii. Menține 5 s.";
+"ex_scap_stop1" = "durerea dintre omoplați se agravează";
+
+/* Session */
+"session_start" = "Start";
+"session_stop" = "Stop și salvare";
+"session_mode_auto" = "Auto";
+"session_mode_ondevice" = "On-device";
+"session_mode_server" = "Server GPU";
+"session_flip" = "Comută";
+"session_rec_on" = "Înreg: Pornită";
+"session_rec_off" = "Înreg: Oprită";
+"session_position_cam" = "Poziționează camera: vedere %@.";
+"session_calibrate" = "Calibrare: adoptă postura neutră, apoi începe. Oprește dacă: %@";
+"session_rep_done" = "Repetarea %lld/%lld ✓";
+"session_camera_prefix" = "Cameră: ";
+
+/* Framing */
+"frame_low_conf" = "Punctul de reper nu este detectat clar — îmbunătățește lumina sau mută-te mai aproape.";
+"frame_out_of_frame" = "O parte din corp este aproape de margine — fă un pas în spate sau re-centrează.";
+"frame_no_person" = "Nicio persoană detectată — pune-te în fața camerei.";
+"frame_generic" = "Ajustează camera până când conturul devine verde.";
+
+/* Sessions */
+"sessions_title" = "Sesiuni";
+"sessions_empty_title" = "Nicio sesiune încă";
+"sessions_empty_body" = "Rulează un exercițiu din fila Exerciții. Cu înregistrarea pornită, fiecare sesiune se salvează cu scheletul, unghiurile și indicațiile aplicate în video.";
+"sessions_review" = "▶ Revizuiește înregistrarea (%lld cadre)";
+"sessions_missing" = "fișierul de înregistrare lipsește";
+"sessions_review_title" = "Revizuire sesiune";
+
+/* Sensors */
+"sensors_phone_title" = "Senzorii telefonului (în uz)";
+"sensors_phone_cam" = "Cameră → Apple Vision body pose (on-device)";
+"sensors_phone_depth" = "Adâncime/LiDAR → folosit când dispozitivul îl expune (ARKit)";
+"sensors_phone_imu" = "Accelerometru+giroscop → context de postură (Core Motion)";
+"sensors_phone_health" = "HealthKit → import pași, somn";
+"sensors_ble_title" = "Noduri ESP32 de postură (BLE)";
+"sensors_ble_body" = "Două noduri IMU pe 6 axe (BMI270 + ESP32-C3): cap + trunchi superior.\nServiciu 0xFFF0; notificare 0xFFF1 (cap) / 0xFFF2 (trunchi).\nPayload: seq, pitch/roll/yaw (0,01°), accel (mg), gyro (0,1 dps) — 20 octeți.";
+"sensors_ble_fw" = "Sursa firmware: firmware/esp32_posture_node/ în proiect.";
+"sensors_can_title" = "Ce pot și ce nu pot măsura senzorii";
+"sensors_can" = "POAT: unghiurile segmentelor corporale, ritmul mișcării, repetări, tendințe de postură, activitate, poziția în somn (saltea cu senzori).";
+"sensors_cannot" = "NU POATE: poziția vertebrelor, proeminențele discale, compresia nervilor, stabilitatea leziunii C6 — doar imagistică.";
+
+/* Settings */
+"settings_title" = "Setări";
+"settings_language" = "Language / Limbă";
+"lang_system" = "Implicit din sistem";
+"lang_en" = "English";
+"lang_ro" = "Română";
+"settings_mode_title" = "Mod de coaching";
+"settings_mode_auto" = "Auto (server dacă e disponibil)";
+"settings_mode_ondevice" = "Doar on-device (offline)";
+"settings_mode_server" = "Server GPU obligatoriu";
+"settings_server_title" = "Server GPU";
+"settings_server_url" = "URL server";
+"settings_user" = "Utilizator";
+"settings_pass" = "Parolă";
+"settings_test" = "Testează conexiunea";
+"settings_tuning_title" = "Reglaje";
+"settings_frame_interval" = "Interval analiză: %lld ms";
+"settings_server_interval" = "Interval trimitere server: %lld ms";
+"settings_min_conf" = "Încredere minimă: %.2f";
+"settings_haptics" = "Indicații haptice";
+"settings_audio" = "Indicații audio";
+"settings_record" = "Înregistrează sesiunile cu overlay senzorial (MP4 local, revizuire în fila Sesiuni)";
+"settings_save" = "Salvează setările";
+"settings_saved" = "Salvat";
+"settings_testing" = "Testez %@ …";

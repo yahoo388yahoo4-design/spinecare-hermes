@@ -56,7 +56,11 @@ class ExerciseActivity : AppCompatActivity() {
 
     private val permLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
         if (it[Manifest.permission.CAMERA] == true) startCamera()
-        else Toast.makeText(this, "Camera permission required for guided exercises", Toast.LENGTH_LONG).show()
+        else Toast.makeText(this, getString(R.string.session_cam_perm), Toast.LENGTH_LONG).show()
+    }
+
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(LocaleHelper.wrap(newBase, ServerConfig.lang(newBase)))
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +74,10 @@ class ExerciseActivity : AppCompatActivity() {
         exercise = Plan.byId(exId) ?: Plan.exercises.first()
         repEngine = RepEngine(exercise.repLow, exercise.repHigh)
 
-        b.tvExercise.text = "${exercise.name}  —  ${exercise.view.uppercase()} view\n${exercise.description}"
+        b.tvExercise.text = "${getString(exercise.nameRes)}  —  ${exercise.view.uppercase()} view\n${getString(exercise.descriptionRes)}"
+        b.btnStart.text = getString(R.string.session_start)
+        b.btnStop.text = getString(R.string.session_stop)
+        b.btnFlip.text = getString(R.string.session_flip)
         b.btnStart.setOnClickListener { startSession() }
         b.btnStop.setOnClickListener { stopAndSave() }
         b.btnMode.setOnClickListener {
@@ -82,7 +89,7 @@ class ExerciseActivity : AppCompatActivity() {
         b.btnRec.setOnClickListener { toggleRecord() }
         mode = ServerConfig.mode(this)
         recordEnabled = ServerConfig.recordSessions(this)
-        b.btnRec.text = "Record: ${if (recordEnabled) "On" else "Off"}"
+        b.btnRec.text = if (recordEnabled) getString(R.string.session_rec_on) else getString(R.string.session_rec_off)
         applyMode()
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED)
@@ -93,9 +100,9 @@ class ExerciseActivity : AppCompatActivity() {
     private fun applyMode() {
         serverMode = mode != ServerConfig.MODE_ON_DEVICE
         b.btnMode.text = when (mode) {
-            ServerConfig.MODE_ON_DEVICE -> "Mode: On-device (offline)"
-            ServerConfig.MODE_SERVER -> "Mode: GPU server (required)"
-            else -> "Mode: Auto (server if reachable)"
+            ServerConfig.MODE_ON_DEVICE -> getString(R.string.session_mode_ondevice)
+            ServerConfig.MODE_SERVER -> getString(R.string.session_mode_server)
+            else -> getString(R.string.session_mode_auto)
         }
         if (serverMode) connectServer() else { server?.close(); server = null }
     }
@@ -124,7 +131,7 @@ class ExerciseActivity : AppCompatActivity() {
             frontCamera = false
             b.overlay.mirror = false
             try { p.unbindAll(); p.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis) }
-            catch (_: Exception) { Toast.makeText(this, "No camera available", Toast.LENGTH_LONG).show() }
+            catch (_: Exception) { Toast.makeText(this, getString(R.string.session_no_cam), Toast.LENGTH_LONG).show() }
         }
     }
 
@@ -132,19 +139,20 @@ class ExerciseActivity : AppCompatActivity() {
         val p = provider ?: return
         val target = if (frontCamera) CameraSelector.DEFAULT_BACK_CAMERA else CameraSelector.DEFAULT_FRONT_CAMERA
         if (!p.hasCamera(target)) {
-            Toast.makeText(this, if (frontCamera) "No back camera" else "No front camera on this device",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, if (frontCamera) getString(R.string.session_no_back)
+                                 else getString(R.string.session_no_front), Toast.LENGTH_SHORT).show()
             return
         }
         frontCamera = !frontCamera
         bindCamera(p)
-        Toast.makeText(this, if (frontCamera) "Front camera (mirrored)" else "Back camera", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, if (frontCamera) getString(R.string.session_front)
+                             else getString(R.string.session_back), Toast.LENGTH_SHORT).show()
     }
 
     private fun toggleRecord() {
         recordEnabled = !recordEnabled
         ServerConfig.setRecordSessions(this, recordEnabled)
-        b.btnRec.text = "Record: ${if (recordEnabled) "On" else "Off"}"
+        b.btnRec.text = if (recordEnabled) getString(R.string.session_rec_on) else getString(R.string.session_rec_off)
     }
 
     private fun analyze(proxy: ImageProxy) {
@@ -165,6 +173,10 @@ class ExerciseActivity : AppCompatActivity() {
             if (lms != null) {
                 val metrics = Metrics.compute(lms)
                 lastMetrics = metrics
+                // Score locally FIRST so the overlay/framing state is current,
+                // then composite it onto the overlay view.
+                val serverHealthy = serverMode && server?.connected == true
+                if (!serverHealthy || mode != ServerConfig.MODE_SERVER) processLocal(metrics, now)
                 b.overlay.post {
                     b.overlay.landmarks = lms
                     b.overlay.missing = lastFramingMissing
@@ -174,10 +186,6 @@ class ExerciseActivity : AppCompatActivity() {
                     b.overlay.repsText = "${repEngine.reps}/${exercise.targetReps}"
                     b.overlay.invalidate()
                 }
-                // AUTO/ON_DEVICE: local scoring always runs; in SERVER-required
-                // mode local scoring is skipped only while the link is healthy.
-                val serverHealthy = serverMode && server?.connected == true
-                if (!serverHealthy || mode != ServerConfig.MODE_SERVER) processLocal(metrics, now)
                 if (serverHealthy && now - lastServerSend > ServerConfig.serverFrameIntervalMs(this)) {
                     lastServerSend = now
                     server?.sendFrame(bmp, now, null)
@@ -201,9 +209,11 @@ class ExerciseActivity : AppCompatActivity() {
         val missing = ArrayList<String>()
         for (name in exercise.requiredLandmarks) {
             val idx = when (name) {
+                "nose" -> Metrics.NOSE
                 "lear" -> Metrics.L_EAR; "rear" -> Metrics.R_EAR; "lsho" -> Metrics.L_SHO
                 "rsho" -> Metrics.R_SHO; "lhip" -> Metrics.L_HIP; "rhip" -> Metrics.R_HIP
-                "lkne" -> Metrics.L_KNEE; else -> -1
+                "lkne" -> Metrics.L_KNEE; "rkne" -> Metrics.R_KNEE
+                else -> -1
             }
             if (idx < 0 || idx >= lms.size || lms[idx].visibility < exercise.minConf) missing.add(name)
         }
@@ -214,12 +224,13 @@ class ExerciseActivity : AppCompatActivity() {
         val (ready, missing) = framingCheck()
         lastFramingReady = ready; lastFramingMissing = missing
         if (!ready) {
-            postCue("Camera framing: " + missing.joinToString { FramingGuide.fixFor("$it:low_conf") })
+            postCue(getString(R.string.session_camera_prefix) +
+                missing.joinToString { FramingGuide.fixFor(this, "$it:low_conf") })
             return
         }
         val sig = signalValue(metrics, exercise.signal)
         val done = repEngine.update(sig, now)
-        if (done) { vibrate(); postCue("Rep ${repEngine.reps}/${exercise.targetReps} ✓") }
+        if (done) { vibrate(); postCue(getString(R.string.session_rep_done, repEngine.reps, exercise.targetReps)) }
         // form rules
         for (rule in exercise.formRules) {
             val v = metrics[rule.metric] ?: continue
@@ -232,7 +243,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     private fun connectServer() {
         val url = ServerConfig.url(this)
-        server = ServerClient(url).apply {
+        server = ServerClient(url, ServerConfig.user(this), ServerConfig.pass(this)).apply {
             connect(object : ServerClient.Listener {
                 override fun onPose(msg: JSONObject) {
                     val framing = msg.getJSONObject("framing")
@@ -240,7 +251,8 @@ class ExerciseActivity : AppCompatActivity() {
                     lastFramingMissing = JSONArrayToList(framing.getJSONArray("missing"))
                     if (!lastFramingReady) {
                         val issues = JSONArrayToList(framing.getJSONArray("issues"))
-                        postCue("Camera: " + issues.joinToString { FramingGuide.fixFor(it) })
+                        postCue(getString(R.string.session_camera_prefix) +
+                            issues.joinToString { FramingGuide.fixFor(this@ExerciseActivity, it) })
                     }
                     serverReps = msg.getInt("reps")
                     b.tvReps.post { b.tvReps.text = "$serverReps/${msg.getInt("target_reps")}" }
@@ -261,7 +273,7 @@ class ExerciseActivity : AppCompatActivity() {
                 override fun onStatus(connected: Boolean) {
                     runOnUiThread {
                         if (!connected && serverMode) {
-                            Toast.makeText(this@ExerciseActivity, "GPU server unreachable — using on-device", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@ExerciseActivity, getString(R.string.session_server_down), Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
@@ -284,19 +296,17 @@ class ExerciseActivity : AppCompatActivity() {
                 recordFile = f
             } catch (e: Exception) {
                 recorder = null
-                Toast.makeText(this, "Recording unavailable: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.session_rec_unavailable, e.message ?: "?"), Toast.LENGTH_SHORT).show()
             }
         }
+        // NOTE: do NOT re-connect here — that would replace the pose listener
+        // with a no-op one. Just start the session on the existing socket.
         if (serverMode) {
-            server?.connect(object : ServerClient.Listener {
-                override fun onPose(msg: JSONObject) {}
-                override fun onSessionStarted(exercise: JSONObject) {}
-                override fun onSessionSaved(summary: JSONObject) {}
-                override fun onStatus(connected: Boolean) {}
-            })
+            if (server == null) connectServer()
             server?.startSession(exercise.id)
         }
-        postCue("Calibrate: adopt neutral posture, then begin. Stop on: ${exercise.stopConditions.joinToString()}")
+        postCue(getString(R.string.session_calibrate,
+            exercise.stopConditionsRes.joinToString { getString(it) }))
     }
 
     private fun stopAndSave() {
@@ -313,7 +323,8 @@ class ExerciseActivity : AppCompatActivity() {
         }
         store.saveSession(exercise.id, repEngine.reps, lastMetrics, serverCues, framesProcessed,
             if (serverMode) "gpu-server" else "on-device", videoPath, recordedFrames)
-        Toast.makeText(this, "Session saved (${repEngine.reps} reps${if (videoPath != null) ", video recorded" else ""})",
+        Toast.makeText(this, getString(R.string.session_saved_toast, repEngine.reps,
+            if (videoPath != null) getString(R.string.session_saved_video) else ""),
             Toast.LENGTH_SHORT).show()
     }
 

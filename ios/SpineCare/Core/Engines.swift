@@ -100,10 +100,10 @@ enum FramingGuide {
         return (missing.isEmpty, issues, missing)
     }
     static func fixFor(_ issue: String) -> String {
-        if issue.hasSuffix(":low_conf") { return "Landmark not clearly detected — improve lighting or move closer." }
-        if issue.hasSuffix(":out_of_frame") { return "A required body part is near the edge — step back or re-center." }
-        if issue == "no_person" { return "No person detected — stand in view of the camera." }
-        return "Adjust the camera until the outline turns green."
+        if issue.hasSuffix(":low_conf") { return L10n.t("frame_low_conf") }
+        if issue.hasSuffix(":out_of_frame") { return L10n.t("frame_out_of_frame") }
+        if issue == "no_person" { return L10n.t("frame_no_person") }
+        return L10n.t("frame_generic")
     }
 }
 

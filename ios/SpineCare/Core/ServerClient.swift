@@ -18,6 +18,7 @@ final class ServerConfig: ObservableObject {
     @Published var haptics: Bool
     @Published var audioCues: Bool
     @Published var recordSessions: Bool
+    @Published var lang: String      // "system" | "en" | "ro"
 
     private let d = UserDefaults.standard
     private init() {
@@ -31,6 +32,7 @@ final class ServerConfig: ObservableObject {
         haptics = d.object(forKey: "haptics") as? Bool ?? true
         audioCues = d.object(forKey: "audio_cues") as? Bool ?? false
         recordSessions = d.object(forKey: "record_sessions") as? Bool ?? true
+        lang = d.string(forKey: "lang") ?? "system"
     }
     func save() {
         d.set(url, forKey: "server_url"); d.set(user, forKey: "server_user")
@@ -38,6 +40,7 @@ final class ServerConfig: ObservableObject {
         d.set(frameIntervalMs, forKey: "frame_ms"); d.set(serverFrameIntervalMs, forKey: "server_frame_ms")
         d.set(minConfidence, forKey: "min_conf"); d.set(haptics, forKey: "haptics")
         d.set(audioCues, forKey: "audio_cues"); d.set(recordSessions, forKey: "record_sessions")
+        d.set(lang, forKey: "lang")
     }
 
     func testConnection(_ done: @escaping (String) -> Void) {

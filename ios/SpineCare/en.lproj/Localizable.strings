@@ -1,0 +1,108 @@
+/* SpineCare — English */
+
+"disclaimer" = "Guidance tool for a clinician-approved plan. Not a medical device. Sensors estimate body-segment movement, never vertebral positions or nerve compression.";
+
+/* Tabs */
+"tab_home" = "Home";
+"tab_exercises" = "Exercises";
+"tab_sessions" = "Sessions";
+"tab_sensors" = "Sensors";
+"tab_settings" = "Settings";
+
+/* Home */
+"home_plan_title" = "Recovery plan";
+"home_plan_body" = "C2–C7 disc protrusions, right C5/C7 radiculopathy, mild cervico-dorsal scoliosis, C6 lesion under imaging follow-up.";
+"home_safety_title" = "Safety";
+"home_safety_body" = "All plans require clinician sign-off. Stop on: progressive weakness, hand clumsiness, gait change, bowel/bladder change — seek urgent care.";
+"home_followup_title" = "Follow-up";
+"home_followup_body" = "C6 lesion: repeat imaging per radiologist (6–12 weeks). Sensors cannot assess bone or nerve — imaging only.";
+
+/* Exercises */
+"ex_pending" = "pending approval";
+"ex_approved" = "clinician-approved";
+"ex_meta_fmt" = "%@ view · target %lld reps · %@";
+
+/* Exercise definitions */
+"ex_chin_tuck_name" = "Chin tuck (deep neck flexor)";
+"ex_chin_tuck_desc" = "Gently draw the chin straight back (double-chin), keeping eyes level. Hold 3s. Move only the head.";
+"ex_chin_tuck_stop1" = "arm pain increase";
+"ex_chin_tuck_stop2" = "tingling worsens";
+"ex_chin_tuck_stop3" = "dizziness";
+"ex_rot_name" = "Cervical rotation ROM (pain-free)";
+"ex_rot_desc" = "Slowly turn the head toward each side within the pain-free range. Never push into symptoms.";
+"ex_rot_stop1" = "radiating arm pain";
+"ex_rot_stop2" = "numbness increases";
+"ex_thor_name" = "Thoracic extension (seated)";
+"ex_thor_desc" = "Sit tall, hands behind head, extend the upper back over the chair back. Keep the neck long.";
+"ex_thor_stop1" = "sharp neck pain";
+"ex_thor_stop2" = "arm symptoms";
+"ex_scap_name" = "Scapular setting";
+"ex_scap_desc" = "Gently draw shoulder blades down and back without shrugging. Hold 5s.";
+"ex_scap_stop1" = "pain between shoulder blades worsening";
+
+/* Session */
+"session_start" = "Start";
+"session_stop" = "Stop & Save";
+"session_mode_auto" = "Auto";
+"session_mode_ondevice" = "On-device";
+"session_mode_server" = "GPU server";
+"session_flip" = "Flip";
+"session_rec_on" = "Rec: On";
+"session_rec_off" = "Rec: Off";
+"session_position_cam" = "Position the camera: %@ view.";
+"session_calibrate" = "Calibrate: adopt neutral posture, then begin. Stop on: %@";
+"session_rep_done" = "Rep %lld/%lld ✓";
+"session_camera_prefix" = "Camera: ";
+
+/* Framing */
+"frame_low_conf" = "Landmark not clearly detected — improve lighting or move closer.";
+"frame_out_of_frame" = "A required body part is near the edge — step back or re-center.";
+"frame_no_person" = "No person detected — stand in view of the camera.";
+"frame_generic" = "Adjust the camera until the outline turns green.";
+
+/* Sessions */
+"sessions_title" = "Sessions";
+"sessions_empty_title" = "No sessions yet";
+"sessions_empty_body" = "Run an exercise from the Exercises tab. With recording on, each session is saved with the skeleton, angles and cues burned into the video.";
+"sessions_review" = "▶ Review recording (%lld frames)";
+"sessions_missing" = "recording file missing";
+"sessions_review_title" = "Session review";
+
+/* Sensors */
+"sensors_phone_title" = "Phone sensors (in use)";
+"sensors_phone_cam" = "Camera → Apple Vision body pose (on-device)";
+"sensors_phone_depth" = "Depth/LiDAR → used when the device exposes it (ARKit)";
+"sensors_phone_imu" = "Accelerometer+gyro → posture context (Core Motion)";
+"sensors_phone_health" = "HealthKit → steps, sleep import";
+"sensors_ble_title" = "ESP32 posture nodes (BLE)";
+"sensors_ble_body" = "Two 6-DOF IMU nodes (BMI270 + ESP32-C3): head + upper trunk.\nService 0xFFF0; notify 0xFFF1 (head) / 0xFFF2 (trunk).\nPayload: seq, pitch/roll/yaw (0.01°), accel (mg), gyro (0.1 dps) — 20 bytes.";
+"sensors_ble_fw" = "Firmware source: firmware/esp32_posture_node/ in the project.";
+"sensors_can_title" = "What sensors can and cannot measure";
+"sensors_can" = "CAN: body-segment angles, movement tempo, reps, posture trends, activity, sleep position (bed mat).";
+"sensors_cannot" = "CANNOT: vertebral positions, disc protrusions, nerve compression, C6 lesion stability — imaging only.";
+
+/* Settings */
+"settings_title" = "Settings";
+"settings_language" = "Language / Limbă";
+"lang_system" = "System default";
+"lang_en" = "English";
+"lang_ro" = "Română";
+"settings_mode_title" = "Coaching mode";
+"settings_mode_auto" = "Auto (server if reachable)";
+"settings_mode_ondevice" = "On-device only (offline)";
+"settings_mode_server" = "GPU server required";
+"settings_server_title" = "GPU server";
+"settings_server_url" = "Server URL";
+"settings_user" = "User";
+"settings_pass" = "Password";
+"settings_test" = "Test connection";
+"settings_tuning_title" = "Tuning";
+"settings_frame_interval" = "Analysis interval: %lld ms";
+"settings_server_interval" = "Server send interval: %lld ms";
+"settings_min_conf" = "Min confidence: %.2f";
+"settings_haptics" = "Haptic cues";
+"settings_audio" = "Audio cues";
+"settings_record" = "Record sessions with sensor overlay (local MP4, review in Sessions tab)";
+"settings_save" = "Save settings";
+"settings_saved" = "Saved";
+"settings_testing" = "Testing %@ …";
