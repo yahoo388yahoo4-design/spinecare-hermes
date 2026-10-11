@@ -86,6 +86,6 @@ final class SessionRecorder {
     func finish() {
         guard started else { writer.cancelWriting(); return }
         input.markAsFinished()
-        writer.endSession()
+        writer.endSession { }
     }
 }

@@ -60,7 +60,7 @@ enum OverlayRenderer {
                 .foregroundColor: UIColor(red: 0.20, green: 0.83, blue: 0.60, alpha: 1),
             ]
             let s = NSAttributedString(string: reps, attributes: attrs)
-            s.draw(at: CGPoint(x: size.width - s.size().width - 20, y: 20), withAttributes: attrs)
+            s.draw(at: CGPoint(x: size.width - s.size().width - 20, y: 20))
         }
         // HUD: cue + metrics bottom band
         if !cue.isEmpty || !metrics.isEmpty {
@@ -79,8 +79,7 @@ enum OverlayRenderer {
             cg.setFillColor(UIColor.black.withAlphaComponent(0.75).cgColor)
             cg.fill(CGRect(x: 0, y: size.height - bgH, width: size.width, height: bgH))
             block.draw(in: CGRect(x: 12, y: size.height - bgH + 8,
-                                  width: size.width - 24, height: bgH),
-                       options: [.usesLineFragmentOrigin])
+                                  width: size.width - 24, height: bgH))
         }
     }
 
