@@ -66,9 +66,9 @@ def annotate(img_path: Path, pose: dict, out_path: Path, idx: int, total: int):
     d.rectangle([0, H - panel_h, W, H], fill=(10, 18, 28))
     lines = [
         f"SpineCare  frame {idx}/{total}  latency {pose.get('latency_ms', 0):.0f}ms",
-        "  ".join(f"{k}={v:.1f}" for k, v in list(m.items())[:6]),
+        "  ".join(f"{k}={v:.1f}" for k, v in list(m.items())[:6] if v is not None),
         f"framing: {framing.get('status', '?')}  reps: {pose.get('reps', 0)}  phase: {pose.get('phase', '-')}",
-        "cues: " + ("; ".join(cues[:3]) if cues else "none"),
+        "cues: " + ("; ".join(c.get("cue", str(c)) for c in cues[:3]) if cues else "none"),
     ]
     y = H - panel_h + 8
     for ln in lines:
