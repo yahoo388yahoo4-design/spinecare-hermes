@@ -4,7 +4,7 @@ import Foundation
 /// Landmarks: Vision body-pose joints mapped into a common name space.
 /// All angles degrees. ESTIMATES only — not vertebral measurements.
 enum Metrics {
-    struct LM { var x: Double; var y: Double; var z: Double; var conf: Double }
+    struct LM: Equatable { var x: Double; var y: Double; var z: Double; var conf: Double }
 
     private static func mid(_ a: LM, _ b: LM) -> LM {
         LM(x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, z: (a.z + b.z) / 2, conf: min(a.conf, b.conf))

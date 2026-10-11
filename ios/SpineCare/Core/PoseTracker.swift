@@ -14,7 +14,7 @@ final class PoseTracker: NSObject, ObservableObject {
 
     /// Vision body pose has no ears/nose; we synthesize a head axis from the
     /// neck anchor and document it as an estimate.
-    static let jointMap: [VNBodyPoseJoint: String] = [
+    static let jointMap: [VNBodyPose.Joint: String] = [
         .nose: "nose", .leftEye: "leye", .rightEye: "reye",
         .leftEar: "lear", .rightEar: "rear",
         .leftShoulder: "lsho", .rightShoulder: "rsho",
@@ -35,7 +35,7 @@ final class PoseTracker: NSObject, ObservableObject {
         }
         var out: [String: Metrics.LM] = [:]
         for (joint, name) in Self.jointMap {
-            if let pt = obs.landmark(for: joint) {
+            if let pt = obs.recognizedPoints(for: joint) {
                 out[name] = Metrics.LM(x: Double(pt.x), y: Double(1 - pt.y),
                                        z: Double(pt.z ?? 0), conf: Double(pt.confidence))
             }

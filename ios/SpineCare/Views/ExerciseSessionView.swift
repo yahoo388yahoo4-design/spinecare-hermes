@@ -8,7 +8,7 @@ struct ExerciseSessionView: View {
     @StateObject private var tracker = PoseTracker()
     @State private var running = false
     @State private var reps = 0
-    @State private var cue = "Position the camera: \(exercise.view.uppercased()) view."
+    @State private var cue = ""
     @State private var metricsText = ""
     @State private var engine = RepEngine(low: 0, high: 0)
     @State private var serverConnected = false
@@ -40,6 +40,7 @@ struct ExerciseSessionView: View {
                 .padding()
         }
         .navigationTitle(exercise.name)
+        .onAppear { cue = "Position the camera: \(exercise.view.uppercased()) view." }
         .onDisappear { client.disconnect() }
         .onChange(of: tracker.landmarks) { lms in score(lms) }
     }

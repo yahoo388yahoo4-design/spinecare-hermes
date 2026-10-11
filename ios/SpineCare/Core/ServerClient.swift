@@ -65,7 +65,7 @@ final class ServerClient {
         guard let ws = URL(string: base.replacingOccurrences(of: "http", with: "ws") + "/ws/session") else { return }
         var req = URLRequest(url: ws)
         if !user.isEmpty {
-            let cred = Data("\(user):\(pass)".utf8).base64Encoded()
+            let cred = Data("\(user):\(pass)".utf8).base64EncodedString()
             req.setValue("Basic \(cred)", forHTTPHeaderField: "Authorization")
         }
         task = URLSession.shared.webSocketTask(with: req)
