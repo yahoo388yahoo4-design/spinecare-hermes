@@ -1,7 +1,11 @@
 import Foundation
 
-struct FormRule: Codable { let metric: String; let maxAbs: Double; cueKey: String
-    var cue: String { cueKey } }
+struct FormRule: Codable {
+    let metric: String
+    let maxAbs: Double
+    let cueKey: String
+    var cue: String { cueKey }
+}
 
 struct Exercise: Codable, Identifiable {
     let id: String
