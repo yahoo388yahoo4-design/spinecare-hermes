@@ -1,11 +1,12 @@
 import SwiftUI
 import UIKit
-import CoreGraphics
 
 /// Shared skeleton + HUD drawing for the live overlay AND the session recorder,
 /// so saved videos show exactly what the user saw during the session.
-/// Convention: the CGContext passed in is y-DOWN with top-left origin —
-/// true for SwiftUI Canvas's cgContext and for UIGraphicsImageRenderer.
+/// Two entry points:
+///  - `draw(cg:...)`  CoreGraphics (recorder path, via UIGraphicsImageRenderer,
+///    y-down top-left origin) — thread-safe, runs on the camera queue.
+///  - `draw(ctx:...)` SwiftUI Canvas (live preview path).
 /// Landmarks are normalized 0..1 with y top-down (PoseTracker flips Vision's
 /// bottom-up y so both paths agree).
 enum OverlayRenderer {
@@ -17,15 +18,18 @@ enum OverlayRenderer {
         ("lhip", "lknee"), ("rhip", "rknee"), ("lknee", "lank"), ("rknee", "rank"),
     ]
 
+    private static var green: CGColor { CGColor(red: 0.20, green: 0.83, blue: 0.60, alpha: 1) }
+    private static var amber: CGColor { CGColor(red: 0.98, green: 0.75, blue: 0.15, alpha: 1) }
+    private static var sky: CGColor { CGColor(red: 0.22, green: 0.74, blue: 0.98, alpha: 1) }
+
+    // MARK: CoreGraphics path (recorder)
+
     static func draw(cg: CGContext, size: CGSize, lms: [String: Metrics.LM],
                      cue: String, metrics: String, reps: String, mirror: Bool) {
         func px(_ x: Double) -> CGFloat { CGFloat(mirror ? (1 - x) : x) * size.width }
         func py(_ y: Double) -> CGFloat { CGFloat(y) * size.height }
 
         let ready = !lms.isEmpty
-        let green = CGColor(red: 0.20, green: 0.83, blue: 0.60, alpha: 1)
-        let amber = CGColor(red: 0.98, green: 0.75, blue: 0.15, alpha: 1)
-        let sky   = CGColor(red: 0.22, green: 0.74, blue: 0.98, alpha: 1)
         let lineColor = ready ? green : amber
 
         cg.setLineWidth(3)
@@ -56,7 +60,7 @@ enum OverlayRenderer {
                 .foregroundColor: UIColor(red: 0.20, green: 0.83, blue: 0.60, alpha: 1),
             ]
             let s = NSAttributedString(string: reps, attributes: attrs)
-            s.draw(at: CGPoint(x: size.width - s.size().width - 20, y: 20), with: attrs)
+            s.draw(at: CGPoint(x: size.width - s.size().width - 20, y: 20), withAttributes: attrs)
         }
         // HUD: cue + metrics bottom band
         if !cue.isEmpty || !metrics.isEmpty {
@@ -74,18 +78,51 @@ enum OverlayRenderer {
             let bgH = block.size().height + 16
             cg.setFillColor(UIColor.black.withAlphaComponent(0.75).cgColor)
             cg.fill(CGRect(x: 0, y: size.height - bgH, width: size.width, height: bgH))
-            block.draw(with: CGRect(x: 12, y: size.height - bgH + 8,
-                                    width: size.width - 24, height: bgH),
+            block.draw(in: CGRect(x: 12, y: size.height - bgH + 8,
+                                  width: size.width - 24, height: bgH),
                        options: [.usesLineFragmentOrigin])
         }
     }
 
-    /// Live SwiftUI preview wrapper.
+    // MARK: SwiftUI Canvas path (live preview)
+
     static func draw(ctx: inout GraphicsContext, size: CGSize, lms: [String: Metrics.LM],
                      cue: String, metrics: String, reps: String, mirror: Bool) {
-        ctx.drawLayer { layer in
-            draw(cg: layer.cgContext, size: size, lms: lms, cue: cue, metrics: metrics,
-                 reps: reps, mirror: mirror)
+        func px(_ x: Double) -> CGFloat { CGFloat(mirror ? (1 - x) : x) * size.width }
+        func py(_ y: Double) -> CGFloat { CGFloat(y) * size.height }
+
+        let ready = !lms.isEmpty
+        let lineColor = ready ? Color.green : Color.yellow
+
+        for (a, b) in conns {
+            guard let la = lms[a], let lb = lms[b], la.conf > 0.5, lb.conf > 0.5 else { continue }
+            var path = Path()
+            path.move(to: CGPoint(x: px(la.x), y: py(la.y)))
+            path.addLine(to: CGPoint(x: px(lb.x), y: py(lb.y)))
+            ctx.stroke(path, with: .color(lineColor), lineWidth: 3)
+        }
+        if let lear = lms["lear"], let lsho = lms["lsho"], lear.conf > 0.5, lsho.conf > 0.5 {
+            var path = Path()
+            path.move(to: CGPoint(x: px(lear.x), y: py(lear.y)))
+            path.addLine(to: CGPoint(x: px(lsho.x), y: py(lsho.y)))
+            ctx.stroke(path, with: .color(Color(red: 0.22, green: 0.74, blue: 0.98)), lineWidth: 5)
+        }
+        for lm in lms.values where lm.conf > 0.5 {
+            let rect = CGRect(x: px(lm.x) - 3.5, y: py(lm.y) - 3.5, width: 7, height: 7)
+            ctx.fill(Path(ellipseIn: rect), with: .color(lineColor))
+        }
+
+        if !reps.isEmpty {
+            ctx.draw(Text(reps).font(.system(size: 40, weight: .bold)).foregroundColor(.green),
+                     at: CGPoint(x: size.width - 70, y: 50))
+        }
+        if !cue.isEmpty || !metrics.isEmpty {
+            var text = Text("")
+            if !cue.isEmpty { text = text + Text(cue).foregroundColor(.yellow) + Text("\n") }
+            if !metrics.isEmpty {
+                text = text + Text(metrics).font(.system(size: 11, design: .monospaced)).foregroundColor(.white)
+            }
+            ctx.draw(text, at: CGPoint(x: size.width / 2, y: size.height - 60), anchor: .center)
         }
     }
 }

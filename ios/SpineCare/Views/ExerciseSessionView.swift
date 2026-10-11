@@ -184,7 +184,7 @@ struct OverlayCanvas: View {
     var body: some View {
         GeometryReader { geo in
             Canvas { ctx, size in
-                OverlayRenderer.draw(ctx: &ctx, size: size, landmarks: landmarks,
+                OverlayRenderer.draw(ctx: &ctx, size: size, lms: landmarks,
                                      cue: cue, metrics: metrics, reps: reps, mirror: mirror)
             }
         }

@@ -27,7 +27,7 @@ final class SessionRecorder {
         input = AVAssetWriterInput(mediaType: .video, outputSettings: settings)
         input.expectsMediaDataInRealTime = true
         adaptor = AVAssetWriterInputPixelBufferAdaptor(
-            assetInput: input,
+            assetWriterInput: input,
             sourcePixelBufferAttributes: [
                 kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA,
                 kCVPixelBufferWidthKey as String: width,
@@ -76,7 +76,8 @@ final class SessionRecorder {
 
         // 3. Write into the adaptor's buffer pool.
         var out: CVPixelBuffer?
-        let status = CVPixelBufferPoolCreatePixelBuffer(nil, adaptor.pixelBufferPool, &out)
+        guard let pool = adaptor.pixelBufferPool else { return }
+        let status = CVPixelBufferPoolCreatePixelBuffer(nil, pool, &out)
         guard status == kCVReturnSuccess, let ob = out else { return }
         ciContext.render(composed, to: ob)
         adaptor.append(ob, withPresentationTime: timestamp)
@@ -85,6 +86,6 @@ final class SessionRecorder {
     func finish() {
         guard started else { writer.cancelWriting(); return }
         input.markAsFinished()
-        writer.endSession { }
+        writer.endSession()
     }
 }
