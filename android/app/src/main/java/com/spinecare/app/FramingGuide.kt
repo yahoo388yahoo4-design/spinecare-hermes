@@ -10,7 +10,7 @@ object FramingGuide {
             listOf(
                 "Stand/sit in profile so the whole side of your body is visible.",
                 "Camera lens level with your chest, pointing straight at you.",
-                "Required in frame: ear, shoulder, hip" + if (view == "side") " and knee when listed.",
+                "Required in frame: ear, shoulder, hip and knee when listed.",
                 "Good even lighting on your body; avoid backlight from windows.",
             )
         )

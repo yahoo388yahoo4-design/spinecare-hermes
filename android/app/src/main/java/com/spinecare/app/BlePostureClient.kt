@@ -64,14 +64,14 @@ class BlePostureClient(private val context: Context) {
     }
 
     private fun BluetoothGatt.enableNotifications(ch: BluetoothGattCharacteristic) {
-        val cfg = getDescriptor(ch, UUID.fromString("00002902-0000-1000-8000-00805f9b34fb")) ?: return
+        val cfg = ch.getDescriptor(UUID.fromString("00002902-0000-1000-8000-00805f9b34fb")) ?: return
         @Suppress("DEPRECATION")
-        writeDescriptor(cfg, byteArrayOf(1, 0))
+        writeDescriptor(cfg, BluetoothGattCharacteristic.WRITE_TYPE_DEFAULT)
     }
 
     private fun parse(v: ByteArray?): ImuPacket? {
         if (v == null || v.size < 20) return null
-        fun i16(o: Int) = ((v[o + 1].toInt() shl 8) or (v[o].toInt() and 0xFF)).toShort()
+        fun i16(o: Int) = ((v[o + 1].toInt() shl 8) or (v[o].toInt() and 0xFF)).toInt()
         return ImuPacket(
             seq = i16(0).toInt() and 0xFFFF,
             pitch = i16(2) / 100.0, roll = i16(4) / 100.0, yaw = i16(6) / 100.0,

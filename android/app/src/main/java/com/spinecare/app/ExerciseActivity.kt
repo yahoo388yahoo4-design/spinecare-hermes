@@ -41,7 +41,7 @@ class ExerciseActivity : AppCompatActivity() {
     private var lastFramingMissing: List<String> = emptyList()
     private var lastFramingReady = false
     private var serverReps = 0
-    private var serverCues: Map<String, Int> = emptyMap()
+    private var serverCues: MutableMap<String, Int> = mutableMapOf()
     private var framesProcessed = 0
 
     private val permLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
@@ -215,7 +215,15 @@ class ExerciseActivity : AppCompatActivity() {
         running = true
         repEngine = RepEngine(exercise.repLow, exercise.repHigh)
         framesProcessed = 0
-        if (serverMode) { server?.connect(object : ServerClient.Listener {}) ; server?.startSession(exercise.id) }
+        if (serverMode) {
+            server?.connect(object : ServerClient.Listener {
+                override fun onPose(msg: JSONObject) {}
+                override fun onSessionStarted(exercise: JSONObject) {}
+                override fun onSessionSaved(summary: JSONObject) {}
+                override fun onStatus(connected: Boolean) {}
+            })
+            server?.startSession(exercise.id)
+        }
         postCue("Calibrate: adopt neutral posture, then begin. Stop on: ${exercise.stopConditions.joinToString()}")
     }
 
