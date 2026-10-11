@@ -48,15 +48,16 @@ def annotate(img_path: Path, pose: dict, out_path: Path, idx: int, total: int):
     d = ImageDraw.Draw(img)
     W, H = img.size
     lm = pose.get("landmarks") or []
+    # server returns pixel coords; normalize by the frame the frame was sent at
     for a, b in CONNECTIONS:
         if a < len(lm) and b < len(lm):
             pa, pb = lm[a], lm[b]
             if pa.get("visibility", 0) > 0.4 and pb.get("visibility", 0) > 0.4:
-                d.line([(pa["x"] * W, pa["y"] * H), (pb["x"] * W, pb["y"] * H)],
+                d.line([(pa["x"], pa["y"]), (pb["x"], pb["y"])],
                        fill=(0, 255, 140), width=3)
     for p in lm:
         if p.get("visibility", 0) > 0.4:
-            x, y = p["x"] * W, p["y"] * H
+            x, y = p["x"], p["y"]
             d.ellipse([x - 4, y - 4, x + 4, y + 4], fill=(255, 80, 80))
     font = load_font(15)
     m = pose.get("metrics", {})
