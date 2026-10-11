@@ -116,10 +116,13 @@ struct VideoPreview: View {
     var body: some View {
         VideoPlayer(player: playerHolder.player)
             .frame(height: 200)
-            .onAppear { playerHolder.player.url = url; playerHolder.player.play() }
+            .onAppear { playerHolder.set(url); playerHolder.player.play() }
             .onDisappear { playerHolder.player.pause() }
     }
-    final class PlayerHolder: ObservableObject { let player = AVPlayer() }
+    final class PlayerHolder: ObservableObject {
+        let player = AVPlayer()
+        func set(_ u: URL) { player.replaceCurrentItem(with: AVPlayerItem(url: u)) }
+    }
 }
 
 struct ExercisesView: View {
