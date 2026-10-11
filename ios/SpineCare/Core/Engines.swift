@@ -36,9 +36,13 @@ enum Metrics {
         }
         if vis("lear") && vis("rear") && vis("lsho") && vis("rsho") {
             out["cervical_tilt"] = angFromVertical(earMid.x, earMid.y, shoMid.x, shoMid.y)
-            let earSep = hypot(lear.x - rear.x, lear.y - rear.y)
-            let ratio = max(0, min(1, earSep / (0.40 * shoW)))
-            out["neck_yaw_est"] = acos(ratio) * 180 / .pi
+        }
+        // Signed lateral nose offset vs shoulder midline (front view). Ear-separation
+        // proxies collapse when an ear occludes during rotation; nose stays visible.
+        if vis("nose") && vis("lsho") && vis("rsho") {
+            let noseDx = nose.x - shoMid.x
+            let ratio = max(-1, min(1, noseDx / (0.28 * shoW)))
+            out["neck_yaw_est"] = asin(ratio) * 180 / .pi
         }
         if vis("lsho") && vis("rsho") {
             let deg = atan2(rsho.y - lsho.y, rsho.x - lsho.x) * 180 / .pi
@@ -101,4 +105,13 @@ enum FramingGuide {
         if issue == "no_person" { return "No person detected — stand in view of the camera." }
         return "Adjust the camera until the outline turns green."
     }
+}
+
+/// Resolve an exercise signal name; "abs:<metric>" takes the absolute value.
+func signalValue(_ metrics: [String: Double], _ signal: String) -> Double? {
+    if signal.hasPrefix("abs:") {
+        guard let v = metrics[String(signal.dropFirst(4))] else { return nil }
+        return abs(v)
+    }
+    return metrics[signal]
 }

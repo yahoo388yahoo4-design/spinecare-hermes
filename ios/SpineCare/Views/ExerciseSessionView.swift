@@ -68,7 +68,7 @@ struct ExerciseSessionView: View {
             return
         }
         let metrics = Metrics.compute(lms)
-        let sig = metrics[exercise.signal]
+        let sig = signalValue(metrics, exercise.signal)
         let now = Date().timeIntervalSince1970
         if engine.update(sig, now) { reps = engine.reps; cue = "Rep \(reps)/\(exercise.targetReps) ✓" }
         for rule in exercise.formRules {

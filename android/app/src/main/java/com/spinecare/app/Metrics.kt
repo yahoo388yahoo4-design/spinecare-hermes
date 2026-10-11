@@ -54,9 +54,13 @@ object Metrics {
         }
         if (lear.visibility > .5f && rear.visibility > .5f && lsho.visibility > .5f && rsho.visibility > .5f) {
             out["cervical_tilt"] = angFromVertical(earMid.x, earMid.y, shoMid.x, shoMid.y)
-            val earSep = hypot((lear.x - rear.x).toDouble(), (lear.y - rear.y).toDouble())
-            val ratio = max(0.0, min(1.0, earSep / (0.40 * shoW)))  // bi-ear width ~0.40x biacromial
-            out["neck_yaw_est"] = Math.toDegrees(acos(ratio))
+        }
+        // Signed lateral nose offset vs shoulder midline (front view). Ear-separation
+        // proxies collapse when an ear occludes during rotation; nose stays visible.
+        if (nose.visibility > .5f && lsho.visibility > .5f && rsho.visibility > .5f) {
+            val noseDx = (nose.x - shoMid.x).toDouble()
+            val ratio = max(-1.0, min(1.0, noseDx / (0.28 * shoW)))
+            out["neck_yaw_est"] = Math.toDegrees(asin(ratio))
         }
         if (lsho.visibility > .5f && rsho.visibility > .5f) {
             val deg = Math.toDegrees(atan2((rsho.y - lsho.y).toDouble(), (rsho.x - lsho.x).toDouble()))
@@ -67,4 +71,13 @@ object Metrics {
         }
         return out
     }
+}
+
+/** Resolve an exercise signal name; "abs:<metric>" takes the absolute value. */
+fun signalValue(metrics: Map<String, Double?>, signal: String): Double? {
+    if (signal.startsWith("abs:")) {
+        val v = metrics[signal.removePrefix("abs:")] ?: return null
+        return kotlin.math.abs(v)
+    }
+    return metrics[signal]
 }

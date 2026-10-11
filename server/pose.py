@@ -61,10 +61,13 @@ def compute_metrics(pose: PersonPose) -> dict:
     # Cervical tilt (frontal): ear-mid vs shoulder-mid vs vertical
     if pose.vis("lear") and pose.vis("rear") and pose.vis("lsho") and pose.vis("rsho"):
         m["cervical_tilt"] = _ang_from_vertical(ear_mid, sho_mid)
-        # Neck rotation estimate: apparent ear separation / shoulder width ~ cos(yaw)
-        ear_sep = math.hypot(lear[0]-rear[0], lear[1]-rear[1])
-        ratio = max(0.0, min(1.0, ear_sep / (0.40*sho_w)))  # bi-ear width ~0.40x biacromial
-        m["neck_yaw_est"] = math.degrees(math.acos(ratio))
+    # Neck rotation estimate (front view, chest facing camera): signed lateral
+    # nose offset vs shoulder midline. Ear-separation proxies collapse when an
+    # ear occludes during rotation; the nose stays visible and gives sign too.
+    if pose.vis("nose") and pose.vis("lsho") and pose.vis("rsho"):
+        nose_dx = nose[0] - sho_mid[0]
+        ratio = max(-1.0, min(1.0, nose_dx / (0.28 * sho_w)))
+        m["neck_yaw_est"] = math.degrees(math.asin(ratio))
     # Shoulder line tilt (wrapped to (-90, 90] so facing direction doesn't flip it)
     if pose.vis("lsho") and pose.vis("rsho"):
         deg = math.degrees(math.atan2(rsho[1]-lsho[1], rsho[0]-lsho[0]))

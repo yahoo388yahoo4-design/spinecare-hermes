@@ -86,6 +86,9 @@ def _signal_value(ex: dict, metrics: dict) -> float | None:
     if sig == "trunk_tilt_sagittal_proxy":
         # side view: trunk vs vertical in image plane approximates sagittal inclination
         return metrics.get("trunk_tilt_frontal")
+    if sig.startswith("abs:"):
+        v = metrics.get(sig[4:])
+        return abs(v) if v is not None else None
     return metrics.get(sig)
 
 @app.get("/health")

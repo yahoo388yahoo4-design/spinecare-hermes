@@ -157,7 +157,7 @@ class ExerciseActivity : AppCompatActivity() {
             postCue("Camera framing: " + missing.joinToString { FramingGuide.fixFor("$it:low_conf") })
             return
         }
-        val sig = metrics[exercise.signal]
+        val sig = signalValue(metrics, exercise.signal)
         val done = repEngine.update(sig, now)
         if (done) { vibrate(); postCue("Rep ${repEngine.reps}/${exercise.targetReps} ✓") }
         // form rules

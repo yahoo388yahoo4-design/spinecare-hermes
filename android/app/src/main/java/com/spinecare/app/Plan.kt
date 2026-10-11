@@ -36,7 +36,7 @@ object Plan {
         ),
         Exercise(
             "cervical_rotation_rom", "Cervical rotation ROM (pain-free)", "front",
-            listOf("lear", "rear", "lsho", "rsho"), 0.5f, "neck_yaw_est", 8.0, 35.0, 8,
+            listOf("nose", "lsho", "rsho"), 0.5f, "abs:neck_yaw_est", 8.0, 35.0, 8,
             listOf(FormRule("shoulder_line_tilt", 8.0, "Do not lift the shoulder when turning; rotate through the neck only."),
                    FormRule("trunk_tilt_frontal", 8.0, "Keep the chest facing forward; isolate neck rotation.")),
             listOf("radiating arm pain", "numbness increases"), false,

@@ -34,8 +34,8 @@ enum Plan {
             description: "Gently draw the chin straight back (double-chin), keeping eyes level. Hold 3s. Move only the head."),
         Exercise(
             id: "cervical_rotation_rom", name: "Cervical rotation ROM (pain-free)", view: "front",
-            requiredLandmarks: ["lear", "rear", "lsho", "rsho"], minConf: 0.5,
-            signal: "neck_yaw_est", repLow: 8, repHigh: 35, targetReps: 8,
+            requiredLandmarks: ["nose", "lsho", "rsho"], minConf: 0.5,
+            signal: "abs:neck_yaw_est", repLow: 8, repHigh: 35, targetReps: 8,
             formRules: [FormRule(metric: "shoulder_line_tilt", maxAbs: 8, cue: "Do not lift the shoulder when turning; rotate through the neck only."),
                         FormRule(metric: "trunk_tilt_frontal", maxAbs: 8, cue: "Keep the chest facing forward; isolate neck rotation.")],
             stopConditions: ["radiating arm pain", "numbness increases"],
