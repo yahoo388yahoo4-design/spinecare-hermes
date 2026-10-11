@@ -13,6 +13,7 @@ final class SessionRecorder {
     private let width: Int
     private let height: Int
     private var started = false
+    private var lastTime = CMTime.zero
     private let ciContext = CIContext(options: nil)
 
     init?(url: URL, width: Int, height: Int) {
@@ -81,11 +82,12 @@ final class SessionRecorder {
         guard status == kCVReturnSuccess, let ob = out else { return }
         ciContext.render(composed, to: ob)
         adaptor.append(ob, withPresentationTime: timestamp)
+        lastTime = timestamp
     }
 
     func finish() {
         guard started else { writer.cancelWriting(); return }
         input.markAsFinished()
-        writer.endSession { }
+        writer.endSession(atSourceTime: lastTime)
     }
 }
