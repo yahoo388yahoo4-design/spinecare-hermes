@@ -48,6 +48,14 @@ object ServerConfig {
     fun recordSessions(c: Context) = p(c).getBoolean("record_sessions", true)
     fun setRecordSessions(c: Context, v: Boolean) = p(c).edit().putBoolean("record_sessions", v).apply()
 
+    /** Camera lens: true = front (selfie), false = back. */
+    fun lensFront(c: Context) = p(c).getBoolean("lens_front", false)
+    fun setLensFront(c: Context, v: Boolean) = p(c).edit().putBoolean("lens_front", v).apply()
+
+    /** Camera zoom 0..100 mapped to the device zoom-ratio range. */
+    fun zoomPercent(c: Context) = p(c).getInt("zoom_percent", 0)
+    fun setZoomPercent(c: Context, v: Int) = p(c).edit().putInt("zoom_percent", v.coerceIn(0, 100)).apply()
+
     /** Spoken coaching cues (TTS). */
     fun voiceGuidance(c: Context) = p(c).getBoolean("voice_guidance", false)
     fun setVoiceGuidance(c: Context, v: Boolean) = p(c).edit().putBoolean("voice_guidance", v).apply()

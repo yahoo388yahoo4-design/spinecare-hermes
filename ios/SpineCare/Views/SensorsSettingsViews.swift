@@ -74,6 +74,15 @@ struct SettingsView: View {
                     Toggle(L10n.t("settings_haptics"), isOn: $cfg.haptics)
                     Toggle(L10n.t("settings_audio"), isOn: $cfg.audioCues)
                     Toggle(L10n.t("settings_record"), isOn: $cfg.recordSessions)
+                    Picker(L10n.t("settings_lens"), selection: $cfg.lensFront) {
+                        Text(L10n.t("settings_lens_back")).tag(false)
+                        Text(L10n.t("settings_lens_front")).tag(true)
+                    }.pickerStyle(.segmented)
+                    VStack(alignment: .leading) {
+                        Text(L10n.t("settings_zoom") + ": " + String(format: "%.1fx", 1 + Double(cfg.zoomPercent) / 100 * 4))
+                        Slider(value: Binding(get: { Double(cfg.zoomPercent) },
+                                              set: { cfg.zoomPercent = Int($0) }), in: 0...100)
+                    }
                     Toggle(L10n.t("settings_voice_guidance"), isOn: $cfg.voiceGuidance)
                     Toggle(L10n.t("settings_voice_control"), isOn: $cfg.voiceControl)
                 }

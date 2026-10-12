@@ -148,3 +148,7 @@
 /* Sessions inline preview */
 "sessions_open_full" = "▶ Open full screen (%lld frames)";
 "guides_open" = "▶ Play guide (%lld KB)";
+"settings_zoom" = "Camera zoom";
+"settings_lens" = "Default lens";
+"settings_lens_back" = "Back camera";
+"settings_lens_front" = "Front (selfie) camera";

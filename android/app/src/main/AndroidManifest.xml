@@ -42,7 +42,8 @@
         <activity
             android:name=".ExerciseActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="fullSensor"
+            android:configChanges="orientation|screenSize|screenLayout"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"

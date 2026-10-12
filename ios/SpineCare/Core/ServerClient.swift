@@ -18,6 +18,8 @@ final class ServerConfig: ObservableObject {
     @Published var haptics: Bool
     @Published var audioCues: Bool
     @Published var recordSessions: Bool
+    @Published var lensFront: Bool
+    @Published var zoomPercent: Int   // 0..100 mapped to device zoom range
     @Published var voiceGuidance: Bool
     @Published var voiceControl: Bool
     @Published var lang: String      // "system" | "en" | "ro"
@@ -34,6 +36,8 @@ final class ServerConfig: ObservableObject {
         haptics = d.object(forKey: "haptics") as? Bool ?? true
         audioCues = d.object(forKey: "audio_cues") as? Bool ?? false
         recordSessions = d.object(forKey: "record_sessions") as? Bool ?? true
+        lensFront = d.object(forKey: "lens_front") as? Bool ?? false
+        zoomPercent = d.object(forKey: "zoom_percent") as? Int ?? 0
         voiceGuidance = d.object(forKey: "voice_guidance") as? Bool ?? false
         voiceControl = d.object(forKey: "voice_control") as? Bool ?? false
         lang = d.string(forKey: "lang") ?? "system"
@@ -44,6 +48,7 @@ final class ServerConfig: ObservableObject {
         d.set(frameIntervalMs, forKey: "frame_ms"); d.set(serverFrameIntervalMs, forKey: "server_frame_ms")
         d.set(minConfidence, forKey: "min_conf"); d.set(haptics, forKey: "haptics")
         d.set(audioCues, forKey: "audio_cues"); d.set(recordSessions, forKey: "record_sessions")
+        d.set(lensFront, forKey: "lens_front"); d.set(zoomPercent, forKey: "zoom_percent")
         d.set(voiceGuidance, forKey: "voice_guidance"); d.set(voiceControl, forKey: "voice_control")
         d.set(lang, forKey: "lang")
     }

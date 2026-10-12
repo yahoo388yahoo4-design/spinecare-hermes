@@ -31,7 +31,7 @@ targets:
         NSSpeechRecognitionUsageDescription: "Used to recognize the voice commands start, stop, next and repeat during exercise sessions. Recognition runs on-device when available."
         UIBackgroundModes: []
         UILaunchScreen: {}
-        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.spinecare.hermes

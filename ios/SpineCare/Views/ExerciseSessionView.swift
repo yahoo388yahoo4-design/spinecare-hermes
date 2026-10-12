@@ -14,7 +14,8 @@ struct ExerciseSessionView: View {
     @State private var metricsText = ""
     @State private var engine = RepEngine(low: 0, high: 0)
     @State private var serverConnected = false
-    @State private var frontCamera = false
+    @State private var frontCamera = ServerConfig.shared.lensFront
+    @State private var zoomPercent = ServerConfig.shared.zoomPercent
     @State private var recording = ServerConfig.shared.recordSessions
     private let frameSink = FrameSink()
     @State private var recorder: SessionRecorder?
@@ -25,7 +26,7 @@ struct ExerciseSessionView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
-            CameraPreview(tracker: tracker, frontCamera: frontCamera) { buf in
+            CameraPreview(tracker: tracker, frontCamera: frontCamera, zoomPercent: zoomPercent) { buf in
                 frameSink.set(buf)
             }
             .ignoresSafeArea()
@@ -46,7 +47,9 @@ struct ExerciseSessionView: View {
                 HStack {
                     Button(running ? L10n.t("session_stop") : L10n.t("session_start")) { toggle() }
                         .buttonStyle(.borderedProminent)
-                    Button(L10n.t("session_flip")) { frontCamera.toggle() }
+                    Button(L10n.t("session_flip")) {
+                        frontCamera.toggle(); ServerConfig.shared.lensFront = frontCamera; ServerConfig.shared.save()
+                    }
                         .buttonStyle(.bordered)
                     Button(recording ? L10n.t("session_rec_on") : L10n.t("session_rec_off")) {
                         recording.toggle(); ServerConfig.shared.recordSessions = recording
@@ -55,6 +58,15 @@ struct ExerciseSessionView: View {
                     Button("Mode: \(modeLabel())") { cycleMode() }
                         .buttonStyle(.bordered)
                 }.padding()
+                HStack {
+                    Text(L10n.t("settings_zoom")).font(.caption).foregroundStyle(.white)
+                    Slider(value: Binding(
+                        get: { Double(zoomPercent) },
+                        set: { zoomPercent = Int($0); ServerConfig.shared.zoomPercent = Int($0); ServerConfig.shared.save() }
+                    ), in: 0...100)
+                    Text(String(format: "%.1fx", 1 + Double(zoomPercent) / 100 * 4))
+                        .font(.caption.monospacedDigit()).foregroundStyle(.white)
+                }.padding(.horizontal)
             }
             Text("\(reps)/\(exercise.targetReps)")
                 .font(.system(size: 44, weight: .bold)).foregroundStyle(.green)
@@ -68,7 +80,11 @@ struct ExerciseSessionView: View {
             voice.onCommand = { cmd in handleVoice(cmd) }
             voice.startListening()
         }
-        .onDisappear { client.disconnect(); stopRecorder(); voice.shutdown() }
+        .onDisappear {
+            // Never lose a session: if still running, stop + save first.
+            if running { toggle() }
+            client.disconnect(); stopRecorder(); voice.shutdown()
+        }
         .onChange(of: cue) { newValue in voice.speak(newValue) }
         .onChange(of: tracker.landmarks) { lms in score(lms) }
     }
@@ -219,10 +235,11 @@ struct OverlayCanvas: View {
 struct CameraPreview: UIViewRepresentable {
     let tracker: PoseTracker
     let frontCamera: Bool
+    let zoomPercent: Int
     let onFrame: (CMSampleBuffer) -> Void
 
     func makeUIView(context: Context) -> UIView {
-        let view = UIView()
+        let view = PreviewContainerView()
         AVCaptureCamera.shared.requestPermission { granted in
             if granted { DispatchQueue.main.async { context.coordinator.reconfigure() } }
         }
@@ -232,6 +249,8 @@ struct CameraPreview: UIViewRepresentable {
 
     func updateUIView(_ uiView: UIView, context: Context) {
         context.coordinator.frontCamera = frontCamera
+        context.coordinator.zoomPercent = zoomPercent
+        context.coordinator.applyZoom()
         context.coordinator.reconfigure()
     }
 
@@ -243,7 +262,9 @@ struct CameraPreview: UIViewRepresentable {
         let tracker: PoseTracker
         let onFrame: (CMSampleBuffer) -> Void
         var frontCamera = false
+        var zoomPercent = 0
         private var input: AVCaptureDeviceInput?
+        private var device: AVCaptureDevice?
         private var configured = false
 
         init(tracker: PoseTracker, onFrame: @escaping (CMSampleBuffer) -> Void) {
@@ -255,7 +276,18 @@ struct CameraPreview: UIViewRepresentable {
             previewLayer.videoGravity = .resizeAspectFill
             previewLayer.frame = view.bounds
             view.layer.insertSublayer(previewLayer, at: 0)
+            if let c = view as? PreviewContainerView { c.onLayout = { [weak self] bounds in
+                self?.previewLayer.frame = bounds
+            } }
             reconfigure()
+        }
+
+        func applyZoom() {
+            guard let cam = device else { return }
+            let minZ = max(1, cam.minAvailableVideoZoomFactor)
+            let maxZ = min(12, cam.maxAvailableVideoZoomFactor)
+            let f = minZ + (maxZ - minZ) * (Double(zoomPercent) / 100.0)
+            do { try cam.lockForConfiguration(); cam.videoZoomFactor = CGFloat(f); cam.unlockForConfiguration() } catch {}
         }
 
         func reconfigure() {
@@ -269,7 +301,8 @@ struct CameraPreview: UIViewRepresentable {
                 session.commitConfiguration(); return
             }
             if session.canAddInput(newInput) {
-                session.addInput(newInput); input = newInput
+                session.addInput(newInput); input = newInput; device = cam
+                applyZoom()
             }
             if session.outputs.isEmpty {
                 let output = AVCaptureVideoDataOutput()
@@ -307,6 +340,16 @@ final class AVCaptureCamera {
             }
         default: authorized = false; done(false)
         }
+    }
+}
+
+/// UIView that forwards its bounds to a callback on layout, so the
+/// AVCaptureVideoPreviewLayer tracks size changes on rotation.
+final class PreviewContainerView: UIView {
+    var onLayout: ((CGRect) -> Void)?
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        onLayout?(bounds)
     }
 }
 

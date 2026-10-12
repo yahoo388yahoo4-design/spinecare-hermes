@@ -45,6 +45,18 @@ class SettingsFragment : Fragment() {
         b.swHaptics.isChecked = ServerConfig.haptics(ctx)
         b.swAudio.isChecked = ServerConfig.audioCues(ctx)
         b.swRecord.isChecked = ServerConfig.recordSessions(ctx)
+        if (ServerConfig.lensFront(ctx)) b.rbLensFront.isChecked = true else b.rbLensBack.isChecked = true
+        b.sbZoomSettings.progress = ServerConfig.zoomPercent(ctx)
+        b.tvZoomLabel.text = getString(R.string.settings_zoom) + ": " +
+            String.format("%.1fx", 1f + (ServerConfig.zoomPercent(ctx) / 100f) * 4f)
+        b.sbZoomSettings.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(sb: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                b.tvZoomLabel.text = getString(R.string.settings_zoom) + ": " +
+                    String.format("%.1fx", 1f + (progress / 100f) * 4f)
+            }
+            override fun onStartTrackingTouch(sb: android.widget.SeekBar?) {}
+            override fun onStopTrackingTouch(sb: android.widget.SeekBar?) {}
+        })
         b.swVoiceGuidance.isChecked = ServerConfig.voiceGuidance(ctx)
         b.swVoiceControl.isChecked = ServerConfig.voiceControl(ctx)
         when (ServerConfig.mode(ctx)) {
@@ -71,6 +83,8 @@ class SettingsFragment : Fragment() {
             ServerConfig.setHaptics(ctx2, b.swHaptics.isChecked)
             ServerConfig.setAudioCues(ctx2, b.swAudio.isChecked)
             ServerConfig.setRecordSessions(ctx2, b.swRecord.isChecked)
+            ServerConfig.setLensFront(ctx2, b.rbLensFront.isChecked)
+            ServerConfig.setZoomPercent(ctx2, b.sbZoomSettings.progress)
             ServerConfig.setVoiceGuidance(ctx2, b.swVoiceGuidance.isChecked)
             ServerConfig.setVoiceControl(ctx2, b.swVoiceControl.isChecked)
             ServerConfig.setMode(ctx2, when {

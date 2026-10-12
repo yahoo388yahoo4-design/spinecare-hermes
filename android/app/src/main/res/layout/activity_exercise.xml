@@ -106,7 +106,20 @@
             android:layout_height="wrap_content" android:text="Flip camera"/>
         <Button android:id="@+id/btnRec" android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content" android:text="Record: On"/>
+        <Button android:id="@+id/btnRotate" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Rotate"/>
     </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/sbZoom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:paddingStart="24dp" android:paddingEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@id/btnRow2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/tvReps"

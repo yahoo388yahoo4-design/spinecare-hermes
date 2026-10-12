@@ -56,6 +56,11 @@
     <string name="session_mode_server">Mode: GPU server (required)</string>
     <string name="session_mode_auto">Mode: Auto (server if reachable)</string>
     <string name="session_flip">Flip camera</string>
+    <string name="session_rotate">Rotate</string>
+    <string name="settings_lens">Default lens</string>
+    <string name="settings_lens_back">Back camera</string>
+    <string name="settings_lens_front">Front (selfie) camera</string>
+    <string name="settings_zoom">Camera zoom</string>
     <string name="session_rec_on">Record: On</string>
     <string name="session_rec_off">Record: Off</string>
     <string name="session_cam_perm">Camera permission required for guided exercises</string>

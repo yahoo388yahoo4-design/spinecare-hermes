@@ -56,6 +56,11 @@
     <string name="session_mode_server">Mod: Server GPU (obligatoriu)</string>
     <string name="session_mode_auto">Mod: Auto (server dacă e disponibil)</string>
     <string name="session_flip">Comută camera</string>
+    <string name="session_rotate">Rotește</string>
+    <string name="settings_lens">Lentilă implicită</string>
+    <string name="settings_lens_back">Camera spate</string>
+    <string name="settings_lens_front">Camera frontală (selfie)</string>
+    <string name="settings_zoom">Zoom cameră</string>
     <string name="session_rec_on">Înregistrare: Pornită</string>
     <string name="session_rec_off">Înregistrare: Oprită</string>
     <string name="session_cam_perm">Permisiunea camerei este necesară pentru exercițiile ghidate</string>

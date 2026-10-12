@@ -148,3 +148,7 @@
 /* Previzualizare sesiuni */
 "sessions_open_full" = "▶ Deschide full screen (%lld cadre)";
 "guides_open" = "▶ Redă ghidul (%lld KB)";
+"settings_zoom" = "Zoom cameră";
+"settings_lens" = "Lentilă implicită";
+"settings_lens_back" = "Camera spate";
+"settings_lens_front" = "Camera frontală (selfie)";

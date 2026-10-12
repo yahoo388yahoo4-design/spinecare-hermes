@@ -49,6 +49,7 @@ class ExerciseActivity : AppCompatActivity() {
     // Camera switching + session recording
     private var frontCamera = false
     private var provider: ProcessCameraProvider? = null
+    private var camera: androidx.camera.core.Camera? = null
     private var recorder: SessionRecorder? = null
     private var recordEnabled = true
     private var recordFile: File? = null
@@ -82,6 +83,7 @@ class ExerciseActivity : AppCompatActivity() {
         b.btnStart.text = getString(R.string.session_start)
         b.btnStop.text = getString(R.string.session_stop)
         b.btnFlip.text = getString(R.string.session_flip)
+        b.btnRotate.text = getString(R.string.session_rotate)
         b.btnStart.setOnClickListener { startSession() }
         b.btnStop.setOnClickListener { stopAndSave() }
         b.btnMode.setOnClickListener {
@@ -91,6 +93,21 @@ class ExerciseActivity : AppCompatActivity() {
         }
         b.btnFlip.setOnClickListener { flipCamera() }
         b.btnRec.setOnClickListener { toggleRecord() }
+        b.btnRotate.setOnClickListener {
+            requestedOrientation = if (requestedOrientation == android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE)
+                android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            else android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        }
+        frontCamera = ServerConfig.lensFront(this)
+        b.sbZoom.progress = ServerConfig.zoomPercent(this)
+        b.sbZoom.setOnSeekBarChangeListener(object : android.widget.SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(sb: android.widget.SeekBar?, progress: Int, fromUser: Boolean) {
+                ServerConfig.setZoomPercent(this@ExerciseActivity, progress)
+                applyZoom(progress / 100f)
+            }
+            override fun onStartTrackingTouch(sb: android.widget.SeekBar?) {}
+            override fun onStopTrackingTouch(sb: android.widget.SeekBar?) {}
+        })
         mode = ServerConfig.mode(this)
         recordEnabled = ServerConfig.recordSessions(this)
         b.btnRec.text = if (recordEnabled) getString(R.string.session_rec_on) else getString(R.string.session_rec_off)
@@ -158,15 +175,27 @@ class ExerciseActivity : AppCompatActivity() {
             .also { it.setAnalyzer(analysisExecutor, ::analyze) }
         try {
             p.unbindAll()
-            p.bindToLifecycle(this, selector, preview, analysis)
+            camera = p.bindToLifecycle(this, selector, preview, analysis)
             b.overlay.mirror = frontCamera
             b.overlay.invalidate()
+            applyZoom(ServerConfig.zoomPercent(this) / 100f)
         } catch (e: Exception) {
             // front camera absent on this device — fall back to back
             frontCamera = false
+            ServerConfig.setLensFront(this, false)
             b.overlay.mirror = false
-            try { p.unbindAll(); p.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis) }
+            try { p.unbindAll(); camera = p.bindToLifecycle(this, CameraSelector.DEFAULT_BACK_CAMERA, preview, analysis); applyZoom(ServerConfig.zoomPercent(this) / 100f) }
             catch (_: Exception) { Toast.makeText(this, getString(R.string.session_no_cam), Toast.LENGTH_LONG).show() }
+        }
+    }
+
+    private fun applyZoom(percent: Float) {
+        val cam = camera ?: return
+        runCatching {
+            val state = cam.cameraInfo.zoomState.value
+            val min = state?.minZoomRatio ?: 1f
+            val max = state?.maxZoomRatio ?: 1f
+            cam.cameraControl.setZoomRatio(min + (max - min) * percent.coerceIn(0f, 1f))
         }
     }
 
@@ -179,6 +208,7 @@ class ExerciseActivity : AppCompatActivity() {
             return
         }
         frontCamera = !frontCamera
+        ServerConfig.setLensFront(this, frontCamera)
         bindCamera(p)
         Toast.makeText(this, if (frontCamera) getString(R.string.session_front)
                              else getString(R.string.session_back), Toast.LENGTH_SHORT).show()
@@ -385,6 +415,8 @@ class ExerciseActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy(); poseEngine.close(); server?.close(); analysisExecutor.shutdown()
         voice?.shutdown(); voice = null
+        // Never lose a session: if the user left mid-session, save what we have.
+        if (running) runCatching { stopAndSave() }
         recorder?.let { runCatching { it.stop() } }
     }
 }
