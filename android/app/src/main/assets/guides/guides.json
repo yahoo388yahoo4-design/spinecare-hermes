@@ -15,6 +15,21 @@
       "exercise_id": "cervical_rotation_rom_nhs",
       "file": "guide_cervical_rotation_rom_nhs.mp4",
       "bytes": 1871009
+    },
+    {
+      "exercise_id": "cervical_lateral_flexion",
+      "file": "guide_cervical_lateral_flexion.mp4",
+      "bytes": 753669
+    },
+    {
+      "exercise_id": "shoulder_shrug",
+      "file": "guide_shoulder_shrug.mp4",
+      "bytes": 1477888
+    },
+    {
+      "exercise_id": "neck_isometric_hold",
+      "file": "guide_neck_isometric_hold.mp4",
+      "bytes": 1899809
     }
   ]
 }

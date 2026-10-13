@@ -44,6 +44,36 @@ GUIDES = [
         "cue_en": "Rep counter increments only inside the pain-free band.",
         "cue_ro": "Contorul de repetari creste doar in limitele fara durere.",
     },
+    {
+        "exercise_id": "cervical_lateral_flexion",
+        "src": "lat_flex/evidence.mp4",
+        "title_en": "Cervical lateral flexion (ear-to-shoulder)",
+        "title_ro": "Flectie laterala cervicala (ureche-spre-umăr)",
+        "camera_en": "Camera: FRONT view, head and both shoulders in frame",
+        "camera_ro": "Camera: vedere FRONT, capul si ambele umeri in cadru",
+        "cue_en": "cervical_tilt is the ear-to-shoulder angle: tilt slowly, keep shoulders level.",
+        "cue_ro": "cervical_tilt este unghiul ureche-umăr: inclina lent, mentine umerii pe aceeasi linie.",
+    },
+    {
+        "exercise_id": "shoulder_shrug",
+        "src": "shrug/evidence.mp4",
+        "title_en": "Shoulder shrug and release",
+        "title_ro": "Ridicare si relaxare umeri",
+        "camera_en": "Camera: SIDE view, profile with head and shoulders in frame",
+        "camera_ro": "Camera: vedere SIDE, profil cu capul si umerii in cadru",
+        "cue_en": "ear_sho_dist grows as you lift: raise toward ears, then fully relax down.",
+        "cue_ro": "ear_sho_dist creste cand ridici: ridica spre urechi, apoi relaxeaza complet.",
+    },
+    {
+        "exercise_id": "neck_isometric_hold",
+        "src": "iso_hold/evidence.mp4",
+        "title_en": "Isometric neck hold (hand resistance)",
+        "title_ro": "Izometrie cervicala (rezistenta cu mana)",
+        "camera_en": "Camera: SIDE view recommended (demo clip: front)",
+        "camera_ro": "Camera: SIDE recomandata (clip demonstratie: front)",
+        "cue_en": "Press into your hand WITHOUT moving the head: the overlay stays still. That is correct.",
+        "cue_ro": "Apasa pe mana FARA sa misti capul: overlay-ul ramane nemișcat. Asta e corect.",
+    },
 ]
 
 def card(path, lines, colors, sizes):
